@@ -1,0 +1,111 @@
+$blackColor: rgb(36, 36, 36);
+$whiteColor: rgb(218, 218, 218);
+$greyColor: #ccc;
+
+$tGreyColor: rgba(58, 47, 47, 0.9);
+
+$primaryColor: rgb(131, 131, 224);
+$secondaryColor: rgb(8, 42, 53);
+$highlightColor: rgb(143, 63, 63);
+$lightColor: rgb(200,200,200);
+
+$textFont: 'Spectral', serif;
+$topFont: 'Metal Mania', cursive;
+$headerFont: 'Alegreya Sans SC', sans-serif;
+
+.App {
+  text-align: center;
+  background-color: $blackColor;
+
+  $nightWoods: "https://images.pexels.com/photos/289367/pexels-photo-289367.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
+  $nightButterflies: "https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
+  $dayWoods: "https://images.pexels.com/photos/38136/pexels-photo-38136.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
+  $jellyfish: "https://images.pexels.com/photos/2399543/pexels-photo-2399543.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
+  $woodAltar: "https://images.pexels.com/photos/2101704/pexels-photo-2101704.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
+  background-image: url($nightWoods);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+a {
+  color: $primaryColor !important;
+}
+button { color: $blackColor }
+
+a {
+  padding:5px;
+  display:inline-block;
+  margin:2px;
+  border-radius:10px;
+  text-decoration:none;
+}
+
+.main-page, .side-bar {
+  padding:20px;
+  min-height:100vh;
+}
+
+.main-page {
+  
+  background-color: $tGreyColor;
+}
+
+.header {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image:linear-gradient(rgb(28, 62, 73), $secondaryColor, rgb(8, 22, 33));
+  position:sticky;
+  z-index:10;
+  top:0;
+  
+
+  .menu-right {
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  h3 {
+    margin:0px;
+    font-family: $topFont; 
+
+  }
+  a{ color: $highlightColor !important; 
+    font-family: $headerFont;}
+
+}
+
+.footer {
+  background-color:$secondaryColor;
+}
+
+h1, .header h3 { 
+  margin:0; 
+  font-family: $topFont; 
+  color:$highlightColor;
+}
+
+h2, h3, h4, h5 {
+  font-family: $headerFont;
+  color:$primaryColor;
+}
+
+p, a, * {
+  font-family: $textFont;
+  color: $whiteColor;
+}
+
+.side-bar-section {
+  border: 2px solid $blackColor;
+  padding:10px;
+  margin:10px;
+  background-color: $tGreyColor;
+}
+
+.side-bar-panel {
+  margin: 10px 0;
+}
+
+  
+
