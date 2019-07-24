@@ -1,12 +1,15 @@
 import React from 'react'
 import {Form, Button} from 'react-bootstrap'
+import {connect} from 'react-redux'
+import {addItem, updateItem} from '../../redux/actions'
 
 class SymbolForm extends React.Component{
     constructor(props) {
         console.log(props.kind)
         super(props)
         this.state = {
-            symbol: this.props.symbol
+            symbol: this.props.symbol,
+            existing: props.symbol.name != ""
         }
     }
 
@@ -40,9 +43,10 @@ class SymbolForm extends React.Component{
 
 
     submitForm = (e) => {
-        e.preventDefault();
-
-        console.log(this.state.symbol)
+        //e.preventDefault();
+        this.state.existing ? 
+            this.props.updateItem(this.state.symbol, "symbols") : 
+            this.props.addItem(this.state.symbol, "symbols")    
         
     }
 
@@ -174,5 +178,9 @@ class SymbolForm extends React.Component{
         </div>
     }
 }
+const mapDispatchToProps = {
+    addItem,
+    updateItem
+}
 
-export default SymbolForm
+export default connect(null, mapDispatchToProps)(SymbolForm)

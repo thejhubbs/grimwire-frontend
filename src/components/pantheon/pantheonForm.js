@@ -1,11 +1,15 @@
 import React from 'react'
 import {Form, Button} from 'react-bootstrap'
+import {connect} from 'react-redux'
+import {addItem, updateItem} from '../../redux/actions'
+
 
 class PantheonForm extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            pantheon: props.pantheon
+            pantheon: props.pantheon,
+            existing: props.pantheon.name != ""
         }
     }
 
@@ -27,10 +31,10 @@ class PantheonForm extends React.Component{
     }
 
     submitForm = (e) => {
-        e.preventDefault();
-
-        console.log(this.state.pantheon)
-        
+        //e.preventDefault();
+        this.state.existing ? 
+            this.props.updateItem(this.state.pantheon, "pantheons") : 
+            this.props.addItem(this.state.pantheon, "pantheons")        
     }
  
     render() {
@@ -153,4 +157,9 @@ class PantheonForm extends React.Component{
     }
 }
  
-export default PantheonForm
+const mapDispatchToProps = {
+    addItem,
+    updateItem
+}
+
+export default connect(null, mapDispatchToProps)(PantheonForm)

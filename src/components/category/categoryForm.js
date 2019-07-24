@@ -1,11 +1,14 @@
 import React from 'react'
 import {Form, Button} from 'react-bootstrap'
+import {connect} from 'react-redux'
+import {addItem, updateItem} from '../../redux/actions'
 
 class CategoryForm extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            category: props.category
+            category: props.category,
+            existing: props.category.name != ""
         }
     }
 
@@ -40,8 +43,10 @@ class CategoryForm extends React.Component {
     }
  
     submitForm = (e) => {
-         e.preventDefault();
-         console.log(this.state.category)   
+         //e.preventDefault();
+         this.state.existing ? 
+             this.props.updateItem(this.state.category, "categories") : 
+             this.props.addItem(this.state.category, "categories")    
     }
  
     render() {
@@ -116,4 +121,9 @@ class CategoryForm extends React.Component {
     }
 }
 
-export default CategoryForm
+const mapDispatchToProps = {
+    addItem,
+    updateItem
+}
+
+export default connect(null, mapDispatchToProps)(CategoryForm)

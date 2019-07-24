@@ -1,11 +1,14 @@
 import React from 'react'
 import {Form, Button} from 'react-bootstrap'
+import {connect} from 'react-redux'
+import {addItem, updateItem} from '../../redux/actions'
 
 class ConnectionForm extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            connection: this.props.connection
+            connection: this.props.connection,
+            existing: props.connection.name != ""
         }
     }
 
@@ -19,8 +22,10 @@ class ConnectionForm extends React.Component{
     }
 
     submitForm = (e) => {
-        e.preventDefault();
-        console.log(this.state.connection)
+        //e.preventDefault();
+        this.state.existing ? 
+            this.props.updateItem(this.state.connection, "connections") : 
+            this.props.addItem(this.state.connection, "connections")    
         
     }
 
@@ -103,4 +108,9 @@ class ConnectionForm extends React.Component{
     }
 }
 
-export default ConnectionForm
+const mapDispatchToProps = {
+    addItem,
+    updateItem
+}
+
+export default connect(null, mapDispatchToProps)(ConnectionForm)

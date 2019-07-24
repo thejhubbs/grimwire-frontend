@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import reducer from './redux/reducer'
 
 import {BrowserRouter} from 'react-router-dom';
 import {createStore} from 'redux';
@@ -17,20 +18,26 @@ import {usersDb} from './db/miscDb'
 import categoriesDb from './db/categoriesDb';
 
 
-
-
-function reducer() {
-    return {
-      symbols: symbolsDb,
-      kinds: kindsDb,
-      pantheons: pantheonsDb,
-      connections: connectionsDb,
-      users: usersDb,
-      categories: categoriesDb
-    }
-  }
   
 const store = createStore(reducer);
+
+if(false) {
+  if( window.confirm("Do you want to clear the local storage and delete added info?") ) {
+    if( window.confirm("ARE YOU SURE?!?!?!?!?!?!?!") ) {
+      console.log("Clearing storage")
+      localStorage.clear();
+      console.log("Setting storage")
+      localStorage.setItem('symbols', JSON.stringify(symbolsDb))
+      localStorage.setItem('kinds', JSON.stringify(kindsDb))
+      localStorage.setItem('connections', JSON.stringify(connectionsDb))
+      localStorage.setItem('pantheons', JSON.stringify(pantheonsDb))
+      localStorage.setItem('users', JSON.stringify(usersDb))
+      localStorage.setItem('categories', JSON.stringify(categoriesDb))
+      console.log("Good to go")
+      console.log( JSON.parse(localStorage.getItem('symbols'))[0] ) 
+    }
+  }
+}
 
 ReactDOM.render(
 

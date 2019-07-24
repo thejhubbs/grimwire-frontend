@@ -1,11 +1,14 @@
 import React from 'react'
 import {Form, Button} from 'react-bootstrap'
+import {connect} from 'react-redux'
+import {addItem, updateItem} from '../../redux/actions'
 
 class KindForm extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            kind: props.kind
+            kind: props.kind,
+            existing: props.kind.name != ""
         }
     }
  
@@ -40,8 +43,10 @@ class KindForm extends React.Component {
     }
  
     submitForm = (e) => {
-         e.preventDefault();
-         console.log(this.state.kind)   
+         //e.preventDefault(); THIS BEHAVIOR IS A QUICK FIX TO REFRESHING PAGE & INFO
+         this.state.existing ? 
+             this.props.updateItem(this.state.kind, "kinds") : 
+             this.props.addItem(this.state.kind, "kinds")    
     }
 
     render() {
@@ -164,4 +169,9 @@ class KindForm extends React.Component {
     }
 }
 
-export default KindForm
+const mapDispatchToProps = {
+    addItem,
+    updateItem
+}
+
+export default connect(null, mapDispatchToProps)(KindForm)

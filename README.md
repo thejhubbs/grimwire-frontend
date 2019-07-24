@@ -1,6 +1,5 @@
 Todo
 
-1. user protected & hidden forms
 2. fix list errors
 
 ================================================
@@ -34,3 +33,9 @@ Jupter in- Taurus for 8 years, then Virgo
 7. Mobile Version
 
 8. Previous/next some form to collection
+
+9. better scroll things for pantheons list & image gallerys
+
+10. better fix redux flow so that page auto updates state and not hard reload
+
+11. user protected & hidden forms
