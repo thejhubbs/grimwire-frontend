@@ -16,6 +16,7 @@ import CategoryPage from '../../components/category/categoryPage';
 
 import UserComponent from '../../views/user';
 
+import DownloadDatabase from '../../views/downloadDatabase'
 
 function Body() {
     return <div className="body">
@@ -33,6 +34,8 @@ function Body() {
             <Route path="/category/:name" component={CategoryPage} />
 
             <Route path="/users/" component={UserComponent} />
+
+            <Route path="/downloadDb/:name" component={DownloadDatabase} />
         </Switch> 
     </div>
 }
