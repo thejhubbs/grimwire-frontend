@@ -10,7 +10,7 @@ function SimpleSymbolList(props) {
 
     return <div style={style}>
         { props.symbols.length > 0 ? props.symbols.map(item => 
-            <SmallSymbolCard symbol={item} />
+            <SmallSymbolCard symbol={item} key={item.name}  />
         ) : "There are no results." }
     </div>
 }

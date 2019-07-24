@@ -9,7 +9,7 @@ class PantheonForm extends React.Component{
         super(props)
         this.state = {
             pantheon: props.pantheon,
-            existing: props.pantheon.name != ""
+            existing: props.pantheon.name !== ""
         }
     }
 

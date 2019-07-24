@@ -2,7 +2,6 @@ import React from 'react';
 
 import Kinds from '../components/kind/kindsComponent'
 import KindForm from '../components/kind/kindForm';
-import Categories from '../components/category/categoriesComponent'
 
 class Kind extends React.Component {
   constructor(props) {

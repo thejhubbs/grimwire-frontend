@@ -48,8 +48,8 @@ class SymbolPage extends React.Component {
     render() {
         const item = this.state.symbol
         return <div>
-            <img src={item.thumbnail} width="100px" />
-            <h1>{item.number !== null && typeof item.number !== "object" ? item.number + ". " : ''} {item.name}</h1>
+            <img src={item.thumbnail} alt={item.name}  width="100px" />
+            <h1>{item.number ? item.number + ". " : ''} {item.name}</h1>
 
             <Row>
                 <Col lg={8}>
@@ -61,7 +61,7 @@ class SymbolPage extends React.Component {
                 </Col>
                 <Col lg={4}>
                     <h4>Key Information</h4>
-                    { item.info ? Object.entries(item.info).map(infoEntry => <div>{infoEntry[0]}: {infoEntry[1]}</div>) : "" }
+                    { item.info ? Object.entries(item.info).map(infoEntry => <div key={infoEntry[0]} >{infoEntry[0]}: {infoEntry[1]}</div>) : "" }
                 </Col>
             </Row>
 
@@ -75,7 +75,7 @@ class SymbolPage extends React.Component {
             <div className="image-gallery">
                 <hr />
                 <h4>Images:</h4>
-                {item.images.map(image => <img key={image} src={image} height="200px" alt={item.name} />)}
+                {item.images.map(image => <img  key={image} src={image} height="200px" alt={item.name} />)}
                 <hr />
             </div>
 

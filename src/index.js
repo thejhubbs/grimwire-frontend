@@ -10,34 +10,25 @@ import { Provider } from 'react-redux';
 
 import ScrollToTop from './components/page/scrollToTop'
 
-import symbolsDb from './db/symbolsDb';
-import kindsDb from './db/kindsDb';
-import connectionsDb from './db/connectionsDb';
-import pantheonsDb from './db/pantheonsDb';
-import {usersDb} from './db/miscDb'
-import categoriesDb from './db/categoriesDb';
+import symbols from './db/symbolsDb';
+import kinds from './db/kindsDb';
+import connections from './db/connectionsDb';
+import pantheons from './db/pantheonsDb';
+import {users} from './db/miscDb'
+import categories from './db/categoriesDb';
 
 
   
 const store = createStore(reducer);
 
-if(false) {
-  if( window.confirm("Do you want to clear the local storage and delete added info?") ) {
-    if( window.confirm("ARE YOU SURE?!?!?!?!?!?!?!") ) {
-      console.log("Clearing storage")
-      localStorage.clear();
-      console.log("Setting storage")
-      localStorage.setItem('symbols', JSON.stringify(symbolsDb))
-      localStorage.setItem('kinds', JSON.stringify(kindsDb))
-      localStorage.setItem('connections', JSON.stringify(connectionsDb))
-      localStorage.setItem('pantheons', JSON.stringify(pantheonsDb))
-      localStorage.setItem('users', JSON.stringify(usersDb))
-      localStorage.setItem('categories', JSON.stringify(categoriesDb))
-      console.log("Good to go")
-      console.log( JSON.parse(localStorage.getItem('symbols'))[0] ) 
-    }
-  }
-}
+var merge = (a, b, p) => a.filter( aa => ! b.find ( bb => aa[p] === bb[p]) ).concat(b);
+
+[['symbols', symbols], ['kinds', kinds], ['connections', connections], ['pantheons', pantheons], ['users', users], ['categories', categories]].forEach(str => {
+  var localBrowserStorage = JSON.parse(localStorage.getItem(str[0]));
+  var localDbFile = str[1]
+  localStorage.setItem(str[0], JSON.stringify(merge(localDbFile, localBrowserStorage, 'name')))
+})
+
 
 ReactDOM.render(
 
@@ -49,7 +40,7 @@ ReactDOM.render(
           rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous" />
+          crossOrigin="anonymous" />
           <style>
 @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Metal+Mania|Spectral&display=swap');
 </style>

@@ -9,7 +9,7 @@ class SymbolForm extends React.Component{
         super(props)
         this.state = {
             symbol: this.props.symbol,
-            existing: props.symbol.name != ""
+            existing: props.symbol.name !== ""
         }
     }
 

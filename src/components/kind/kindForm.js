@@ -8,7 +8,7 @@ class KindForm extends React.Component {
         super(props)
         this.state = {
             kind: props.kind,
-            existing: props.kind.name != ""
+            existing: props.kind.name !== ""
         }
     }
  

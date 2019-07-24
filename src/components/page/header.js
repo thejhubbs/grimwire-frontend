@@ -1,6 +1,5 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
-import Button from 'react-bootstrap/Button'
 import {Container, Row, Col} from 'react-bootstrap'
 
 function Menu() {
@@ -8,7 +7,7 @@ function Menu() {
         <Container>
             <Row>
                 <Col xs={12} lg={2}>
-                    <NavLink to="/"><img height="50px" src="https://www.freelogodesign.org/file/app/client/thumb/d61a2eaf-ba59-4c5c-b40b-5d866a55672e_200x200.png?1563814596359" /> GrimWire</NavLink>
+                    <NavLink to="/"><img alt="logo" height="50px" src="https://www.freelogodesign.org/file/app/client/thumb/d61a2eaf-ba59-4c5c-b40b-5d866a55672e_200x200.png?1563814596359" /> GrimWire</NavLink>
                 </Col>
                  
                 <Col xs={12} lg={10} className="menu-right">

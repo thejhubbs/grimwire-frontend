@@ -33,12 +33,12 @@ class RelatedPantheons extends React.Component {
     render() {
         return <div>
             <h5>History</h5>
-            { this.state.history.map(item => <div>
+            { this.state.history.map(item => <div key={item.name} >
                 <Link to={`/pantheon/${item.name}`}>{item.name}</Link><br />
             </div>) }
             <hr />
             <h5>Offshoots</h5>
-            { this.state.offshoots.map(item => <div>
+            { this.state.offshoots.map(item => <div key={item.name} >
                 <Link to={`/pantheon/${item.name}`}>{item.name}</Link><br />
             </div>)}
             

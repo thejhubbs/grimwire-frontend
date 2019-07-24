@@ -56,7 +56,7 @@ class CategoryPage extends React.Component {
                     </Col>
                     <Col lg={4}>
                         <h4>Collections</h4>
-                        {item.kinds.map(i => <Link to={`/collection/${i}`}>{i}</Link>)}
+                        {item.kinds.map(i => <Link key={i} to={`/collection/${i}`}>{i}</Link>)}
                     </Col>
                 </Row>
 

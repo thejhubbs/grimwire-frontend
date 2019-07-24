@@ -8,7 +8,7 @@ class CategoryForm extends React.Component {
         super(props)
         this.state = {
             category: props.category,
-            existing: props.category.name != ""
+            existing: props.category.name !== ""
         }
     }
 

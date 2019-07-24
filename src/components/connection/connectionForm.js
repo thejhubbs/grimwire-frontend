@@ -8,7 +8,7 @@ class ConnectionForm extends React.Component{
         super(props)
         this.state = {
             connection: this.props.connection,
-            existing: props.connection.name != ""
+            existing: props.connection.name !== ""
         }
     }
 

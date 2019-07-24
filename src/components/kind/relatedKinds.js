@@ -21,7 +21,7 @@ class RelatedKinds extends React.Component {
     render() {
         return <div>
             {this.state.kind.name} included in:<br />
-            {this.state.categories.map(item => <div>
+            {this.state.categories.map(item => <div key={item.name}>
                 <Link to={`/category/${item.name}`}>{item.name}</Link>
             </div>)}
         </div>

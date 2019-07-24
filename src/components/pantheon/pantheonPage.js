@@ -67,7 +67,7 @@ class PantheonPage extends React.Component {
     render() {
         const item = this.state.pantheon
         return <div>
-            <img src={item.thumbnail} width="100px"/>
+            <img src={item.thumbnail}  alt={item.name} width="100px"/>
             <h1>{item.name}</h1>
             <Row>
                 <Col>
@@ -78,11 +78,11 @@ class PantheonPage extends React.Component {
                     <p>{item.description}</p>
                     <p>{this.yearRange(item)}</p>
                     History:
-                    {this.state.history.length > 0 ? this.state.history.map(item => <span>
+                    {this.state.history.length > 0 ? this.state.history.map(item => <span key={item.name}>
                         <Link to={`/pantheon/${item.name}`}>{item.name}</Link>
                     </span>) : "N/a" }<br />
                     Offshoots:
-                    { this.state.offshoots.length > 0 ? this.state.offshoots.map(item => <span>
+                    { this.state.offshoots.length > 0 ? this.state.offshoots.map(item => <span key={item.name}>
                         <Link to={`/pantheon/${item.name}`}>{item.name}</Link>
                     </span>) : "N/a"}<br />
                 </Col>
@@ -105,10 +105,10 @@ class PantheonPage extends React.Component {
 
             <div className="pantheon-list">
                 <h4>Created</h4>
-                {this.state.createdKinds.map(item => <Link to={`/collection/${item.name}`}>{item.name}</Link>)}
+                {this.state.createdKinds.map(item => <Link key={item.name} to={`/collection/${item.name}`}>{item.name}</Link>)}
 
                 <h4>Uses</h4>
-                {this.state.usedKinds.map(item => <Link to={`/collection/${item.name}`}>{item.name}</Link> )}
+                {this.state.usedKinds.map(item => <Link  key={item.name} to={`/collection/${item.name}`}>{item.name}</Link> )}
             </div>
 
 

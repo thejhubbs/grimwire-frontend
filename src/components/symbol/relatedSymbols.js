@@ -34,7 +34,7 @@ class RelatedSymbols extends React.Component {
         return <div>
             <h5>More {this.state.symbol.kind}</h5>
             {
-                this.state.relatedSymbols.map(item => <div>
+                this.state.relatedSymbols.map(item => <div  key={item.name} >
                     <Link to={`/symbol/${item.name}`}>{item.name}</Link> <br />
                 </div>)
             }

@@ -56,7 +56,7 @@ class KindPage extends React.Component {
         return <div>
 
             <div className="kind-info">
-                <img src={item.thumbnail} height="100px" />
+                <img src={item.thumbnail} alt={item.name}  height="100px" />
                 <h1>{item.name}</h1>
                 <Row>
                     <Col lg={4}>
@@ -64,7 +64,7 @@ class KindPage extends React.Component {
                         <p>Created By: <Link to={`/pantheon/${item.originalPantheon}`}>{item.originalPantheon}</Link></p>
                         <p>Used By:
                 {item.featuredPantheons.map(i =>
-                            <Link to={`/pantheon/${i}`}>{i}</Link>
+                            <Link key={i} to={`/pantheon/${i}`}>{i}</Link>
                         )}</p>
                     </Col>
                     <Col lg={8}>
@@ -82,7 +82,7 @@ class KindPage extends React.Component {
             <div className="image-gallery">
                 <hr />
                 <h4>Images:</h4>
-                {item.images.map(image => <img key={image} src={image} height="200px" alt={item.name} />)}
+                {item.images.map(image => <img  key={image} src={image} height="200px" alt={item.name} />)}
                 <hr />
             </div>
 
@@ -93,17 +93,17 @@ class KindPage extends React.Component {
                     {item.specificOrder ? <Col>#</Col> : ""}
                     <Col>Name</Col>
                     {this.state.relatedSymbols[0] && this.state.relatedSymbols[0].info ?
-                        Object.keys(this.state.relatedSymbols[0].info).map((key) => <Col>{key}</Col>) : ""}
+                        Object.keys(this.state.relatedSymbols[0].info).map((key) => <Col key={key} >{key}</Col>) : ""}
                     <Col>Thumbnail</Col>
                 </Row>
 
 
-                {this.state.relatedSymbols.map(i => <Row>
+                {this.state.relatedSymbols.map(i => <Row key={i.name}>
                     {item.specificOrder ? <Col>{i.number}. </Col> : ""}
                     <Col><Link to={`/symbol/${i.name}`}>{i.name}</Link></Col>
                     {i.info ?
-                        Object.values(i.info).map((key) => <Col>{key}</Col>) : ""}
-                    <Col><img src={i.thumbnail} height="64px" /></Col>
+                        Object.values(i.info).map((key) => <Col key={key} >{key}</Col>) : ""}
+                    <Col><img alt={i.name} src={i.thumbnail} height="64px" /></Col>
                 </Row>)}
             </div>
 

@@ -10,7 +10,7 @@ function SimpleKindList(props) {
 
     return <div style={style}>
         { props.kinds.map(item => 
-            <SmallKindCard kind={item} />
+            <SmallKindCard key={item.name} kind={item} />
         )}
     </div>
 }

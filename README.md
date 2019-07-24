@@ -1,9 +1,18 @@
-Todo
+v 1.5- rehash code
 
-2. fix list errors
+View/ pages for symbol, kind, category, pantheon page
+
+component folder structures -/
+Form/
+Sidebar/
+Page/
+Index/
+Cards/
+Lists/
+
 
 ================================================
-FUTURE- once i get a live version online and start adding info to it
+V2- once i get a live version online and start adding info to it
 ================================================
 1. UI Themes
 
@@ -39,3 +48,9 @@ Jupter in- Taurus for 8 years, then Virgo
 10. better fix redux flow so that page auto updates state and not hard reload
 
 11. user protected & hidden forms
+
+12. Random symbols page pulling doubles
+
+13. Real backend
+
+14. Site design
