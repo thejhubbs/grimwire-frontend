@@ -46,8 +46,7 @@ class KindForm extends React.Component {
 
     render() {
         return <div>
-            <h5>{this.state.kind.name ? "Edit" : "New" }  Kind</h5>
-
+            <h5>Basic Information</h5>
             <Form onSubmit={this.submitForm}>
                 <Form.Group>
                     <Form.Label>Name</Form.Label>
@@ -69,6 +68,25 @@ class KindForm extends React.Component {
                         A description.
                     </Form.Text>
                 </Form.Group>
+                Has a Specific Order? <input 
+                    type="checkBox"
+                    name="specificOrder"
+                    checked={this.state.kind.specificOrder}
+                    onChange={this.handleChange} /><br />
+                    <br />
+
+                <Form.Group>
+                    <Form.Label>Total Number</Form.Label>
+                    <Form.Control 
+                        onChange={this.handleChange} 
+                        name="number" type="text" placeholder="Number"
+                        value={this.state.kind.number} />
+                    <Form.Text>
+                        How many in the complete list
+                    </Form.Text>
+                </Form.Group>
+
+                <h5>Information</h5>
                 <Form.Group>
                     <Form.Label>Theory & Application</Form.Label>
                     <Form.Control 
@@ -89,6 +107,8 @@ class KindForm extends React.Component {
                         Where they came from & other information about them.
                     </Form.Text>
                 </Form.Group>
+
+                <h5>Pictures</h5>
                 <Form.Group>
                     <Form.Label>Thumbnail</Form.Label>
                     <Form.Control 
@@ -96,7 +116,7 @@ class KindForm extends React.Component {
                         name="thumbnail" type="text" placeholder="Thumbnail"
                         value={this.state.kind.thumbnail} />
                     <Form.Text>
-                        A description.
+                        A small image shown at small resolutions
                     </Form.Text>
                 </Form.Group>
                 <Form.Group>
@@ -109,6 +129,8 @@ class KindForm extends React.Component {
                         Images that apply
                     </Form.Text>
                 </Form.Group>
+
+                <h5>Pantheons</h5>
                 <Form.Group>
                     <Form.Label>Created By</Form.Label>
                     <Form.Control 
@@ -116,10 +138,9 @@ class KindForm extends React.Component {
                         name="originalPantheon" type="text" placeholder="Created By"
                         value={this.state.kind.originalPantheon} />
                     <Form.Text>
-                        The name of the collection/category this belongs to.
+                        The pantheon that created/came up with collection.
                     </Form.Text>
                 </Form.Group>
-                
                 <Form.Group>
                     <Form.Label>Used By Pantheons</Form.Label>
                     <Form.Control 
@@ -131,22 +152,6 @@ class KindForm extends React.Component {
                     </Form.Text>
                 </Form.Group>
 
-                Has Specific Order? <input 
-                    type="checkBox"
-                    name="specificOrder"
-                    checked={this.state.kind.specificOrder}
-                    onChange={this.handleChange} /><br />
-
-                <Form.Group>
-                    <Form.Label>Total Number</Form.Label>
-                    <Form.Control 
-                        onChange={this.handleChange} 
-                        name="number" type="text" placeholder="Number"
-                        value={this.state.kind.number} />
-                    <Form.Text>
-                        The name of the collection/category this belongs to.
-                    </Form.Text>
-                </Form.Group>
 
 
                 <Button variant="primary" type="submit">

@@ -8,7 +8,6 @@ class Symbol extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showSymbolForm:false
     }
   }
 
@@ -21,11 +20,6 @@ class Symbol extends React.Component {
         <h1>Search</h1>
         <p>Look for Info</p>
         <Symbols />
-
-        <button onClick={this.toggleSymbolForm}>Edit Symbol</button>
-          <div className="theForm">
-          { this.state.showSymbolForm ? <SymbolForm symbol={defaultSymbolValues}/> : "" }
-        </div>
 
       </div>
   }

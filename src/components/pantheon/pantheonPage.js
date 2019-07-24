@@ -17,13 +17,8 @@ class PantheonPage extends React.Component {
         }
     }
 
-    componentDidMount = () => {
-        this.updateInfo();
-    }
-
-    componentWillReceiveProps = (newProps) => {
-        this.updateInfo(newProps);
-    }
+    componentDidMount = () => { this.updateInfo(); }
+    componentWillReceiveProps = (newProps) => {this.updateInfo(newProps);}
  
     updateInfo = (props = this.props) => {
         const name = props.match.params.name
@@ -101,9 +96,11 @@ class PantheonPage extends React.Component {
             </div>
 
             
-            <div>
+            <div className="image-gallery">
                 <h4>Images:</h4>
-                {item.images.map(image => <img key={image} src={image} height="100px" alt={item.name} />)}
+                <hr />
+                {item.images.map(image => <img key={image} src={image} height="200px" alt={item.name} />)}
+                <hr />
             </div>
 
             <div className="pantheon-list">

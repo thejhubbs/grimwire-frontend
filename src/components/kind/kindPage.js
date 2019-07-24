@@ -18,8 +18,12 @@ class KindPage extends React.Component {
         }
     }
 
-    componentDidMount = () => {
-        const kind = this.props.kinds.filter(item => item.name === this.props.match.params.name)[0]
+    componentDidMount = () => { this.updatePage() }
+    componentWillReceiveProps = (newProps) => { this.updatePage(newProps) }
+
+    updatePage = (props = this.props) => {
+        const name = props.match.params.name
+        const kind = this.props.kinds.filter(item => item.name === name)[0]
         const related = this.props.symbols.filter(item => item.kind === kind.name)
         this.setState({ kind: kind, relatedSymbols: related })
     }
@@ -31,6 +35,20 @@ class KindPage extends React.Component {
 
     toggleKindForm = (e) => {
         this.setState({ showKindForm: !this.state.showKindForm })
+    }
+
+    defaultSymbol = () => {
+        const item = this.state.kind
+        return {
+            info: item.extraInfoDefault,
+            kind: item.name,
+            pantheons: [item.originalPantheon],
+            name: "",
+            otherSpellings: [],
+            description: "",
+            images: [],
+            number: 0
+        } 
     }
 
     render() {
@@ -61,29 +79,31 @@ class KindPage extends React.Component {
 
             </div>
 
-            <div>
+            <div className="image-gallery">
+                <hr />
                 <h4>Images:</h4>
-                {item.images.map(image => <img key={image} src={image} height="100px" alt={item.name} />)}
+                {item.images.map(image => <img key={image} src={image} height="200px" alt={item.name} />)}
+                <hr />
             </div>
 
             <div className="kind-list">
                 <h3>List of Items</h3>
 
                 <Row>
-                    <Col> </Col>
                     {item.specificOrder ? <Col>#</Col> : ""}
                     <Col>Name</Col>
                     {this.state.relatedSymbols[0] && this.state.relatedSymbols[0].info ?
                         Object.keys(this.state.relatedSymbols[0].info).map((key) => <Col>{key}</Col>) : ""}
+                    <Col>Thumbnail</Col>
                 </Row>
 
 
                 {this.state.relatedSymbols.map(i => <Row>
-                    <Col><img src={i.thumbnail} height="32px" /></Col>
                     {item.specificOrder ? <Col>{i.number}. </Col> : ""}
                     <Col><Link to={`/symbol/${i.name}`}>{i.name}</Link></Col>
                     {i.info ?
                         Object.values(i.info).map((key) => <Col>{key}</Col>) : ""}
+                    <Col><img src={i.thumbnail} height="64px" /></Col>
                 </Row>)}
             </div>
 
@@ -99,15 +119,7 @@ class KindPage extends React.Component {
                 <Col className="">
                     <button onClick={this.toggleSymbolForm}>Add New Item ({this.state.showSymbolForm ? "-" : "+"})</button>
                     <div className="theForm">
-                        {this.state.showSymbolForm ? <SymbolForm symbol={{
-                            kind: item.name,
-                            pantheons: [item.originalPantheon],
-                            name: "",
-                            otherSpellings: [],
-                            description: "",
-                            images: [],
-                            number: 0
-                        }} /> : ""}
+                        {this.state.showSymbolForm ? <SymbolForm symbol={this.defaultSymbol()} /> : ""}
                     </div>
                 </Col>
             </Row>

@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-
+import {Link} from 'react-router-dom'
 
 class RelatedKinds extends React.Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class RelatedKinds extends React.Component {
         return <div>
             {this.state.kind.name} included in:<br />
             {this.state.categories.map(item => <div>
-                {item.name}
+                <Link to={`/category/${item.name}`}>{item.name}</Link>
             </div>)}
         </div>
     }

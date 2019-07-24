@@ -43,11 +43,10 @@ class CategoryForm extends React.Component {
          e.preventDefault();
          console.log(this.state.category)   
     }
-
+ 
     render() {
         return <div>
-            <h5>{this.state.category.name ? "Edit" : "New" }  Category</h5>
-
+            <h5>Basic Information</h5>
             <Form onSubmit={this.submitForm}>
                 <Form.Group>
                     <Form.Label>Name</Form.Label>
@@ -69,6 +68,8 @@ class CategoryForm extends React.Component {
                         A description.
                     </Form.Text>
                 </Form.Group>
+
+                <h5>Article Information</h5>
                 <Form.Group>
                     <Form.Label>overviewText</Form.Label>
                     <Form.Control 
@@ -89,6 +90,8 @@ class CategoryForm extends React.Component {
                         Where to go & how to start.
                     </Form.Text>
                 </Form.Group>
+
+                <h5>Included Kinds</h5>
                 <Form.Group>
                     <Form.Label>Kinds</Form.Label>
                     <Form.Control 
@@ -96,7 +99,7 @@ class CategoryForm extends React.Component {
                         name="kinds" type="text" placeholder="kinds" 
                         value={this.state.category.kinds.join(";")} />
                     <Form.Text>
-                        Links to images, separated by a semi-colon with no spaces, like;this
+                        Collections include in the category, separated by a semi-colon with no spaces, like;this
                     </Form.Text>
                 </Form.Group>
 

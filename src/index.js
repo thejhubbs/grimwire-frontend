@@ -7,12 +7,16 @@ import {BrowserRouter} from 'react-router-dom';
 import {createStore} from 'redux';
 import { Provider } from 'react-redux';
 
+import ScrollToTop from './components/page/scrollToTop'
+
 import symbolsDb from './db/symbolsDb';
 import kindsDb from './db/kindsDb';
 import connectionsDb from './db/connectionsDb';
 import pantheonsDb from './db/pantheonsDb';
 import {usersDb} from './db/miscDb'
 import categoriesDb from './db/categoriesDb';
+
+
 
 
 function reducer() {
@@ -32,6 +36,7 @@ ReactDOM.render(
 
 <Provider store={store}>
     <BrowserRouter>
+      <ScrollToTop>
         {/* react-bootstrap does not include css for the components; css imported here: */}
         <link
           rel="stylesheet"
@@ -42,6 +47,7 @@ ReactDOM.render(
 @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Metal+Mania|Spectral&display=swap');
 </style>
         <App />
+        </ScrollToTop>
     </BrowserRouter>
 </Provider>, 
 

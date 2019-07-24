@@ -19,7 +19,14 @@ export default [
         totalNumber: 22,
         specificOrder: true,
         thumbnail: "",
-        images: [""]
+        images: [""],
+        extraInfoDefault: {
+            sound: "",
+            value: "",
+            meaning: "",
+            spelling: "",
+            gematria: ""
+        }
     },
     {
         name: "Runes",

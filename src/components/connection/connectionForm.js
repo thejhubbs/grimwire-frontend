@@ -26,7 +26,7 @@ class ConnectionForm extends React.Component{
 
     render() {
         return <div>
-            <h5>{this.state.connection.name ? "Edit" : "New" }  Connection</h5>
+            <h5>Basic Information</h5>
 
             <Form onSubmit={this.submitForm}>
                 <Form.Group>
@@ -59,6 +59,8 @@ class ConnectionForm extends React.Component{
                         A description of the relationship.
                     </Form.Text>
                 </Form.Group>
+
+                <h5>Relationship Info</h5>
                 <Form.Group>
                     <Form.Label>Relationship Type</Form.Label>
                     <Form.Control 
@@ -66,7 +68,7 @@ class ConnectionForm extends React.Component{
                         name="relationship" type="number" placeholder="relationship"
                         value={this.state.connection.relationship} />
                     <Form.Text>
-                        5 = Variations- as Mercury to Hermes; 4 = Properties- as Mercury to Communication; 3 = symbols/associations- as Mercury to the element Air; 2 = family & relationships as Mercury and Zues; 1 = loose associated category
+                        5 = Variations- as Mercury to Hermes; 4 = Properties- as Mercury to Communication; 3 = symbols/associations- as Mercury to the element Air; 2 = family & relationships as Mercury and Zues; 1 = loose associated category; 0 = source
                     </Form.Text>
                 </Form.Group>
                 <Form.Group>
@@ -79,6 +81,8 @@ class ConnectionForm extends React.Component{
                         On a scale of 1-10, how accurate & widespread the connection is.
                     </Form.Text>
                 </Form.Group> 
+
+                <h5>Article Info</h5>
                 <Form.Group>
                     <Form.Label>About Info</Form.Label>
                     <Form.Control 
@@ -87,26 +91,6 @@ class ConnectionForm extends React.Component{
                         value={this.state.connection.aboutInfo} />
                     <Form.Text>
                         A long detailed analysis of the relationship.
-                    </Form.Text>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>User</Form.Label>
-                    <Form.Control 
-                        onChange={this.handleChange} 
-                        name="userCreated" type="text" placeholder="userCreated"
-                        value={this.state.connection.userCreated} />
-                    <Form.Text>
-                        The user that attributed this connection.
-                    </Form.Text>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Source</Form.Label>
-                    <Form.Control 
-                        onChange={this.handleChange} 
-                        name="source" type="text" placeholder="source"
-                        value={this.state.connection.source} />
-                    <Form.Text>
-                        Where you saw this attribution.
                     </Form.Text>
                 </Form.Group>
                 

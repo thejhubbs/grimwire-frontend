@@ -3,6 +3,7 @@ import {Form, Button} from 'react-bootstrap'
 
 class SymbolForm extends React.Component{
     constructor(props) {
+        console.log(props.kind)
         super(props)
         this.state = {
             symbol: this.props.symbol
@@ -47,8 +48,7 @@ class SymbolForm extends React.Component{
 
     render() {
         return <div>
-            <h5>{this.state.symbol.name ? "Edit" : "New" } Symbol</h5>
-
+            <h5>Basic Information</h5>
             <Form onSubmit={this.submitForm}>
                 <Form.Group>
                     <Form.Label>Name</Form.Label>
@@ -91,6 +91,7 @@ class SymbolForm extends React.Component{
                     </Form.Text>
                 </Form.Group>
                 
+                <h5>Background</h5>
                 <Form.Group>
                     <Form.Label>Pantheons</Form.Label>
                     <Form.Control 
@@ -131,6 +132,8 @@ class SymbolForm extends React.Component{
                         Links to images, separated by a semi-colon with no spaces, like;this
                     </Form.Text>
                 </Form.Group>
+
+                <h5>Article Information</h5>
                 <Form.Group>
                     <Form.Label>Background</Form.Label>
                     <Form.Control 
@@ -152,6 +155,7 @@ class SymbolForm extends React.Component{
                     </Form.Text>
                 </Form.Group>
 
+                <h5>Collection Related Informationv</h5>
                 { this.state.symbol.info ? 
                     Object.entries(this.state.symbol.info).map(item => <Form.Group>
                         <Form.Label>{item[0]}</Form.Label>

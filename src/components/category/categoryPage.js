@@ -18,8 +18,12 @@ class CategoryPage extends React.Component {
         }
     } 
 
-    componentDidMount = () => {
-        const category = this.props.categories.filter(item => item.name === this.props.match.params.name)[0]    
+    componentDidMount = () => { this.updatePage() }
+    componentWillReceiveProps = (newProps) => { this.updatePage(newProps) }
+
+    updatePage = (props = this.props) => {
+        const name = props.match.params.name
+        const category = this.props.categories.filter(item => item.name === name)[0]    
         const related = this.props.kinds.filter(item => item.category === category.name)
         this.setState({category: category,relatedKinds: related})
     }

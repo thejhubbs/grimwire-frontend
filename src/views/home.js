@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { Row, Col } from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 
 import SimplePantheonList from '../components/pantheon/simplePantheonList'
 import Kinds from '../components/kind/kindsComponent'
@@ -28,19 +29,19 @@ function Home(props) {
 
       <Row>
         <Col>
-          <h3>Pantheons</h3>
+          <h3><Link to='/pantheons'>Pantheons</Link></h3>
           <p>Religions, groups, organizations, and teachings throughout history. Complete histories & informations.</p>
         </Col>
         <Col>
-          <h3>Collections</h3>
+          <h3><Link to="/collections">Collections</Link></h3>
           <p>Tarot Cards, Crystals, Astrological Signs, Angels, Demons, and the lists & collections that make up GrimWire.</p>
         </Col>
         <Col>
-          <h3>Categories</h3>
+          <h3><Link to="/categories">Categories</Link></h3>
           <p>Only looking for Wicca 101? Or the spellworking sections? Categories groups together collections for easier absorption.</p>
         </Col>
         <Col>
-          <h3>Symbols</h3>
+          <h3><Link to="/symbols">Symbols</Link></h3>
           <p>The whole list of symbols & objects, all the magickal things we have</p>
         </Col>
       </Row>
@@ -55,7 +56,7 @@ function Home(props) {
       <div>
         <h4>Random Objects</h4>
         <RandomSymbols randomNumber={4} showSearch={false} />
-        See all
+        <Link to="/symbols">See All</Link>
       </div>
 
     </div>

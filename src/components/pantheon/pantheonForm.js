@@ -32,11 +32,10 @@ class PantheonForm extends React.Component{
         console.log(this.state.pantheon)
         
     }
-
+ 
     render() {
         return <div>
-            <h5>{this.state.pantheon.name ? "Edit" : "New" }  Pantheon</h5>
-
+            <h5>Basic Information</h5>
             <Form onSubmit={this.submitForm}>
                 <Form.Group>
                     <Form.Label>Name</Form.Label>
@@ -58,6 +57,8 @@ class PantheonForm extends React.Component{
                         A description.
                     </Form.Text>
                 </Form.Group>
+
+                <h5>History Information</h5>
                 <Form.Group>
                     <Form.Label>Start Year</Form.Label>
                     <Form.Control 
@@ -79,13 +80,25 @@ class PantheonForm extends React.Component{
                     </Form.Text>
                 </Form.Group>
                 <Form.Group>
+                    <Form.Label>History</Form.Label>
+                    <Form.Control 
+                        onChange={this.handleArrayChange} 
+                        name="history" type="text" placeholder="history" 
+                        value={this.state.pantheon.history.join(";")} />
+                    <Form.Text>
+                        Other pantheons this pantheon comes from, separated by a semicolon, like;this
+                    </Form.Text>
+                </Form.Group>
+
+                <h5>Pictures</h5>
+                <Form.Group>
                     <Form.Label>Thumbnail</Form.Label>
                     <Form.Control 
                         onChange={this.handleChange} 
                         name="thumbnail" type="text" placeholder="thumbnail"
                         value={this.state.pantheon.thumbnail} />
                     <Form.Text>
-                        A clear picture that gets show at small resolutions.
+                        A clear picture that gets shown at small resolutions.
                     </Form.Text>
                 </Form.Group>
                 <Form.Group>
@@ -98,14 +111,16 @@ class PantheonForm extends React.Component{
                         Links to images, separated by a semi-colon with no spaces, like;this
                     </Form.Text>
                 </Form.Group>
+                
+                <h5>Article Information</h5>
                 <Form.Group>
-                    <Form.Label>History</Form.Label>
+                    <Form.Label>overviewInfo</Form.Label>
                     <Form.Control 
-                        onChange={this.handleArrayChange} 
-                        name="history" type="text" placeholder="history" 
-                        value={this.state.pantheon.history.join(";")} />
+                        onChange={this.handleChange} 
+                        name="overviewInfo" type="text" placeholder="overviewInfo"
+                        value={this.state.pantheon.overviewInfo} />
                     <Form.Text>
-                        Links to images, separated by a semi-colon with no spaces, like;this
+                        An overview- how do we know them?
                     </Form.Text>
                 </Form.Group>
                 <Form.Group>
@@ -115,7 +130,7 @@ class PantheonForm extends React.Component{
                         name="historyInfo" type="text" placeholder="historyInfo"
                         value={this.state.pantheon.historyInfo} />
                     <Form.Text>
-                        A clear picture that gets show at small resolutions.
+                        Where did this pantheon come from? What do we need to know about that world/region to understand them?
                     </Form.Text>
                 </Form.Group>
                 <Form.Group>
@@ -125,17 +140,7 @@ class PantheonForm extends React.Component{
                         name="cultureInfo" type="text" placeholder="cultureInfo"
                         value={this.state.pantheon.cultureInfo} />
                     <Form.Text>
-                        A clear picture that gets show at small resolutions.
-                    </Form.Text>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>overviewInfo</Form.Label>
-                    <Form.Control 
-                        onChange={this.handleChange} 
-                        name="overviewInfo" type="text" placeholder="overviewInfo"
-                        value={this.state.pantheon.overviewInfo} />
-                    <Form.Text>
-                        A clear picture that gets show at small resolutions.
+                        What did they believe? How was their art, music, sports or fun? any advancements?
                     </Form.Text>
                 </Form.Group>
                 

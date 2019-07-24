@@ -1,27 +1,7 @@
-fix list errors
-design
--front end users
+Todo
 
-
-
-2. user protected & hidden forms
-
-3. General Sidebar
-
-4. Misc
-    -Home page links
-    -Normalize Terminology
-    -Links on connection page to category links
-    
-5. Check all routes & forms and console logs
-
-6. account for spacing bugs with numbers & thumbnails
-
-7. Restyle forms
-
-8. Somewhat style image arrays
-
-
+1. user protected & hidden forms
+2. fix list errors
 
 ================================================
 FUTURE- once i get a live version online and start adding info to it
@@ -52,3 +32,5 @@ Jupter in- Taurus for 8 years, then Virgo
 6. Images array to image gallery array, with a description/title.
 
 7. Mobile Version
+
+8. Previous/next some form to collection

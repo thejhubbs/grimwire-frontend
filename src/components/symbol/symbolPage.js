@@ -27,8 +27,6 @@ class SymbolPage extends React.Component {
 
 
     componentDidMount = () => { this.updateSymbolAndConnections() }
-
-    //Clicking & traveling between SymbolPages will not technically trigger a "Mount" so check for props change (triggered by router props change)
     componentWillReceiveProps = (newProps) => { this.updateSymbolAndConnections(newProps) }
 
     updateSymbolAndConnections = (props = this.props) => {
@@ -74,9 +72,11 @@ class SymbolPage extends React.Component {
                 {item.meaningInfo}
             </div>
             
-            <div>
+            <div className="image-gallery">
+                <hr />
                 <h4>Images:</h4>
-                {item.images.map(image => <img key={image} src={image} height="100px" alt={item.name} />)}
+                {item.images.map(image => <img key={image} src={image} height="200px" alt={item.name} />)}
+                <hr />
             </div>
 
             <Row>
