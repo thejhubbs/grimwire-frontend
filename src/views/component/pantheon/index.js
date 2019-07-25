@@ -1,6 +1,6 @@
 import React from 'react';
-import Pantheons from '../components/pantheon/pantheonsComponent'
-import PantheonForm from '../components/pantheon/pantheonForm'
+import Pantheons from '../../../components/pantheon/pantheonsComponent'
+import PantheonForm from '../../../components/pantheon/pantheonForm'
 
 class Pantheon extends React.Component {
   constructor(props) {

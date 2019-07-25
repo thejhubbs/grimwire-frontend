@@ -1,8 +1,8 @@
 import React from 'react'
 import {Route} from 'react-router-dom'
 
-import LogIn from '../components/user/logIn'
-import UserProfile from '../components/user/userProfile'
+import LogIn from '../../components/user/logIn'
+import UserProfile from '../../components/user/userProfile'
 
 class User extends React.Component {
     constructor(props) {

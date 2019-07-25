@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Kinds from '../components/kind/kindsComponent'
-import KindForm from '../components/kind/kindForm';
+import Kinds from '../../../components/kind/kindsComponent'
+import KindForm from '../../../components/kind/kindForm';
 
 class Kind extends React.Component {
   constructor(props) {

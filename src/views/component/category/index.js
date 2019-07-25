@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Categorys from '../components/category/categoriesComponent'
-import CategoryForm from '../components/category/categoryForm';
+import Categorys from '../../../components/category/categoriesComponent'
+import CategoryForm from '../../../components/category/categoryForm';
 
 class Category extends React.Component {
   constructor(props) {

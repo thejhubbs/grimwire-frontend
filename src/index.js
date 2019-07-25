@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 
 import ScrollToTop from './components/page/scrollToTop'
 
-import symbols from './db/symbolsDb';
+import symbols from './db/symbolsDb/symbolsDb';
 import kinds from './db/kindsDb';
 import connections from './db/connectionsDb';
 import pantheons from './db/pantheonsDb';

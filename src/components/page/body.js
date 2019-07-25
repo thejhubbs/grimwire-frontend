@@ -1,20 +1,19 @@
 import React from 'react'
 import {Switch, Route} from 'react-router-dom'
 
-import Home from "../../views/home";
-
-import Symbols from '../../views/symbol';
-import Pantheons from '../../views/pantheon';
-import Kinds from '../../views/kind';
-import Categories from '../../views/category';
+import Home from "../../views/misc/home";
+import UserComponent from '../../views/misc/user';
 
 
-import SymbolPage from '../../components/symbol/symbolPage';
-import PantheonPage from '../../components/pantheon/pantheonPage';
-import KindPage from '../../components/kind/kindPage';
-import CategoryPage from '../../components/category/categoryPage';
+import SymbolsIndex from '../../views/component/symbol/index';
+import PantheonsIndex from '../../views/component/pantheon/index';
+import KindsIndex from '../../views/component/kind/index';
+import CategoriesIndex from '../../views/component/category/index';
 
-import UserComponent from '../../views/user';
+import SymbolPage from '../../views/component/symbol/page';
+import PantheonPage from '../../views/component/pantheon/page';
+import KindPage from '../../views/component/kind/page';
+import CategoryPage from '../../views/component/category/page';
 
 
 function Body() {
@@ -22,12 +21,12 @@ function Body() {
         <Switch>
             <Route path="/" exact component={Home} />
             
-            <Route path="/symbols" component={Symbols} />
-            <Route path="/pantheons" component={Pantheons} />
-            <Route path="/collections" component={Kinds} />
-            <Route path="/categories" component={Categories} />
+            <Route path="/symbols" component={SymbolsIndex} />
+            <Route path="/pantheons" component={PantheonsIndex} />
+            <Route path="/collections" component={KindsIndex} />
+            <Route path="/categories" component={CategoriesIndex} />
 
-            <Route exact path="/symbol/:name" component={SymbolPage} />
+            <Route path="/symbol/:name" component={SymbolPage} />
             <Route path="/pantheon/:name" component={PantheonPage} />
             <Route path="/collection/:name" component={KindPage} />
             <Route path="/category/:name" component={CategoryPage} />

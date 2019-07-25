@@ -1,7 +1,7 @@
 import React from 'react';
 
 //import  from '../components/symbol/symbolsComponent'
-import Symbols from '../components/symbol/symbolsComponent'
+import Symbols from '../../../components/symbol/symbolsComponent'
 
 class Symbol extends React.Component {
   constructor(props) {

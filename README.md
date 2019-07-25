@@ -54,3 +54,5 @@ Jupter in- Taurus for 8 years, then Virgo
 13. Real backend
 
 14. Site design
+
+15. limit on sidebar lenghts
