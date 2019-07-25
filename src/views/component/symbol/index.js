@@ -5,12 +5,7 @@ import Symbols from '../../../components/symbol/index/index'
 class Symbol extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    }
-  }
-
-  toggleSymbolForm = () => {
-    this.setState({showSymbolForm: !this.state.showSymbolForm})
+    this.state = {}
   }
 
   render() {

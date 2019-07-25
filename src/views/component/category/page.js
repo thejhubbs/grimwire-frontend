@@ -1,26 +1,19 @@
 import React from 'react';
 
-import Symbols from '../../../components/symbol/index/index'
+import Category from '../../../components/category/categoryPage.js'
 
-class Symbol extends React.Component {
+class CategoryPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
     }
   }
 
-  toggleSymbolForm = () => {
-    this.setState({showSymbolForm: !this.state.showSymbolForm})
-  }
-
   render() {
     return <div className="">
-        <h1>Search</h1>
-        <p>Look for Info</p>
-        <Symbols />
-
+        <Category match={this.props.match} />
       </div>
   }
 }
 
-export default Symbol;
+export default CategoryPage;

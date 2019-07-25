@@ -1,27 +1,19 @@
 import React from 'react';
 
-//import  from '../components/symbol/symbolsComponent'
-import Symbols from '../../../components/symbol/index/index'
+import Kind from '../../../components/kind/page/page'
 
-class Symbol extends React.Component {
+class KindPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
     }
   }
 
-  toggleSymbolForm = () => {
-    this.setState({showSymbolForm: !this.state.showSymbolForm})
-  }
-
   render() {
     return <div className="">
-        <h1>Search</h1>
-        <p>Look for Info</p>
-        <Symbols />
-
+        <Kind match={this.props.match} />
       </div>
   }
 }
 
-export default Symbol;
+export default KindPage;

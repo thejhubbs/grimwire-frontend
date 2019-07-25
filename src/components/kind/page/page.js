@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import KindForm from '../misc/form';
-import SymbolForm from '../../symbol/misc/symbolForm';
+import SymbolForm from '../../symbol/misc/form';
 import { Row, Col } from 'react-bootstrap'
 
 class KindPage extends React.Component {
@@ -48,7 +48,7 @@ class KindPage extends React.Component {
             description: "",
             images: [],
             number: 0
-        } 
+        }
     }
 
     render() {

@@ -19,8 +19,8 @@ class PantheonPage extends React.Component {
 
     componentDidMount = () => { this.updateInfo(); }
     componentWillReceiveProps = (newProps) => {this.updateInfo(newProps);}
- 
-    updateInfo = (props = this.props) => {
+
+      updateInfo = (props = this.props) => {
         const name = props.match.params.name
         const pantheon = this.setPantheon(name)
         this.setState({
@@ -95,7 +95,7 @@ class PantheonPage extends React.Component {
                 <p>{item.cultureInfo}</p>
             </div>
 
-            
+
             <div className="image-gallery">
                 <h4>Images:</h4>
                 <hr />

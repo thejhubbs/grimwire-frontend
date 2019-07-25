@@ -5,7 +5,7 @@ import { Row, Col } from 'react-bootstrap'
 
 import { Titles, Properties, Attributes, Related, Mentions, Sources } from './info'
 import ConnectionForm from '../../connection/connectionForm';
-import SymbolForm from '../misc/symbolForm'
+import SymbolForm from '../misc/form'
 
 class SymbolPage extends React.Component {
     constructor(props) {
@@ -71,7 +71,7 @@ class SymbolPage extends React.Component {
                 <h4>Meaning:</h4>
                 {item.meaningInfo}
             </div>
-            
+
             <div className="image-gallery">
                 <hr />
                 <h4>Images:</h4>
@@ -91,7 +91,7 @@ class SymbolPage extends React.Component {
                     <Attributes item={item} connections={this.state.connections} symbols={this.props.symbols} />
                 </Col>
             </Row>
-            
+
             <Row className="forms">
                 <Col className="">
                     <button onClick={this.toggleSymbolForm}>Edit {item.name} ({this.state.showSymbolForm ? "-" : "+"})</button>
