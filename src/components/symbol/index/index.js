@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import SimpleSymbolList from './simpleSymbolList';
+import SimpleSymbolList from '../lists/simple';
 import {Form} from 'react-bootstrap'
 
 class Symbols extends React.Component {

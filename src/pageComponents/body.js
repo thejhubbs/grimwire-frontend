@@ -1,19 +1,19 @@
 import React from 'react'
 import {Switch, Route} from 'react-router-dom'
 
-import Home from "../../views/misc/home";
-import UserComponent from '../../views/misc/user';
+import Home from '../views/misc/home';
+import UserComponent from '../views/misc/user';
 
 
-import SymbolsIndex from '../../views/component/symbol/index';
-import PantheonsIndex from '../../views/component/pantheon/index';
-import KindsIndex from '../../views/component/kind/index';
-import CategoriesIndex from '../../views/component/category/index';
+import SymbolsIndex from '../views/component/symbol/index';
+import PantheonsIndex from '../views/component/pantheon/index';
+import KindsIndex from '../views/component/kind/index';
+import CategoriesIndex from '../views/component/category/index';
 
-import SymbolPage from '../../views/component/symbol/page';
-import PantheonPage from '../../views/component/pantheon/page';
-import KindPage from '../../views/component/kind/page';
-import CategoryPage from '../../views/component/category/page';
+import SymbolPage from '../views/component/symbol/page';
+import PantheonPage from '../views/component/pantheon/page';
+import KindPage from '../views/component/kind/page';
+import CategoryPage from '../views/component/category/page';
 
 
 function Body() {

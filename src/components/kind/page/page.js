@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 
-import KindForm from './kindForm';
-import SymbolForm from '../symbol/symbolForm';
+import KindForm from '../misc/form';
+import SymbolForm from '../../symbol/misc/symbolForm';
 import { Row, Col } from 'react-bootstrap'
 
 class KindPage extends React.Component {

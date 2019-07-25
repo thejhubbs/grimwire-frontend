@@ -1,5 +1,5 @@
 import React from 'react'
-import SmallSymbolCard from './smallSymbolCard'
+import SmallSymbolCard from '../cards/small'
 
 function SimpleSymbolList(props) {
     const style = {

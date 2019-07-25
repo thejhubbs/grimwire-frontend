@@ -1,7 +1,7 @@
 import React from 'react';
 
 //import  from '../components/symbol/symbolsComponent'
-import Symbols from '../../../components/symbol/symbolsComponent'
+import Symbols from '../../../components/symbol/index/index'
 
 class Symbol extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class Symbol extends React.Component {
 
   toggleSymbolForm = () => {
     this.setState({showSymbolForm: !this.state.showSymbolForm})
-  } 
+  }
 
   render() {
     return <div className="">

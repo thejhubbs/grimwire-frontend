@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import SimpleKindList from './simpleKindsList';
+import SimpleKindList from '../lists/simple';
 
 class Kinds extends React.Component {
     constructor(props) {

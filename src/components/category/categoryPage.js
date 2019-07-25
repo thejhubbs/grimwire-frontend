@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
  
 import CategoryForm from './categoryForm';
-import KindForm from '../kind/kindForm';
+import KindForm from '../kind/misc/form';
 import { Row, Col } from 'react-bootstrap'
 
 class CategoryPage extends React.Component {

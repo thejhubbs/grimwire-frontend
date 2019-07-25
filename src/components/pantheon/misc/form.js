@@ -1,7 +1,7 @@
 import React from 'react'
 import {Form, Button} from 'react-bootstrap'
 import {connect} from 'react-redux'
-import {addItem, updateItem} from '../../redux/actions'
+import {addItem, updateItem} from '../../../redux/actions'
 
 
 class PantheonForm extends React.Component{

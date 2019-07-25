@@ -3,10 +3,10 @@ import './App.scss';
 
 import {Container, Row, Col} from 'react-bootstrap'
 
-import Header from './components/page/header'
-import SideBar from './components/page/sidebar'
-import Body from './components/page/body'
-import Footer from './components/page/footer'
+import Header from './pageComponents/header'
+import SideBar from './pageComponents/sidebar'
+import Body from './pageComponents/body'
+import Footer from './pageComponents/footer'
 
 function App() {
 

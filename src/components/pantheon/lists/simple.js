@@ -1,5 +1,5 @@
 import React from 'react'
-import SmallPantheonCard from './smallPantheonCard'
+import SmallPantheonCard from '../cards/small'
 
 function SimplePantheonList(props) {
     const style = {

@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { Row, Col } from 'react-bootstrap'
 
 import { Titles, Properties, Attributes, Related, Mentions, Sources } from './info'
-import ConnectionForm from '../connection/connectionForm';
-import SymbolForm from '../symbol/symbolForm'
+import ConnectionForm from '../../connection/connectionForm';
+import SymbolForm from '../misc/symbolForm'
 
 class SymbolPage extends React.Component {
     constructor(props) {

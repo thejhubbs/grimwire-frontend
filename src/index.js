@@ -8,7 +8,7 @@ import {BrowserRouter} from 'react-router-dom';
 import {createStore} from 'redux';
 import { Provider } from 'react-redux';
 
-import ScrollToTop from './components/page/scrollToTop'
+import ScrollToTop from './pageComponents/scrollToTop'
 
 import symbols from './db/symbolsDb/symbolsDb';
 import kinds from './db/kindsDb';

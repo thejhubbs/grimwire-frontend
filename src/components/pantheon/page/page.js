@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import PantheonForm from './pantheonForm'
-import KindForm from '../kind/kindForm'
+import PantheonForm from '../misc/form'
+import KindForm from '../../kind/misc/form'
 import { Row, Col } from 'react-bootstrap'
 
 class PantheonPage extends React.Component {

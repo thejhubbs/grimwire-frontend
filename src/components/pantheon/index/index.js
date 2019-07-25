@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import SimplePantheonList from './simplePantheonList';
+import SimplePantheonList from '../lists/simple';
 
 //This component is used to build a 'complete' list, used for calling searches and passing props to the actual list component.
 

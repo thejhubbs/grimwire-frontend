@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { Row, Col } from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 
-import SimplePantheonList from '../../components/pantheon/simplePantheonList'
-import Kinds from '../../components/kind/kindsComponent'
-import RandomSymbols from '../../components/symbol/symbolsComponent'
+import SimplePantheonList from '../../components/pantheon/lists/simple'
+import Kinds from '../../components/kind/index/index'
+import RandomSymbols from '../../components/symbol/index/index'
 
 
 

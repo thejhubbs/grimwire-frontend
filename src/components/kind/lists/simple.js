@@ -1,5 +1,5 @@
 import React from 'react'
-import SmallKindCard from './smallKindCard'
+import SmallKindCard from '../cards/small'
 
 function SimpleKindList(props) {
     const style = {

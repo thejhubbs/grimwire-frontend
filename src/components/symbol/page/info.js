@@ -21,7 +21,7 @@ export function Properties(props) {
     </div> : ""
 }
 
-export function Attributes(props) { 
+export function Attributes(props) {
     const conn = props.connections.filter(item => item.relationship === 3)
     return conn.length > 0 ? <div>
     <h3>Attributes & Associations</h3>
@@ -35,7 +35,7 @@ export function Attributes(props) {
 </div> : ""
 }
 
-export function Related(props) { 
+export function Related(props) {
     const conn = props.connections.filter(item => item.relationship === 2)
     return conn.length > 0 ? <div><h3>Family & Related</h3>
     {conn.map(item => <div>
@@ -44,7 +44,7 @@ export function Related(props) {
 </div> : ""
 }
 
-export function Mentions(props) { 
+export function Mentions(props) {
     const conn = props.connections.filter(item => item.relationship === 1)
     return conn.length > 0 ? <div><h3>Stories</h3>
     {conn.map(item => <div>
