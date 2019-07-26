@@ -7,26 +7,26 @@ class ConnectionForm extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            connection: this.props.connection,
-            existing: props.connection.name !== ""
+            connection: this.props.item,
+            existing: props.item.name !== ""
         }
     }
 
     handleChange = (e) => {
-        this.setState({ 
+        this.setState({
             connection: {
-                ...this.state.connection,    
+                ...this.state.connection,
                 [e.target.name]: e.target.value
             }
-        }) 
+        })
     }
 
     submitForm = (e) => {
         //e.preventDefault();
-        this.state.existing ? 
-            this.props.updateItem(this.state.connection, "connections") : 
-            this.props.addItem(this.state.connection, "connections")    
-        
+        this.state.existing ?
+            this.props.updateItem(this.state.connection, "connections") :
+            this.props.addItem(this.state.connection, "connections")
+
     }
 
     render() {
@@ -36,8 +36,8 @@ class ConnectionForm extends React.Component{
             <Form onSubmit={this.submitForm}>
                 <Form.Group>
                     <Form.Label>Name</Form.Label>
-                    <Form.Control 
-                        onChange={this.handleChange} 
+                    <Form.Control
+                        onChange={this.handleChange}
                         name="main" type="text" placeholder="Main"
                         value={this.state.connection.main} />
                     <Form.Text>
@@ -46,8 +46,8 @@ class ConnectionForm extends React.Component{
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Connected</Form.Label>
-                    <Form.Control 
-                        onChange={this.handleChange} 
+                    <Form.Control
+                        onChange={this.handleChange}
                         name="connected" type="text" placeholder="connected"
                         value={this.state.connection.connected} />
                     <Form.Text>
@@ -56,8 +56,8 @@ class ConnectionForm extends React.Component{
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Description</Form.Label>
-                    <Form.Control 
-                        onChange={this.handleChange} 
+                    <Form.Control
+                        onChange={this.handleChange}
                         name="description" type="text" placeholder="description"
                         value={this.state.connection.description} />
                     <Form.Text>
@@ -68,8 +68,8 @@ class ConnectionForm extends React.Component{
                 <h5>Relationship Info</h5>
                 <Form.Group>
                     <Form.Label>Relationship Type</Form.Label>
-                    <Form.Control 
-                        onChange={this.handleChange} 
+                    <Form.Control
+                        onChange={this.handleChange}
                         name="relationship" type="number" placeholder="relationship"
                         value={this.state.connection.relationship} />
                     <Form.Text>
@@ -78,27 +78,27 @@ class ConnectionForm extends React.Component{
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Number</Form.Label>
-                    <Form.Control 
-                        onChange={this.handleChange} 
+                    <Form.Control
+                        onChange={this.handleChange}
                         name="strength" type="number" placeholder="strength"
                         value={this.state.connection.strength} />
                     <Form.Text>
                         On a scale of 1-10, how accurate & widespread the connection is.
                     </Form.Text>
-                </Form.Group> 
+                </Form.Group>
 
                 <h5>Article Info</h5>
                 <Form.Group>
                     <Form.Label>About Info</Form.Label>
-                    <Form.Control 
-                        onChange={this.handleChange} 
+                    <Form.Control
+                        onChange={this.handleChange}
                         name="aboutInfo" type="text" placeholder="aboutInfo"
                         value={this.state.connection.aboutInfo} />
                     <Form.Text>
                         A long detailed analysis of the relationship.
                     </Form.Text>
                 </Form.Group>
-                
+
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
