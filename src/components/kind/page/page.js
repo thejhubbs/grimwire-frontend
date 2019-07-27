@@ -13,8 +13,8 @@ class KindPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            kind: this.props.kinds[0],
-            relatedSymbols: [this.props.symbols[0]],
+            kind: {},
+            relatedSymbols: [],
         }
     }
 
@@ -23,8 +23,9 @@ class KindPage extends React.Component {
 
     updatePage = (props = this.props) => {
         const name = props.match.params.name
-        const kind = this.props.kinds.filter(item => item.name === name)[0]
-        const related = this.props.symbols.filter(item => item.kind === kind.name)
+        const kinds = this.props.kinds.filter(item => item.name === name)
+        const kind = kinds.length > 0 ? kinds[0] : {}
+        const related = kind.name ? this.props.symbols.filter(item => item.kind === kind.name) : []
         this.setState({ kind: kind, relatedSymbols: related })
     }
 
@@ -38,7 +39,7 @@ class KindPage extends React.Component {
 
     render() {
         const item = this.state.kind
-        return <div>
+        return typeof item !== 'undefined' && Object.keys(item).length > 0 ? <div>
 
             <BasicInfo item={item} />
             <ImageGallery item={item} />
@@ -48,9 +49,7 @@ class KindPage extends React.Component {
                 <Col className=""><FormInsert item={item} key={item.name} formClass={"kinds"} /></Col>
                 <Col className=""><FormInsert item={this.defaultSymbolWithInfo()} formClass={"symbols"} /></Col>
             </Row>
-
-
-        </div>
+        </div> : "Loading or not found"
 
     }
 }

@@ -10,8 +10,6 @@ import Connections from './connections'
 
 import {defaultConnection} from '../../../db/defaultObjects'
 
-
-
 class SymbolPage extends React.Component {
     constructor(props) {
         super(props);
@@ -25,18 +23,20 @@ class SymbolPage extends React.Component {
     componentDidMount = () => { this.updateSymbolAndConnections() }
     componentWillReceiveProps = (newProps) => { this.updateSymbolAndConnections(newProps) }
     updateSymbolAndConnections = (props = this.props) => {
+
         const name = props.match.params.name
-        this.setState({
-            symbol: this.props.symbols.filter(item => item.name === name)[0],
-            connections: this.props.connections.filter(item => name === item.main)
-        })
+        const symbols = this.props.symbols.filter(item => item.name === name)
+        const symbol = symbols.length > 0 ? symbols[0] : {}
+        const connections = symbol.name ? this.props.connections.filter(item => name === item.main) : []
+
+        this.setState({ symbol: symbol, connections: connections })
     }
 
     render() {
         const item = this.state.symbol
         const activeConnection = this.state.activeConnection
         return <div>
-          { item.name ?
+          { typeof item !== 'undefined' && Object.keys(item).length > 0 ?
             <div>
               <BasicInfo item={item} />
               <ImageGallery item={item} />
@@ -49,7 +49,7 @@ class SymbolPage extends React.Component {
 
 
             </div>
-            : "Loading" }
+            : "Loading or not found" }
          </div>
     }
 }

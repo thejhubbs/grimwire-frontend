@@ -5,16 +5,16 @@ V.9 ToDo
 1. BUG- better fix redux flow so that page auto updates state and not hard reload
 -remove unnecessary state calls
 2. BUG- Random symbols page pulling doubles
-3. BUG- limit on sidebar lengths
 4. BUG- Edit Connections
 5. BUG- Delete actions
-6. BUG- better scroll things for pantheons list & image galleries
+6. DESIGN- Form design are horrible
 
 --Extended functionality--
 1. UPDATE- Possible Division for Kinds (Tarot- Major, Minor- Fire, Minor- Air, etc.; Hebrew- Mother, Single, Double)
-2. UPDATE- Images array to image gallery array, with a description/title.
+2. UPDATE- Images array to image gallery array, with a description/title. Better scroll things for image galleries
 3. UPDATE- user protected & hidden forms incorporate redux store variable w/o 100% auth process
 4. UPDATE- user edit- anytime a change through a form is made, (except for user) log the results before and after and the user who changed it. Clear after x days, or with admin approval.
+5. UPDATE- show error page instead of breaking
 
 --Design--
 1. DESIGN- Mobile Version

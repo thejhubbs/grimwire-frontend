@@ -14,7 +14,7 @@ class PantheonPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            pantheon: this.props.pantheons[0],
+            pantheon: {},
             createdKinds: [],
             usedKinds: [],
             history: [],
@@ -32,7 +32,7 @@ class PantheonPage extends React.Component {
             pantheon: pantheon,
             createdKinds: this.getKinds(name, "Created"),
             usedKinds: this.getKinds(name, "Used"),
-            history: this.props.pantheons.filter(item => pantheon.history.indexOf(item.name) >= 0),
+            history: this.getHistory(pantheon),
             offshoots: this.props.pantheons.filter(item => item.history.indexOf(name) >= 0)
         })
     }
@@ -40,6 +40,8 @@ class PantheonPage extends React.Component {
     setPantheon = (name) => {
         return this.props.pantheons.filter(item => item.name === name)[0]
     }
+
+    getHistory(pantheon) { return pantheon ? this.props.pantheons.filter(item => pantheon.history.indexOf(item.name) >= 0) : [] }
 
     getKinds(name, type) {
         switch (type) {
@@ -55,21 +57,20 @@ class PantheonPage extends React.Component {
 
     render() {
         const item = this.state.pantheon
-        return <div>
-            <BasicInfo item={item}>
-              <History item={item} history={this.state.history} offshoots={this.state.offshoots} />
-            </BasicInfo>
+        return typeof item !== 'undefined' && Object.keys(item).length > 0 ? <div>
+                <BasicInfo item={item}>
+                  <History item={item} history={this.state.history} offshoots={this.state.offshoots} />
+                </BasicInfo>
 
-            <ImageGallery item={item} />
+                <ImageGallery item={item} />
 
-            <Collections usedKinds={this.state.usedKinds} createdKinds={this.state.createdKinds} />
+                <Collections usedKinds={this.state.usedKinds} createdKinds={this.state.createdKinds} />
 
-            <Row className="forms">
-                <Col className=""><FormInsert item={item} key={item.name} formClass={"pantheons"} /></Col>
-                <Col className=""><FormInsert item={defaultKind} formClass={"kinds"} /></Col>
-            </Row>
-
-        </div>
+                <Row className="forms">
+                    <Col className=""><FormInsert item={item} key={item.name} formClass={"pantheons"} /></Col>
+                    <Col className=""><FormInsert item={defaultKind} formClass={"kinds"} /></Col>
+                </Row>
+            </div> : "Loading... Or object not found."
 
     }
 }

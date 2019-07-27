@@ -12,19 +12,21 @@ class RelatedKinds extends React.Component {
     }
 
     componentDidMount = () => {
-        const kindName = this.props.match.params.name
-        const kind = this.props.kinds.filter(item => item.name === kindName)[0]
-        const categories = this.props.categories.filter(item => item.kinds.indexOf(kindName) >= 0)
-        this.setState({kind, categories})
+        const name = this.props.match.params.name
+        const kinds = this.props.kinds.filter(item => item.name === name)
+        const kind = kinds.length > 0 ? kinds[0] : {}
+        const categories = kind.name ? this.props.categories.filter(item => item.kinds.indexOf(name) >= 0) : []
+        this.setState({ kind: kind, categories: categories })
     }
 
     render() {
-        return <div>
+        const item = this.state.item
+        return typeof item !== 'undefined' && Object.keys(item).length > 0 ? <div>
             {this.state.kind.name} included in:<br />
             {this.state.categories.map(item => <div key={item.name}>
                 <Link to={`/category/${item.name}`}>{item.name}</Link>
             </div>)}
-        </div>
+        </div> : ""
     }
 }
 

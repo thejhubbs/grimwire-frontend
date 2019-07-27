@@ -20,14 +20,15 @@ class CategoryPage extends React.Component {
 
     updatePage = (props = this.props) => {
         const name = props.match.params.name
-        const category = this.props.categories.filter(item => item.name === name)[0]
-        const related = this.props.kinds.filter(item => item.category === category.name)
+        const categories = this.props.categories.filter(item => item.name === name)
+        const category = categories.length > 0 ? categories[0] : {}
+        const related = category.name ? this.props.kinds.filter(item => item.category === category.name) : []
         this.setState({category: category,relatedKinds: related})
     }
 
     render() {
         const item = this.state.category
-        return <div>
+        return typeof symbols !== 'undefined' && Object.keys(item).length > 0 ? <div>
 
             <div className="category-info">
                 <h1>{item.name}</h1>
@@ -56,7 +57,7 @@ class CategoryPage extends React.Component {
                         </Row>
 
 
-        </div>
+        </div> : "Loading or not found"
 
     }
 }
