@@ -1,7 +1,8 @@
 import React from 'react';
 
 import Kinds from '../../../components/kind/index/index'
-import KindForm from '../../../components/kind/misc/form';
+import FormInsert from '../../../components/forms/insert'
+import {defaultKind} from '../../../db/defaultObjects'
 
 class Kind extends React.Component {
   constructor(props) {
@@ -11,30 +12,19 @@ class Kind extends React.Component {
     }
   }
 
-  
+
   toggleKindForm = () => {
     this.setState({showKindForm: !this.state.showKindForm})
-  } 
+  }
 
   render() {
   return (
     <div className="">
-      <h1>Collections & Items</h1>
-      <h4>View All Collections</h4>
-      <Kinds /> 
-      <button onClick={this.toggleKindForm}>New Kind/Collection/Category</button>
-          <div className="theForm">
-          { this.state.showKindForm ? <KindForm kind={{
-                name: "",
-                description: "",
-                originalPantheon: "",
-                featuredPantheons: [],
-                specificOrder: true,
-                totalNumber: 0
-            }}/> : "" }
-        </div>
+      <h1>Kinds</h1>
+      <h4>List of All Kinds & Items</h4>
+      <Kinds />
+      <FormInsert item={defaultKind} formClass={"kinds"} />
 
-      
     </div>
   );
 

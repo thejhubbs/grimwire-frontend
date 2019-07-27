@@ -1,48 +1,34 @@
 import React from 'react';
+
 import Pantheons from '../../../components/pantheon/index/index'
-import PantheonForm from '../../../components/pantheon/misc/form'
+import FormInsert from '../../../components/forms/insert'
+import {defaultPantheon} from '../../../db/defaultObjects'
 
 class Pantheon extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      showPantheonForm:false
+    this.state ={
+      showPantheonForm: false
     }
   }
 
+
   togglePantheonForm = () => {
     this.setState({showPantheonForm: !this.state.showPantheonForm})
-  } 
+  }
 
   render() {
   return (
     <div className="">
       <h1>Pantheons</h1>
-      <p>A religion or group of gods</p>
-      <br /><hr /><br />
+      <h4>List of All Pantheons & Items</h4>
       <Pantheons />
+      <FormInsert item={defaultPantheon} formClass={"pantheons"} />
 
-      <button onClick={this.togglePantheonForm}>New Pantheon/Religion/Group</button>
-          <div className="theForm">
-          { this.state.showPantheonForm ?  <PantheonForm pantheon={{
-                name: "",
-                description: "",
-                startYear: 0,
-                endYear: 0,
-                images: [],
-                thumbnail: "",
-                overviewInfo: "",
-                historyInfo: "",
-                cultureInfo: "",
-                history: []
-            }}/> : "" }
-        </div>
-
-
-     
     </div>
-  );  
-}
+  );
+
+  }
 }
 
 export default Pantheon;

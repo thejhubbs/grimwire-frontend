@@ -56,15 +56,6 @@ class PantheonPage extends React.Component {
         return startYearString + " - " + endYearString;
     }
 
-
-    toggleKindForm = (e) => {
-        this.setState({ showKindForm: !this.state.showKindForm })
-    }
-
-    togglePantheonForm = (e) => {
-        this.setState({ showPantheonForm: !this.state.showPantheonForm })
-    }
-
     render() {
         const item = this.state.pantheon
         return <div>
