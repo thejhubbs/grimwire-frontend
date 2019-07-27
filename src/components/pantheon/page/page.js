@@ -6,6 +6,11 @@ import { Row, Col } from 'react-bootstrap'
 import FormInsert from '../../forms/insert'
 import {defaultKind} from '../../../db/defaultObjects'
 
+import BasicInfo from './basicInfo'
+import History from './history'
+import Collections from './collections'
+import ImageGallery from '../../imageGallery/gallery'
+
 class PantheonPage extends React.Component {
     constructor(props) {
         super(props);
@@ -48,60 +53,17 @@ class PantheonPage extends React.Component {
         }
     }
 
-    yearRange = (item) => {
-        var startYearString = item.startYear > 0 ? item.startYear + "AD" : item.startYear * -1 + "BC"
-        var endYearString = item.endYear > 0 ?
-            item.endYear === 2100 ? "Present" : item.endYear + "AD" :
-            item.endYear * -1 + "BC"
-        return startYearString + " - " + endYearString;
-    }
 
     render() {
         const item = this.state.pantheon
         return <div>
-            <img src={item.thumbnail}  alt={item.name} width="100px"/>
-            <h1>{item.name}</h1>
-            <Row>
-                <Col>
-                    <h4>Overview</h4>
-                    <p>{item.overviewInfo}</p>
-                </Col>
-                <Col>
-                    <p>{item.description}</p>
-                    <p>{this.yearRange(item)}</p>
-                    History:
-                    {this.state.history.length > 0 ? this.state.history.map(item => <span key={item.name}>
-                        <Link to={`/pantheon/${item.name}`}>{item.name}</Link>
-                    </span>) : "N/a" }<br />
-                    Offshoots:
-                    { this.state.offshoots.length > 0 ? this.state.offshoots.map(item => <span key={item.name}>
-                        <Link to={`/pantheon/${item.name}`}>{item.name}</Link>
-                    </span>) : "N/a"}<br />
-                </Col>
-            </Row>
+            <BasicInfo item={item}>
+              <History item={item} history={this.state.history} offshoots={this.state.offshoots} />
+            </BasicInfo>
 
-            <div>
-                <h4>History & Background</h4>
-                <p>{item.historyInfo}</p>
-                <h4>Culture & Advancements</h4>
-                <p>{item.cultureInfo}</p>
-            </div>
+            <ImageGallery item={item} />
 
-
-            <div className="image-gallery">
-                <h4>Images:</h4>
-                <hr />
-                {item.images.map(image => <img key={image} src={image} height="200px" alt={item.name} />)}
-                <hr />
-            </div>
-
-            <div className="pantheon-list">
-                <h4>Created</h4>
-                {this.state.createdKinds.map(item => <Link key={item.name} to={`/collection/${item.name}`}>{item.name}</Link>)}
-
-                <h4>Uses</h4>
-                {this.state.usedKinds.map(item => <Link  key={item.name} to={`/collection/${item.name}`}>{item.name}</Link> )}
-            </div>
+            <Collections item={item} usedKinds={this.state.usedKinds} createdKinds={this.state.createdKinds} />
 
             <Row className="forms">
                 <Col className=""><FormInsert item={item} key={item.name} formClass={"pantheons"} /></Col>

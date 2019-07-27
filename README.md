@@ -1,6 +1,5 @@
 v 1.5- rehash code
 
-1. Add new doesn't work
 
 =====================================
 V2
