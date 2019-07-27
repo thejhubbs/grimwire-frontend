@@ -1,6 +1,6 @@
 export default [
     {
-        id: 0,
+        id: 1,
         name: "Magick 101",
         description: "A general intro to things.",
         kindIds: [1, 2, 3],
@@ -9,7 +9,7 @@ export default [
         sourcesText: "Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. ",
     },
     {
-        id: 1,
+        id: 2,
         name: "Wicca 102",
         description: "A general intro to things.",
         kindIds: [2],
@@ -18,7 +18,7 @@ export default [
         sourcesText: "Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. Here is a wall of text. ",
     },
     {
-        id: 2,
+        id: 3,
         name: "Occult 102",
         description: "A general intro to things.",
         kindIds: [3],

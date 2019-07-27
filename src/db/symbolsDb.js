@@ -1,21 +1,7 @@
 export default [
     {
-        id: 0,
-        name: "Air",
-        pantheonIds: [0],
-        kindId: 0,
-        otherSpellings: [],
-        description: "",
-        thumbnail: "",
-        images: [],
-        backgroundText: "",
-        meaningText: "",
-        number: null,
-        info: {}
-    },
-    {
         id: 1,
-        name: "Fire",
+        name: "Air",
         pantheonIds: [1],
         kindId: 1,
         otherSpellings: [],
@@ -29,9 +15,23 @@ export default [
     },
     {
         id: 2,
-        name: "Water",
+        name: "Fire",
         pantheonIds: [2],
         kindId: 2,
+        otherSpellings: [],
+        description: "",
+        thumbnail: "",
+        images: [],
+        backgroundText: "",
+        meaningText: "",
+        number: null,
+        info: {}
+    },
+    {
+        id: 3,
+        name: "Water",
+        pantheonIds: [3],
+        kindId: 3,
         otherSpellings: [],
         description: "",
         thumbnail: "",

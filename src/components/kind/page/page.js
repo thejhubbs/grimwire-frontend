@@ -22,10 +22,10 @@ class KindPage extends React.Component {
     componentWillReceiveProps = (newProps) => { this.updatePage(newProps) }
 
     updatePage = (props = this.props) => {
-        const name = props.match.params.name
-        const kinds = this.props.kinds.filter(item => item.name === name)
+        const id = props.match.params.id
+        const kinds = this.props.kinds.filter(item => item.id == id)
         const kind = kinds.length > 0 ? kinds[0] : {}
-        const related = kind.name ? this.props.symbols.filter(item => item.kind === kind.name) : []
+        const related = kind.name ? this.props.symbols.filter(item => item.id == kind.id) : []
         this.setState({ kind: kind, relatedSymbols: related })
     }
 

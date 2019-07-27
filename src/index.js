@@ -30,7 +30,7 @@ var merge = (a, b, p) => a.filter( aa => ! b.find ( bb => aa[p] === bb[p]) ).con
   var pushArray =  []
   localDbFile.forEach(item => pushArray.push( {...item, id: i = i + 1} ))
   const merged = merge(pushArray, localBrowserStorage, 'id')
-  console.log("Whole database object: ", merged)
+  console.log("Whole", str[0], "database", merged)
   localStorage.setItem(str[0], JSON.stringify( merged ))
 
 })

@@ -1,6 +1,6 @@
 export default [
     {
-        id: 0,
+        id: 1,
         name: "Babylonian",
         overviewText: "",
         historyText: "i want to add some history info",
@@ -13,7 +13,7 @@ export default [
         images: []
     },
     {
-        id: 0,
+        id: 2,
         name: "Hebrew",
         overviewText: "",
         historyText: "i want to add some history info",
@@ -21,12 +21,12 @@ export default [
         description: "The ancient greeks, a polytheistic religion",
         startYear: -400,
         endYear: 200,
-        historyIds: [0],
+        historyIds: [1],
         thumbnail: "",
         images: []
     },
     {
-        id: 0,
+        id: 3,
         name: "Christian",
         overviewText: "",
         historyText: "i want to add some history info",
@@ -34,7 +34,7 @@ export default [
         description: "The ancient greeks, a polytheistic religion",
         startYear: -400,
         endYear: 200,
-        historyIds: [1],
+        historyIds: [2],
         thumbnail: "",
         images: []
     },

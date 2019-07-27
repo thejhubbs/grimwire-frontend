@@ -26,29 +26,29 @@ class PantheonPage extends React.Component {
     componentWillReceiveProps = (newProps) => {this.updateInfo(newProps);}
 
       updateInfo = (props = this.props) => {
-        const name = props.match.params.name
-        const pantheon = this.setPantheon(name)
+        const id = parseInt(props.match.params.id)
+        const pantheon = this.setPantheon(id)
         this.setState({
             pantheon: pantheon,
-            createdKinds: this.getKinds(name, "Created"),
-            usedKinds: this.getKinds(name, "Used"),
+            createdKinds: this.getKinds(id, "Created"),
+            usedKinds: this.getKinds(id, "Used"),
             history: this.getHistory(pantheon),
-            offshoots: this.props.pantheons.filter(item => item.history.indexOf(name) >= 0)
+            offshoots: this.props.pantheons.filter(item => item.historyIds.indexOf(id) >= 0)
         })
     }
 
-    setPantheon = (name) => {
-        return this.props.pantheons.filter(item => item.name === name)[0]
+    setPantheon = (id) => {
+        return this.props.pantheons.filter(item => item.id == id)[0]
     }
 
-    getHistory(pantheon) { return pantheon ? this.props.pantheons.filter(item => pantheon.history.indexOf(item.name) >= 0) : [] }
+    getHistory(pantheon) { return pantheon ? this.props.pantheons.filter(item => pantheon.historyIds.indexOf(item.id) >= 0) : [] }
 
-    getKinds(name, type) {
+    getKinds(id, type) {
         switch (type) {
             case "Created":
-                return this.props.kinds.filter(item => name === item.originalPantheon)
+                return this.props.kinds.filter(item => id === item.originalPantheonId)
             case "Used":
-                return this.props.kinds.filter(item => item.featuredPantheons.indexOf(name) >= 0)
+                return this.props.kinds.filter(item => item.featuredPantheonIds.indexOf(id) >= 0)
             default:
                 return "ERROR"
         }
@@ -67,7 +67,7 @@ class PantheonPage extends React.Component {
                 <Collections usedKinds={this.state.usedKinds} createdKinds={this.state.createdKinds} />
 
                 <Row className="forms">
-                    <Col className=""><FormInsert item={item} key={item.name} formClass={"pantheons"} /></Col>
+                    <Col className=""><FormInsert item={item} key={item.id} formClass={"pantheons"} /></Col>
                     <Col className=""><FormInsert item={defaultKind} formClass={"kinds"} /></Col>
                 </Row>
             </div> : "Loading... Or object not found."
