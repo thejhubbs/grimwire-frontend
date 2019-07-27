@@ -14,12 +14,12 @@ class CategoriesComponent extends React.Component {
     render() {
         return <Row>
             {
-                this.props.categories.map(category => <Col lg={3}>
+                this.props.categories.map(category => <Col key={category.name} lg={3}>
                     <br />
                     <h5><Link to={`/category/${category.name}`}>{category.name}</Link></h5>
                     {category.description}<br />
-                    {category.kinds.map(kind => <div>
-                            -<Link to={`/collection/${kind}`}>{kind}</Link><br />
+                    {category.kinds.map(kind => <div key={kind}>
+                            -<Link  to={`/collection/${kind}`}>{kind}</Link><br />
                         </div>)}
                         <br />
                 </Col>)

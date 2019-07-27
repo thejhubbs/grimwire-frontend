@@ -1,38 +1,43 @@
 import React from 'react'
 import {Form, Button} from 'react-bootstrap'
+import {connect} from 'react-redux'
+import {addItem, updateItem} from '../../redux/actions'
 
 class ConnectionForm extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            connection: this.props.connection
+            connection: this.props.item,
+            existing: props.item.name !== ""
         }
     }
 
     handleChange = (e) => {
-        this.setState({ 
+        this.setState({
             connection: {
-                ...this.state.connection,    
+                ...this.state.connection,
                 [e.target.name]: e.target.value
             }
-        }) 
+        })
     }
 
     submitForm = (e) => {
-        e.preventDefault();
-        console.log(this.state.connection)
-        
+        //e.preventDefault();
+        this.state.existing ?
+            this.props.updateItem(this.state.connection, "connections") :
+            this.props.addItem(this.state.connection, "connections")
+
     }
 
     render() {
         return <div>
-            <h5>{this.state.connection.name ? "Edit" : "New" }  Connection</h5>
+            <h5>Basic Information</h5>
 
             <Form onSubmit={this.submitForm}>
                 <Form.Group>
                     <Form.Label>Name</Form.Label>
-                    <Form.Control 
-                        onChange={this.handleChange} 
+                    <Form.Control
+                        onChange={this.handleChange}
                         name="main" type="text" placeholder="Main"
                         value={this.state.connection.main} />
                     <Form.Text>
@@ -41,8 +46,8 @@ class ConnectionForm extends React.Component{
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Connected</Form.Label>
-                    <Form.Control 
-                        onChange={this.handleChange} 
+                    <Form.Control
+                        onChange={this.handleChange}
                         name="connected" type="text" placeholder="connected"
                         value={this.state.connection.connected} />
                     <Form.Text>
@@ -51,65 +56,49 @@ class ConnectionForm extends React.Component{
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Description</Form.Label>
-                    <Form.Control 
-                        onChange={this.handleChange} 
+                    <Form.Control
+                        onChange={this.handleChange}
                         name="description" type="text" placeholder="description"
                         value={this.state.connection.description} />
                     <Form.Text>
                         A description of the relationship.
                     </Form.Text>
                 </Form.Group>
+
+                <h5>Relationship Info</h5>
                 <Form.Group>
                     <Form.Label>Relationship Type</Form.Label>
-                    <Form.Control 
-                        onChange={this.handleChange} 
+                    <Form.Control
+                        onChange={this.handleChange}
                         name="relationship" type="number" placeholder="relationship"
                         value={this.state.connection.relationship} />
                     <Form.Text>
-                        5 = Variations- as Mercury to Hermes; 4 = Properties- as Mercury to Communication; 3 = symbols/associations- as Mercury to the element Air; 2 = family & relationships as Mercury and Zues; 1 = loose associated category
+                        5 = Variations- as Mercury to Hermes; 4 = Properties- as Mercury to Communication; 3 = symbols/associations- as Mercury to the element Air; 2 = family & relationships as Mercury and Zues; 1 = loose associated category; 0 = source
                     </Form.Text>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Number</Form.Label>
-                    <Form.Control 
-                        onChange={this.handleChange} 
+                    <Form.Control
+                        onChange={this.handleChange}
                         name="strength" type="number" placeholder="strength"
                         value={this.state.connection.strength} />
                     <Form.Text>
                         On a scale of 1-10, how accurate & widespread the connection is.
                     </Form.Text>
-                </Form.Group> 
+                </Form.Group>
+
+                <h5>Article Info</h5>
                 <Form.Group>
                     <Form.Label>About Info</Form.Label>
-                    <Form.Control 
-                        onChange={this.handleChange} 
+                    <Form.Control
+                        onChange={this.handleChange}
                         name="aboutInfo" type="text" placeholder="aboutInfo"
                         value={this.state.connection.aboutInfo} />
                     <Form.Text>
                         A long detailed analysis of the relationship.
                     </Form.Text>
                 </Form.Group>
-                <Form.Group>
-                    <Form.Label>User</Form.Label>
-                    <Form.Control 
-                        onChange={this.handleChange} 
-                        name="userCreated" type="text" placeholder="userCreated"
-                        value={this.state.connection.userCreated} />
-                    <Form.Text>
-                        The user that attributed this connection.
-                    </Form.Text>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Source</Form.Label>
-                    <Form.Control 
-                        onChange={this.handleChange} 
-                        name="source" type="text" placeholder="source"
-                        value={this.state.connection.source} />
-                    <Form.Text>
-                        Where you saw this attribution.
-                    </Form.Text>
-                </Form.Group>
-                
+
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
@@ -119,4 +108,9 @@ class ConnectionForm extends React.Component{
     }
 }
 
-export default ConnectionForm
+const mapDispatchToProps = {
+    addItem,
+    updateItem
+}
+
+export default connect(null, mapDispatchToProps)(ConnectionForm)

@@ -2,7 +2,7 @@ export default [
     {
         name: "Greek",
         overviewInfo: "", 
-        historyInfo: "", 
+        historyInfo: "i want to add some history info", 
         cultureInfo: "", 
         description: "The ancient greeks, a polytheistic religion",
         startYear: -400,
