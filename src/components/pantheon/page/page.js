@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import PantheonForm from '../misc/form'
-import KindForm from '../../kind/misc/form'
 import { Row, Col } from 'react-bootstrap'
+
+import FormInsert from '../../forms/insert'
+import {defaultKind} from '../../../db/defaultObjects'
 
 class PantheonPage extends React.Component {
     constructor(props) {
@@ -111,31 +112,9 @@ class PantheonPage extends React.Component {
                 {this.state.usedKinds.map(item => <Link  key={item.name} to={`/collection/${item.name}`}>{item.name}</Link> )}
             </div>
 
-
-
-
-
             <Row className="forms">
-                <Col className="">
-                    <button onClick={this.togglePantheonForm}>Edit {item.name} ({this.state.showPantheonForm ? "-" : "+"})</button>
-                    <div className="theForm">
-                        {this.state.showPantheonForm ? <PantheonForm key={item.name} pantheon={item} /> : ""}
-                    </div>
-                </Col>
-                <Col className="">
-                    <button onClick={this.toggleKindForm}>Add New Item ({this.state.showKindForm ? "-" : "+"})</button>
-                    <div className="theForm">
-                        {this.state.showKindForm ? <KindForm kind={{
-                            name: "",
-                            description: "",
-                            originalPantheon: item.name,
-                            featuredPantheons: [],
-                            specificOrder: true,
-                            totalNumber: 0
-                        }} />
-                            : ""}
-                    </div>
-                </Col>
+                <Col className=""><FormInsert item={item} key={item.name} formClass={"pantheons"} /></Col>
+                <Col className=""><FormInsert item={defaultKind} formClass={"kinds"} /></Col>
             </Row>
 
         </div>

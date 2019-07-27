@@ -2,15 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { Row, Col } from 'react-bootstrap'
 
-import DisplayForm from '../../forms/display'
-import ConnectionForm from '../../connection/connectionForm';
-import SymbolForm from '../misc/form'
+import FormInsert from '../../forms/insert'
 
 import BasicInfo from './basicInfo'
 import ImageGallery from '../../imageGallery/gallery'
 import Connections from './connections'
 
 import {defaultConnection} from '../../../db/defaultObjects'
+
 
 
 class SymbolPage extends React.Component {
@@ -25,7 +24,6 @@ class SymbolPage extends React.Component {
 
     componentDidMount = () => { this.updateSymbolAndConnections() }
     componentWillReceiveProps = (newProps) => { this.updateSymbolAndConnections(newProps) }
-
     updateSymbolAndConnections = (props = this.props) => {
         const name = props.match.params.name
         this.setState({
@@ -36,20 +34,20 @@ class SymbolPage extends React.Component {
 
     render() {
         const item = this.state.symbol
+        const activeConnection = this.state.activeConnection
         return <div>
           { item.name ?
             <div>
               <BasicInfo item={item} />
               <ImageGallery item={item} />
               <Connections item={item} connections={this.state.connections} symbols={this.props.symbols}/>
-              <Row className="forms">
-                  <Col className="">
-                      <DisplayForm form={SymbolForm} item={item} />
-                  </Col>
-                  <Col className="">
-                      <DisplayForm form={ConnectionForm} item={this.state.activeConnection} />
-                  </Col>
+
+               <Row className="forms">
+                   <Col><FormInsert item={item} key={item.name} formClass={"symbols"} /></Col>
+                   <Col><FormInsert item={activeConnection} key={activeConnection.connected} formClass={"connections"} /></Col>
               </Row>
+
+
             </div>
             : "Loading" }
          </div>

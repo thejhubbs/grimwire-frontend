@@ -6,7 +6,7 @@ class DisplayForm extends React.Component {
     this.state = {
       item: props.item,
       showForm: false,
-      form: props.form
+      form: props.children
     }
   }
 
@@ -16,14 +16,13 @@ class DisplayForm extends React.Component {
 
   render() {
     const item = this.props.item
-    const Form = this.props.form
 
     return <div>
       <button onClick={this.toggleForm}>
         { item.name ? `Edit ${item.name}` : `New` } ({this.state.showForm ? "-" : "+"})
       </button>
       <div className="theForm">
-          {this.state.showForm ? <Form key={item.name} item={item} /> : ""}
+          {this.state.showForm ? this.props.children : ""}
       </div>
     </div>
   }

@@ -17,7 +17,7 @@ class Symbols extends React.Component {
     search = (e) => {
         if(e.target.value !== "") {
         this.setState({
-            symbols: this.props.symbols.filter( item => item.name.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0 ) 
+            symbols: this.props.symbols.filter( item => item.name.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0 )
         })
         } else {
             this.setState({ symbols: this.randomSymbols(this.state.randomNumber) })
@@ -29,6 +29,7 @@ class Symbols extends React.Component {
         const symbols = [];
         for(let i=0; i < num; i++){
             const num = Math.floor(Math.random() * this.props.symbols.length)
+            //make sure it doesn't dupe
             symbols.push(this.props.symbols[num])
         }
         return symbols
@@ -37,7 +38,7 @@ class Symbols extends React.Component {
     render() {
         return <div>
             {this.state.showSearch ? <Form.Control type='text' onChange={this.search} placeholder="Search" /> : "" }
-            
+
             <SimpleSymbolList symbols={this.state.symbols} />
         </div>
     }

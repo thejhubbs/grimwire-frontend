@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import { Link } from 'react-router-dom';
-
-import KindForm from '../misc/form';
-import SymbolForm from '../../symbol/misc/form';
 import { Row, Col } from 'react-bootstrap'
+
+import FormInsert from '../../forms/insert'
+import {defaultSymbol} from '../../../db/defaultObjects'
 
 class KindPage extends React.Component {
     constructor(props) {
@@ -13,8 +12,6 @@ class KindPage extends React.Component {
         this.state = {
             kind: this.props.kinds[0],
             relatedSymbols: [this.props.symbols[0]],
-            showSymbolForm: false,
-            showKindForm: false
         }
     }
 
@@ -28,26 +25,11 @@ class KindPage extends React.Component {
         this.setState({ kind: kind, relatedSymbols: related })
     }
 
-
-    toggleSymbolForm = (e) => {
-        this.setState({ showSymbolForm: !this.state.showSymbolForm })
-    }
-
-    toggleKindForm = (e) => {
-        this.setState({ showKindForm: !this.state.showKindForm })
-    }
-
-    defaultSymbol = () => {
+    defaultSymbolWithInfo = () => {
         const item = this.state.kind
         return {
+            ...defaultSymbol,
             info: item.extraInfoDefault,
-            kind: item.name,
-            pantheons: [item.originalPantheon],
-            name: "",
-            otherSpellings: [],
-            description: "",
-            images: [],
-            number: 0
         }
     }
 
@@ -110,18 +92,8 @@ class KindPage extends React.Component {
 
 
             <Row className="forms">
-                <Col className="">
-                    <button onClick={this.toggleKindForm}>Edit {item.name} ({this.state.showKindForm ? "-" : "+"})</button>
-                    <div className="theForm">
-                        {this.state.showKindForm ? <KindForm kind={item} key={item.name} /> : ""}
-                    </div>
-                </Col>
-                <Col className="">
-                    <button onClick={this.toggleSymbolForm}>Add New Item ({this.state.showSymbolForm ? "-" : "+"})</button>
-                    <div className="theForm">
-                        {this.state.showSymbolForm ? <SymbolForm symbol={this.defaultSymbol()} /> : ""}
-                    </div>
-                </Col>
+                <Col className=""><FormInsert item={item} key={item.name} formClass={"kinds"} /></Col>
+                <Col className=""><FormInsert item={this.defaultSymbolWithInfo()} formClass={"symbols"} /></Col>
             </Row>
 
 
