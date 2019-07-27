@@ -56,10 +56,10 @@ function Attributes(props) {
 
     return conn.length > 0 ? <div>
     <h3>Attributes & Associations</h3>
-    {conn.map(item => <div key={item.connected}>
+    {conn.map(item => <div key={item.connectedId}>
         {
-            props.symbols.filter(i => i.name === item.connected).map(j => <div key={j.name}>
-                {j.kind}: <Link to={`/symbol/${j.name}`}>{j.name} ({item.strength}) </Link> <FormInsert item={item} formClass={"connections"} />
+            props.symbols.filter(i => i.id === item.connectedId).map(connectedSymbol => <div key={connectedSymbol.id}>
+                {props.kinds.filter(item => item.id === connectedSymbol.kindId)[0].name}: <Link to={`/symbol/${connectedSymbol.id}`}>{connectedSymbol.name} ({item.strength}) </Link> <FormInsert item={item} formClass={"connections"} />
             </div>)
         }
     </div>)}
@@ -76,7 +76,7 @@ export default function Connections(props){
           <Sources item={props.item} connections={props.connections}  />
       </Col>
       <Col xs={12} lg={6} >
-          <Attributes item={props.item} connections={props.connections} updateConnections={props.updateConnections} symbols={props.symbols} />
+          <Attributes item={props.item} connections={props.connections} symbols={props.symbols} kinds={props.kinds} />
       </Col>
   </Row>
 }

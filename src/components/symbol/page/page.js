@@ -31,9 +31,9 @@ class SymbolPage extends React.Component {
         const symbol = symbols.length > 0 ? symbols[0] : {}
         console.log(id, symbols, symbol)
 
-        const connections = symbol.name ? this.props.connections.filter(item => id === item.main) : []
+        const connections = symbol.name ? this.props.connections.filter(item => id === item.mainId) : []
         const pantheons = symbol.name ? this.props.pantheons.filter(item => symbol.pantheonIds.indexOf(id) >= 0) : []
-
+        console.log(connections)
         this.setState({ symbol, connections, pantheons })
     }
 
@@ -45,7 +45,7 @@ class SymbolPage extends React.Component {
             <div>
               <BasicInfo item={item} pantheons={this.state.pantheons}/>
               <ImageGallery item={item} />
-              <Connections item={item} connections={this.state.connections} symbols={this.props.symbols}/>
+              <Connections item={item} connections={this.state.connections} symbols={this.props.symbols} kinds={this.props.kinds} />
 
                <Row className="forms">
                    <Col><FormInsert item={item} key={item.name} formClass={"symbols"} /></Col>
