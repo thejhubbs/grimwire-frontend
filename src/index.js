@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 
 import ScrollToTop from './pageComponents/scrollToTop'
 
-import symbols from './db/symbolsDb/symbolsDb';
+import symbols from './db/symbolsDb';
 import kinds from './db/kindsDb';
 import connections from './db/connectionsDb';
 import pantheons from './db/pantheonsDb';
@@ -18,15 +18,21 @@ import {users} from './db/miscDb'
 import categories from './db/categoriesDb';
 
 
-  
+
 const store = createStore(reducer);
 
 var merge = (a, b, p) => a.filter( aa => ! b.find ( bb => aa[p] === bb[p]) ).concat(b);
 
 [['symbols', symbols], ['kinds', kinds], ['connections', connections], ['pantheons', pantheons], ['users', users], ['categories', categories]].forEach(str => {
-  var localBrowserStorage = JSON.parse(localStorage.getItem(str[0]));
+  var localBrowserStorage = [] //JSON.parse(localStorage.getItem(str[0]));
   var localDbFile = str[1]
-  localStorage.setItem(str[0], JSON.stringify(merge(localDbFile, localBrowserStorage, 'name')))
+  var i = 0
+  var pushArray =  []
+  localDbFile.forEach(item => pushArray.push( {...item, id: i = i + 1} ))
+  const merged = merge(pushArray, localBrowserStorage, 'id')
+  console.log("Whole database object: ", merged)
+  localStorage.setItem(str[0], JSON.stringify( merged ))
+
 })
 
 
@@ -44,9 +50,10 @@ ReactDOM.render(
           <style>
 @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Metal+Mania|Spectral&display=swap');
 </style>
+
         <App />
         </ScrollToTop>
     </BrowserRouter>
-</Provider>, 
+</Provider>,
 
 document.getElementById('root'));

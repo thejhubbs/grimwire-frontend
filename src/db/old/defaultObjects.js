@@ -7,8 +7,8 @@ export const defaultSymbol = {
     description: "",
     thumbnail: "",
     images: [],
-    backgroundText: "",
-    meaningText:"",
+    backgroundInfo: "",
+    meaningInfo:"",
     number: null,
     info: {}
 }
@@ -20,7 +20,7 @@ export const defaultConnection = {
       relationship: 0,
       strength: 0,
       description: "",
-      aboutText: ""
+      aboutInfo: ""
 }
 
 export const defaultKind = {
@@ -28,8 +28,8 @@ export const defaultKind = {
     name: "",
     originalPantheonId: 0,
     featuredPantheonIds: [],
-    theoryText: "",
-    historyText: "",
+    theoryInfo: "",
+    historyInfo: "",
     description: "",
     totalNumber: null,
     specificOrder: false,
@@ -41,9 +41,9 @@ export const defaultKind = {
 export const defaultPantheon = {
     id: 0,
     name: "",
-    overviewText: "",
-    historyText: "",
-    cultureText: "",
+    overviewInfo: "",
+    historyInfo: "",
+    cultureInfo: "",
     description: "",
     startYear: 0,
     endYear: 0,
@@ -57,7 +57,6 @@ export const defaultCategory = {
     name: "",
     description: "",
     kindIds: [],
-    prerequisiteIds: [],
     overviewText: "",
     sourcesText: "",
 }

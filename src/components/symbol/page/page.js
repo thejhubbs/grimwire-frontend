@@ -24,10 +24,13 @@ class SymbolPage extends React.Component {
     componentWillReceiveProps = (newProps) => { this.updateSymbolAndConnections(newProps) }
     updateSymbolAndConnections = (props = this.props) => {
 
-        const name = props.match.params.name
-        const symbols = this.props.symbols.filter(item => item.name === name)
+        const id = props.match.params.id
+        const symbols = this.props.symbols.filter(item => item.id == id)
+
         const symbol = symbols.length > 0 ? symbols[0] : {}
-        const connections = symbol.name ? this.props.connections.filter(item => name === item.main) : []
+        console.log(id, symbols, symbol)
+
+        const connections = symbol.name ? this.props.connections.filter(item => id === item.main) : []
 
         this.setState({ symbol: symbol, connections: connections })
     }

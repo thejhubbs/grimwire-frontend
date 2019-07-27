@@ -1,4 +1,4 @@
-import React from 'react'
+  import React from 'react'
 import {Form} from 'react-bootstrap'
 import {connect} from 'react-redux'
 import {addItem, updateItem, deleteItem} from '../../redux/actions'
@@ -62,6 +62,8 @@ class FormHandler extends React.Component {
       { this.state.existing ? "Edit" : "Add"}
       { Object.entries(this.state.item).map(itemField => <div key={itemField[0]}>
 
+
+
                 {
                   typeof itemField[1] === 'string' ?
                           <Form.Group>
@@ -75,7 +77,7 @@ class FormHandler extends React.Component {
 
 
                     {
-                     Number.isInteger(itemField[1]) ?
+                     Number.isInteger(itemField[1]) && itemField[0] !== 'id'  ?
                              <Form.Group>
                         <Form.Label>{ itemField[0] }</Form.Label>
                         <Form.Control onChange={this.handleChange} type="number"

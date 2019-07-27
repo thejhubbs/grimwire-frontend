@@ -20,19 +20,19 @@ function Body() {
     return <div className="body">
         <Switch>
             <Route path="/" exact component={Home} />
-            
+
             <Route path="/symbols" component={SymbolsIndex} />
             <Route path="/pantheons" component={PantheonsIndex} />
             <Route path="/collections" component={KindsIndex} />
             <Route path="/categories" component={CategoriesIndex} />
 
-            <Route path="/symbol/:name" component={SymbolPage} />
-            <Route path="/pantheon/:name" component={PantheonPage} />
-            <Route path="/collection/:name" component={KindPage} />
-            <Route path="/category/:name" component={CategoryPage} />
+            <Route path="/symbol/:id" component={SymbolPage} />
+            <Route path="/pantheon/:id" component={PantheonPage} />
+            <Route path="/collection/:id" component={KindPage} />
+            <Route path="/category/:id" component={CategoryPage} />
 
             <Route path="/users/" component={UserComponent} />
-        </Switch> 
+        </Switch>
     </div>
 }
 
