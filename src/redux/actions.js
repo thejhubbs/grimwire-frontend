@@ -1,9 +1,10 @@
 export const ADD_ITEM = "ADD_ITEM"
 export const UPDATE_ITEM = "UPDATE_ITEM"
+export const DELETE_ITEM = "DELETE_ITEM"
 
 
 export function addItem(data, nameOfClass) {
-    return { 
+    return {
         type: ADD_ITEM,
         payload: {
             nameOfClass,
@@ -18,6 +19,16 @@ export function updateItem(data, nameOfClass) {
         payload: {
             nameOfClass,
             data
-        } 
+        }
+    }
+}
+
+export function deleteItem(data, nameOfClass) {
+    return {
+        type: UPDATE_ITEM,
+        payload: {
+            nameOfClass,
+            data
+        }
     }
 }

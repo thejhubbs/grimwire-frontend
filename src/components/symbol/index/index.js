@@ -26,13 +26,18 @@ class Symbols extends React.Component {
 
     //returns a selected amount of random objects based on the input number
     randomSymbols = (num = 12) => {
-        const symbols = [];
-        for(let i=0; i < num; i++){
-            const num = Math.floor(Math.random() * this.props.symbols.length)
-            //make sure it doesn't dupe
-            symbols.push(this.props.symbols[num])
+        const allSymbols = this.props.symbols
+        var randomSymbols = [];
+        var i = 0;
+        while(randomSymbols.length < num){
+            const num = Math.floor(Math.random() * allSymbols.length)
+            const possibleSymbol = allSymbols[num]
+            const exists = allSymbols.filter(item => item.name === possibleSymbol.name).length > 0
+
+            if(exists) { randomSymbols.push(possibleSymbol) }
+
         }
-        return symbols
+        return randomSymbols
     }
 
     render() {

@@ -3,8 +3,8 @@ V.9 ToDo
 =====================================
 --Broken functionality--
 1. BUG- better fix redux flow so that page auto updates state and not hard reload
--remove unnecessary state calls
-2. BUG- Random symbols page pulling doubles
+-remove unnecessary state calls&stores
+2. BUG- Weird RandomSymbols bug i think is caused by dupe
 4. BUG- Edit Connections
 5. BUG- Delete actions
 6. DESIGN- Form design are horrible
@@ -14,7 +14,7 @@ V.9 ToDo
 2. UPDATE- Images array to image gallery array, with a description/title. Better scroll things for image galleries
 3. UPDATE- user protected & hidden forms incorporate redux store variable w/o 100% auth process
 4. UPDATE- user edit- anytime a change through a form is made, (except for user) log the results before and after and the user who changed it. Clear after x days, or with admin approval.
-5. UPDATE- show error page instead of breaking
+5. Revert to ID based nav and uniqueness
 
 --Design--
 1. DESIGN- Mobile Version
