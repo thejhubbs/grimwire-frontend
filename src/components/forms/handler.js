@@ -9,7 +9,7 @@ class FormHandler extends React.Component {
     this.state = {
       item: props.item,
       formClass: props.formClass,
-      existing: props.item.name != null
+      existing: props.item.name ? props.item.name !== "" : props.item.connected !== ""
     }
   }
 
