@@ -1,40 +1,28 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
 import {Link} from 'react-router-dom';
- 
-import CategoryForm from './categoryForm';
-import KindForm from '../kind/kindForm';
 import { Row, Col } from 'react-bootstrap'
+
+import FormInsert from '../forms/insert'
+import {defaultKind} from '../../db/defaultObjects'
 
 class CategoryPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             category: this.props.categories[0],
-            relatedKinds: [this.props.kinds[0]],
-            showKindForm: false,
-            showCategoryForm: false
+            relatedKinds: [this.props.kinds[0]]
         }
-    } 
+    }
 
     componentDidMount = () => { this.updatePage() }
     componentWillReceiveProps = (newProps) => { this.updatePage(newProps) }
 
     updatePage = (props = this.props) => {
         const name = props.match.params.name
-        const category = this.props.categories.filter(item => item.name === name)[0]    
+        const category = this.props.categories.filter(item => item.name === name)[0]
         const related = this.props.kinds.filter(item => item.category === category.name)
         this.setState({category: category,relatedKinds: related})
-    }
-
-    
-    toggleKindForm = (e) => {
-        this.setState({ showKindForm: !this.state.showKindForm })
-    }
-
-    toggleCategoryForm = (e) => {
-        this.setState({ showCategoryForm: !this.state.showCategoryForm })
     }
 
     render() {
@@ -62,38 +50,16 @@ class CategoryPage extends React.Component {
 
             </div>
 
-            
-
-            <Row className="forms">
-                <Col className="">
-                    <button onClick={this.toggleCategoryForm}>Edit {item.name} ({this.state.showCategoryForm ? "-" : "+"})</button>
-                    <div className="theForm">
-                        {this.state.showCategoryForm ? <CategoryForm category={item} key={item.name} /> : ""}
-                    </div>
-                </Col>
-                <Col className="">
-                    <button onClick={this.toggleKindForm}>Add New Item ({this.state.showKindForm ? "-" : "+"})</button>
-                    <div className="theForm">
-                        {this.state.showKindForm ? <KindForm kind={{
-                name: "",
-                description: "",
-                originalPantheon: "",
-                featuredPantheons: [],
-                specificOrder: true,
-                totalNumber: 0,
-                thumbnail: "",
-                images: [],
-
-            }} /> : ""}
-                    </div>
-                </Col>
-            </Row>
+                        <Row className="forms">
+                            <Col className=""><FormInsert item={item} key={item.name} formClass={"categories"} /></Col>
+                            <Col className=""><FormInsert item={defaultKind} formClass={"kinds"} /></Col>
+                        </Row>
 
 
         </div>
-    
+
     }
-} 
+}
 
 const mapStateToProps = state => {
     return {

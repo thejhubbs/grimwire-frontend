@@ -12,23 +12,22 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
     var name, type, group, index
-
     switch(action.type) {
         case UPDATE_ITEM:
              name = action.payload.data.name
              type = action.payload.nameOfClass
              group = state[type]
              index = group.findIndex((obj => obj.name === name));
-            group[index] = action.payload.data
-            localStorage.setItem(type, JSON.stringify(group))
-            return { ...state, group }
+             group[index] = action.payload.data
+             localStorage.setItem(type, JSON.stringify(group))
+             return { ...state, group }
         case ADD_ITEM:
              name = action.payload.data.name
              type = action.payload.nameOfClass
              group = state[type]
-            group.push(action.payload.data)
-            localStorage.setItem(type, JSON.stringify(group))
-            return { ...state, group }
+             group.push(action.payload.data)
+             localStorage.setItem(type, JSON.stringify(group))
+             return { ...state, group }
         default:
             return state
     }
