@@ -1,5 +1,6 @@
 import { UPDATE_ITEM, ADD_ITEM, DELETE_ITEM } from "./actions";
 
+
  const initialState = {
     symbols: JSON.parse(localStorage.getItem('symbols')),
     kinds: JSON.parse(localStorage.getItem('kinds')),
@@ -9,6 +10,16 @@ import { UPDATE_ITEM, ADD_ITEM, DELETE_ITEM } from "./actions";
     categories: JSON.parse(localStorage.getItem('categories'))
   }
 
+
+/*  const initialState = {
+     symbols: {},
+     kinds: {},
+     pantheons: {},
+     connections: {},
+     users: {},
+     categories: {}
+   }
+*/
 
 
 export default function reducer(state = initialState, action) {
@@ -25,11 +36,10 @@ export default function reducer(state = initialState, action) {
         case ADD_ITEM:
              type = action.payload.nameOfClass
              group = state[type]
-
              var highestID = 0
-             group.forEach(item => item.id > highestID ? highestID = item.id : "")
+             group.forEach(item => parseInt(item.id) > highestID ? highestID = parseInt(item.id) : "" )
 
-             group.push( {...action.payload.data, id: highestID + 1} )
+             group.push( {...action.payload.data, id: (highestID + 1).toString() } )
 
              localStorage.setItem(type, JSON.stringify(group))
              return { ...state, group }

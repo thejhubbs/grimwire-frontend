@@ -26,7 +26,7 @@ class PantheonPage extends React.Component {
     componentWillReceiveProps = (newProps) => {this.updateInfo(newProps);}
 
       updateInfo = (props = this.props) => {
-        const id = parseInt(props.match.params.id)
+        const id = props.match.params.id
         const pantheon = this.setPantheon(id)
         this.setState({
             pantheon: pantheon,

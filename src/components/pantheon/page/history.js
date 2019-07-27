@@ -35,5 +35,5 @@ class BasicInfo extends React.Component {
     </div>
   }
 }
-
+ 
 export default BasicInfo

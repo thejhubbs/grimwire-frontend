@@ -25,12 +25,13 @@ class KindPage extends React.Component {
 
     updatePage = (props = this.props) => {
         const id = props.match.params.id
-        const kinds = this.props.kinds.filter(item => item.id == id)
+        const kinds = this.props.kinds.filter(item => item.id === id)
         const kind = kinds.length > 0 ? kinds[0] : {}
-        const relatedSymbols = kind.name ? this.props.symbols.filter(item => item.id == kind.id) : []
+        const relatedSymbols = kind.name ? this.props.symbols.filter(item => item.kindId === id) : []
         const createdBy = kind.name ? this.props.pantheons.filter(item => kind.originalPantheonId === item.id )[0] : {}
         const usedBy = kind.name ? this.props.pantheons.filter(item => kind.featuredPantheonIds.indexOf(item.id) >= 0 ) : []
 
+        console.log(relatedSymbols)
         this.setState({ kind, relatedSymbols, createdBy, usedBy })
     }
 

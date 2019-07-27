@@ -15,26 +15,29 @@
 
 export default [
     {
-        mainId: 1,
-        connectedId: 2,
-        relationship: 3,
-        strength: 10,
+        id: "1",
+        mainId: "1",
+        connectedId: "2",
+        relationship: "3",
+        strength: "10",
         description: "How they are connected.",
         aboutText: "A wall of text"
     },
     {
-        mainId: 2,
-        connectedId: 3,
-        relationship: 3,
-        strength: 10,
+        id: "2",
+        mainId: "2",
+        connectedId: "3",
+        relationship: "3",
+        strength: "10",
         description: "How they are connected.",
         aboutText: "A wall of text"
     },
     {
-        mainId: 1,
-        connectedId: 3,
-        relationship: 3,
-        strength: 10,
+        id: "3",
+        mainId: "1",
+        connectedId: "3",
+        relationship: "3",
+        strength: "10",
         description: "How they are connected.",
         aboutText: "A wall of text"
     },

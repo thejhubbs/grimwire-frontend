@@ -9,7 +9,7 @@ class FormHandler extends React.Component {
     this.state = {
       item: props.item,
       formClass: props.formClass,
-      existing: typeof props.item.name !== 'undefined' ? props.item.name !== "" : props.item.connected !== ""
+      existing: props.item.id ? true : false
     }
   }
 
@@ -65,7 +65,7 @@ class FormHandler extends React.Component {
 
 
                 {
-                  typeof itemField[1] === 'string' ?
+                  typeof itemField[1] === 'string' && itemField[0] !== 'id' ?
                           <Form.Group>
                     <Form.Label>{ itemField[0] }</Form.Label>
                     <Form.Control onChange={this.handleChange} type="text"
@@ -76,16 +76,6 @@ class FormHandler extends React.Component {
                 }
 
 
-                    {
-                     Number.isInteger(itemField[1]) && itemField[0] !== 'id'  ?
-                             <Form.Group>
-                        <Form.Label>{ itemField[0] }</Form.Label>
-                        <Form.Control onChange={this.handleChange} type="number"
-                        name={ itemField[0] } placeholder={ itemField[0] }
-                        value={this.state.item[ itemField[0] ]} />
-                        </Form.Group>
-                      : ""
-                    }
 
                 {
                   Array.isArray(itemField[1]) ?

@@ -24,15 +24,11 @@ const store = createStore(reducer);
 var merge = (a, b, p) => a.filter( aa => ! b.find ( bb => aa[p] === bb[p]) ).concat(b);
 
 [['symbols', symbols], ['kinds', kinds], ['connections', connections], ['pantheons', pantheons], ['users', users], ['categories', categories]].forEach(str => {
-  var localBrowserStorage = [] //JSON.parse(localStorage.getItem(str[0]));
+  var localBrowserStorage = JSON.parse(localStorage.getItem(str[0]));
   var localDbFile = str[1]
-  var i = 0
-  var pushArray =  []
-  localDbFile.forEach(item => pushArray.push( {...item, id: i = i + 1} ))
-  const merged = merge(pushArray, localBrowserStorage, 'id')
+  const merged = merge(localDbFile, localBrowserStorage, 'id')
   console.log("Whole", str[0], "database", merged)
   localStorage.setItem(str[0], JSON.stringify( merged ))
-
 })
 
 

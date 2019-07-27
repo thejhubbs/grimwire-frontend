@@ -19,7 +19,7 @@ class CategoryPage extends React.Component {
     componentWillReceiveProps = (newProps) => { this.updatePage(newProps) }
 
     updatePage = (props = this.props) => {
-        const id = parseInt(props.match.params.id)
+        const id = props.match.params.id
         const categories = this.props.categories.filter(item => item.id === id)
         const category = categories.length > 0 ? categories[0] : {}
         const related = category.name ? this.props.kinds.filter(item => category.kindIds.indexOf(item.id) >= 0) : []
