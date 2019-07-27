@@ -52,13 +52,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(Symbols);
-
-export const defaultSymbolValues = {
-    name: "",
-    pantheons: [],
-    kind: "",
-    otherSpellings: [],
-    description: "",
-    images: [],
-    number: 0
-}
