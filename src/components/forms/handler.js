@@ -1,7 +1,7 @@
 import React from 'react'
 import {Form} from 'react-bootstrap'
 import {connect} from 'react-redux'
-import {addItem, updateItem} from '../../redux/actions'
+import {addItem, updateItem, deleteItem} from '../../redux/actions'
 
 class FormHandler extends React.Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class FormHandler extends React.Component {
     this.state = {
       item: props.item,
       formClass: props.formClass,
-      existing: props.item.name ? props.item.name !== "" : props.item.connected !== ""
+      existing: typeof props.item.name !== 'undefined' ? props.item.name !== "" : props.item.connected !== ""
     }
   }
 
@@ -45,11 +45,16 @@ class FormHandler extends React.Component {
 
 
   submitForm = (e) => {
-      console.log("Submit", this.state)
       this.state.existing ?
           this.props.updateItem(this.state.item, this.state.formClass) :
           this.props.addItem(this.state.item, this.state.formClass)
+  }
 
+  deleteItem = (e) => {
+    e.preventDefault()
+    if(window.confirm("Are you sure you wish to completely delete the item?")){
+      this.props.deleteItem(this.state.item, this.state.formClass)
+    }
   }
 
   render() {
@@ -113,7 +118,7 @@ class FormHandler extends React.Component {
 
 
     <button type='submit'>Okie</button>
-
+    <button onClick={this.deleteItem}>Delete</button>
 
     </Form>
   }
@@ -123,7 +128,8 @@ class FormHandler extends React.Component {
 
 const mapDispatchToProps = {
     addItem,
-    updateItem
+    updateItem,
+    deleteItem
 }
 
 export default connect(null, mapDispatchToProps)(FormHandler)

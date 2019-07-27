@@ -25,7 +25,7 @@ export function updateItem(data, nameOfClass) {
 
 export function deleteItem(data, nameOfClass) {
     return {
-        type: UPDATE_ITEM,
+        type: DELETE_ITEM,
         payload: {
             nameOfClass,
             data

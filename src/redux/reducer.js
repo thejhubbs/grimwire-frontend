@@ -1,4 +1,4 @@
-import { UPDATE_ITEM, ADD_ITEM } from "./actions";
+import { UPDATE_ITEM, ADD_ITEM, DELETE_ITEM } from "./actions";
 
 const initialState = {
     symbols: JSON.parse(localStorage.getItem('symbols')),
@@ -28,6 +28,14 @@ export default function reducer(state = initialState, action) {
              group.push(action.payload.data)
              localStorage.setItem(type, JSON.stringify(group))
              return { ...state, group }
+        case DELETE_ITEM:
+             name= action.payload.data.name
+             type = action.payload.nameOfClass
+             group = state[type]
+             group = group.filter(item => item.name !== name)
+             console.log(group)
+             localStorage.setItem(type, JSON.stringify(group))
+             return {...state, group}
         default:
             return state
     }

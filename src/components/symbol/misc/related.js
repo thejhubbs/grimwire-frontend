@@ -13,22 +13,21 @@ class RelatedSymbols extends React.Component {
     }
 
     componentDidMount = () => {
-
-              const name = this.props.match.params.name
-              const symbols = this.props.symbols.filter(item => item.name === name)
-              const symbol = symbols.length > 0 ? symbols[0] : {}
-              const relatedSymbols = symbol.name ? this.props.symbols.filter(item => item.kind === symbol.kind).slice(1, 30) : []
-
-        this.setState({symbol: symbol, relatedSymbols: relatedSymbols})
+      this.updateInformation()
     }
 
     componentWillReceiveProps = (newProps) => {
-        const symbolName = newProps.match.params.name
-        const symbol = this.props.symbols.filter(item => item.name === symbolName)[0]
+        this.updateInformation(newProps)
+    }
 
-        const relatedSymbols = this.props.symbols.filter(item => item.kind === symbol.kind && item.pantheons[0] === symbol.pantheons[0])
+    updateInformation = (props = this.props) => {
 
-        this.setState({symbol: symbol, relatedSymbols: relatedSymbols})
+                    const name = props.match.params.name
+                    const symbols = this.props.symbols.filter(item => item.name === name)
+                    const symbol = symbols.length > 0 ? symbols[0] : {}
+                    const relatedSymbols = symbol.name ? this.props.symbols.filter(item => item.kind === symbol.kind).slice(1, 30) : []
+
+              this.setState({symbol: symbol, relatedSymbols: relatedSymbols})
     }
 
     render() {
