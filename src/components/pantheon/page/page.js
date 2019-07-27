@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Row, Col } from 'react-bootstrap'
 
@@ -63,7 +62,7 @@ class PantheonPage extends React.Component {
 
             <ImageGallery item={item} />
 
-            <Collections item={item} usedKinds={this.state.usedKinds} createdKinds={this.state.createdKinds} />
+            <Collections usedKinds={this.state.usedKinds} createdKinds={this.state.createdKinds} />
 
             <Row className="forms">
                 <Col className=""><FormInsert item={item} key={item.name} formClass={"pantheons"} /></Col>

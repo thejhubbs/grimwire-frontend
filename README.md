@@ -1,6 +1,7 @@
 v 1.5- rehash code
 
 
+
 =====================================
 V2
 =====================================
@@ -21,6 +22,7 @@ V2
 9. DESIGN- better scroll things for pantheons list & image gallerys
 
 10. BUG- better fix redux flow so that page auto updates state and not hard reload
+-remove unnecessary state calls
 
 11. UPDATE- user protected & hidden forms
 
@@ -34,7 +36,6 @@ V2
 
 16. Update- Edit Connections
 17. Update- Delete actions
-
 
 
 

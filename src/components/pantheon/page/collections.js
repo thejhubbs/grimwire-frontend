@@ -8,7 +8,7 @@ class Collections extends React.Component {
   }
 
   render() {
-    const {item, createdKinds, usedKinds} = this.props
+    const {createdKinds, usedKinds} = this.props
     return <div>
         <h4>Created</h4>
         {createdKinds.map(item => <Link key={item.name} to={`/collection/${item.name}`}>{item.name}</Link>)}
