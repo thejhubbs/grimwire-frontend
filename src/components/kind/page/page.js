@@ -15,6 +15,8 @@ class KindPage extends React.Component {
         this.state = {
             kind: {},
             relatedSymbols: [],
+            createdBy: {},
+            usedBy: []
         }
     }
 
@@ -25,9 +27,14 @@ class KindPage extends React.Component {
         const id = props.match.params.id
         const kinds = this.props.kinds.filter(item => item.id == id)
         const kind = kinds.length > 0 ? kinds[0] : {}
-        const related = kind.name ? this.props.symbols.filter(item => item.id == kind.id) : []
-        this.setState({ kind: kind, relatedSymbols: related })
+        const relatedSymbols = kind.name ? this.props.symbols.filter(item => item.id == kind.id) : []
+        const createdBy = kind.name ? this.props.pantheons.filter(item => kind.originalPantheonId === item.id )[0] : {}
+        const usedBy = kind.name ? this.props.pantheons.filter(item => kind.featuredPantheonIds.indexOf(item.id) >= 0 ) : []
+
+        this.setState({ kind, relatedSymbols, createdBy, usedBy })
     }
+
+
 
     defaultSymbolWithInfo = () => {
         const item = this.state.kind
@@ -41,7 +48,7 @@ class KindPage extends React.Component {
         const item = this.state.kind
         return typeof item !== 'undefined' && Object.keys(item).length > 0 ? <div>
 
-            <BasicInfo item={item} />
+            <BasicInfo item={item} createdBy={this.state.createdBy} usedBy={this.state.usedBy} />
             <ImageGallery item={item} />
             <SymbolList item={item} relatedSymbols={this.state.relatedSymbols} />
 
@@ -57,7 +64,8 @@ class KindPage extends React.Component {
 const mapStateToProps = state => {
     return {
         kinds: state.kinds,
-        symbols: state.symbols
+        symbols: state.symbols,
+        pantheons: state.pantheons
     }
 }
 
