@@ -1,13 +1,14 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {Row, Col} from 'react-bootstrap'
+import FormInsert from '../../forms/insert'
 
 function Titles(props) {
     const conn = props.connections.filter(item => item.relationship === 5)
     return conn.length > 0 ? <div>
     <h3>Alternate Names & Titles</h3>
     {conn.map(item => <div key={item.connected}>
-        <Link to={`/symbol/${item.connected}`}>{item.connected} ({item.strength})</Link>
+        <Link to={`/symbol/${item.connected}`}>{item.connected} ({item.strength})</Link> <FormInsert item={item} formClass={"connections"} />
     </div>)}
     </div> : ""
 }
@@ -17,7 +18,7 @@ function Properties(props) {
     return conn.length > 0 ? <div>
     <h3>Properties & Dominions</h3>
     {conn.map(item => <div key={item.connected}>
-        <Link to={`/symbol/${item.connected}`}> {item.connected} ({item.strength}) </Link>
+        <Link to={`/symbol/${item.connected}`}> {item.connected} ({item.strength}) </Link> <FormInsert item={item} formClass={"connections"} />
     </div>)}
     </div> : ""
 }
@@ -26,7 +27,7 @@ function Related(props) {
     const conn = props.connections.filter(item => item.relationship === 2)
     return conn.length > 0 ? <div><h3>Family & Related</h3>
     {conn.map(item => <div key={item.connected}>
-        <Link to={`/symbol/${item.connected}`}>{item.connected} ({item.strength}) </Link>
+        <Link to={`/symbol/${item.connected}`}>{item.connected} ({item.strength}) </Link> <FormInsert item={item} formClass={"connections"} />
     </div>)}
 </div> : ""
 }
@@ -35,7 +36,7 @@ function Mentions(props) {
     const conn = props.connections.filter(item => item.relationship === 1)
     return conn.length > 0 ? <div><h3>Stories</h3>
     {conn.map(item => <div key={item.connected}>
-        <Link to={`/symbol/${item.connected}`}>{item.connected} ({item.strength}) </Link>
+        <Link to={`/symbol/${item.connected}`}>{item.connected} ({item.strength}) </Link> <FormInsert item={item} formClass={"connections"} />
     </div>)}
 </div> : ""
 }
@@ -45,7 +46,7 @@ function Sources(props) {
     return conn.length > 0 ? <div>
     <h3>Sources</h3>
     {conn.map(item => <div key={item.connected}>
-        <Link to={`/symbol/${item.connected}`}> {item.connected} ({item.strength}) </Link>
+        <Link to={`/symbol/${item.connected}`}> {item.connected} ({item.strength}) </Link> <FormInsert item={item} formClass={"connections"} />
     </div>)}
     </div> : ""
 }
@@ -58,7 +59,7 @@ function Attributes(props) {
     {conn.map(item => <div key={item.connected}>
         {
             props.symbols.filter(i => i.name === item.connected).map(j => <div key={j.name}>
-                {j.kind}: <Link to={`/symbol/${j.name}`}>{j.name} ({item.strength}) </Link>
+                {j.kind}: <Link to={`/symbol/${j.name}`}>{j.name} ({item.strength}) </Link> <FormInsert item={item} formClass={"connections"} />
             </div>)
         }
     </div>)}
