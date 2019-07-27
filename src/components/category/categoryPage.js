@@ -10,8 +10,8 @@ class CategoryPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            category: this.props.categories[0],
-            relatedKinds: [this.props.kinds[0]]
+            category: {},
+            relatedKinds: []
         }
     }
 
@@ -19,16 +19,17 @@ class CategoryPage extends React.Component {
     componentWillReceiveProps = (newProps) => { this.updatePage(newProps) }
 
     updatePage = (props = this.props) => {
-        const name = props.match.params.name
-        const categories = this.props.categories.filter(item => item.name === name)
+        const id = parseInt(props.match.params.id)
+        const categories = this.props.categories.filter(item => item.id === id)
         const category = categories.length > 0 ? categories[0] : {}
-        const related = category.name ? this.props.kinds.filter(item => item.category === category.name) : []
+        const related = category.name ? this.props.kinds.filter(item => category.kindIds.indexOf(item.id) >= 0) : []
+        console.log(id, categories, category, related)
         this.setState({category: category,relatedKinds: related})
     }
 
     render() {
         const item = this.state.category
-        return typeof symbols !== 'undefined' && Object.keys(item).length > 0 ? <div>
+        return typeof item !== 'undefined' && Object.keys(item).length > 0 ? <div>
 
             <div className="category-info">
                 <h1>{item.name}</h1>
@@ -45,7 +46,8 @@ class CategoryPage extends React.Component {
                     </Col>
                     <Col lg={4}>
                         <h4>Collections</h4>
-                        {item.kinds.map(i => <Link key={i} to={`/collection/${i}`}>{i}</Link>)}
+
+                        {this.state.relatedKinds.map(i => <Link key={i.id} to={`/collection/${i.id}`}>{i.name}</Link>)}
                     </Col>
                 </Row>
 
