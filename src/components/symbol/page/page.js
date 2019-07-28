@@ -16,7 +16,8 @@ class SymbolPage extends React.Component {
         this.state = {
             symbol: {},
             connections: [],
-            activeConnection: defaultConnection
+            activeConnection: defaultConnection,
+            pantheons: []
         }
     }
 
@@ -24,12 +25,15 @@ class SymbolPage extends React.Component {
     componentWillReceiveProps = (newProps) => { this.updateSymbolAndConnections(newProps) }
     updateSymbolAndConnections = (props = this.props) => {
 
-        const name = props.match.params.name
-        const symbols = this.props.symbols.filter(item => item.name === name)
-        const symbol = symbols.length > 0 ? symbols[0] : {}
-        const connections = symbol.name ? this.props.connections.filter(item => name === item.main) : []
+        const id = props.match.params.id
+        const symbols = this.props.symbols.filter(item => item.id === id)
 
-        this.setState({ symbol: symbol, connections: connections })
+        const symbol = symbols.length > 0 ? symbols[0] : {}
+
+        const connections = symbol.name ? this.props.connections.filter(item => id === item.mainId) : []
+        const pantheons = symbol.name ? this.props.pantheons.filter(item => symbol.pantheonIds.indexOf(id) >= 0) : []
+        console.log("Connections:", connections)
+        this.setState({ symbol, connections, pantheons })
     }
 
     render() {
@@ -38,9 +42,9 @@ class SymbolPage extends React.Component {
         return <div>
           { typeof item !== 'undefined' && Object.keys(item).length > 0 ?
             <div>
-              <BasicInfo item={item} />
+              <BasicInfo item={item} pantheons={this.state.pantheons}/>
               <ImageGallery item={item} />
-              <Connections item={item} connections={this.state.connections} symbols={this.props.symbols}/>
+              <Connections item={item} connections={this.state.connections} symbols={this.props.symbols} kinds={this.props.kinds}  />
 
                <Row className="forms">
                    <Col><FormInsert item={item} key={item.name} formClass={"symbols"} /></Col>
@@ -58,7 +62,8 @@ const mapStateToProps = state => {
     return {
         symbols: state.symbols,
         connections: state.connections,
-        kinds: state.kinds
+        kinds: state.kinds,
+        pantheons: state.pantheons
     }
 }
 

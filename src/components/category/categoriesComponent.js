@@ -16,10 +16,10 @@ class CategoriesComponent extends React.Component {
             {
                 this.props.categories.map(category => <Col key={category.name} lg={3}>
                     <br />
-                    <h5><Link to={`/category/${category.name}`}>{category.name}</Link></h5>
+                    <h5><Link to={`/category/${category.id}`}>{category.name}</Link></h5>
                     {category.description}<br />
-                    {category.kinds.map(kind => <div key={kind}>
-                            -<Link  to={`/collection/${kind}`}>{kind}</Link><br />
+                  {this.props.kinds.filter(item => category.kindIds.indexOf(item.id) >= 0).map(kind => <div key={kind.id}>
+                            -<Link  to={`/collection/${kind.id}`}>{kind.name}</Link><br />
                         </div>)}
                         <br />
                 </Col>)

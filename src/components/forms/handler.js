@@ -1,4 +1,4 @@
-import React from 'react'
+  import React from 'react'
 import {Form} from 'react-bootstrap'
 import {connect} from 'react-redux'
 import {addItem, updateItem, deleteItem} from '../../redux/actions'
@@ -9,7 +9,7 @@ class FormHandler extends React.Component {
     this.state = {
       item: props.item,
       formClass: props.formClass,
-      existing: typeof props.item.name !== 'undefined' ? props.item.name !== "" : props.item.connected !== ""
+      existing: props.item.id ? true : false
     }
   }
 
@@ -23,10 +23,23 @@ class FormHandler extends React.Component {
   }
 
   handleArrayChange = (e) => {
+    const set = e.target.name.split('-')
+    const field = set[0]
+    const index = set[1]
+    const value = e.target.value
+    const array = this.state.item[field]
+    if(value === "") {
+      array.splice(index, 1)
+    } else if(value.indexOf(';') > -1) {
+      array[index] = value.split(';')[0]
+      array[array.length] = ""
+    } else{
+      array[index] = value
+    }
       this.setState({
           item: {
               ...this.state.item,
-              [e.target.name]: e.target.value.split(';')
+              [field]: array
           }
       })
   }
@@ -62,10 +75,12 @@ class FormHandler extends React.Component {
       { this.state.existing ? "Edit" : "Add"}
       { Object.entries(this.state.item).map(itemField => <div key={itemField[0]}>
 
+
+
                 {
-                  typeof itemField[1] === 'string' ?
+                  typeof itemField[1] === 'string' && itemField[0] !== 'id' && itemField[0].indexOf('Text') === -1  ?
                           <Form.Group>
-                    <Form.Label>{ itemField[0] }</Form.Label>
+                    <Form.Label>{ itemField[0].replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); }) }</Form.Label>
                     <Form.Control onChange={this.handleChange} type="text"
                     name={ itemField[0] } placeholder={ itemField[0] }
                     value={this.state.item[ itemField[0] ]} />
@@ -73,25 +88,26 @@ class FormHandler extends React.Component {
                   : ""
                 }
 
-
-                    {
-                     Number.isInteger(itemField[1]) ?
-                             <Form.Group>
-                        <Form.Label>{ itemField[0] }</Form.Label>
-                        <Form.Control onChange={this.handleChange} type="number"
-                        name={ itemField[0] } placeholder={ itemField[0] }
-                        value={this.state.item[ itemField[0] ]} />
-                        </Form.Group>
-                      : ""
-                    }
+                {
+                  itemField[0].indexOf('Text') >= 0 ?
+                  <Form.Group>
+                    <Form.Label>{ itemField[0].replace('Text', '').replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); }) }</Form.Label>
+                    <Form.Control onChange={this.handleChange} type="text"
+                      name={ itemField[0] } placeholder={ itemField[0] }
+                      value={this.state.item[ itemField[0] ]} />
+                  </Form.Group>
+                  : ""
+                }
 
                 {
                   Array.isArray(itemField[1]) ?
                   <Form.Group>
-                      <Form.Label>{ itemField[0] }</Form.Label>
-                      <Form.Control onChange={this.handleArrayChange} type="text"
-                      name={ itemField[0] } placeholder={ itemField[0] }
-                      value={this.state.item[ itemField[0] ].join(';')} />
+                      <Form.Label>{ itemField[0].replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); }) }</Form.Label>
+
+                      { this.state.item[itemField[0]].length > 0 ? this.state.item[ itemField[0] ].map( (item, index) => <span key={index}>
+                        <Form.Control onChange={this.handleArrayChange} type='text' value={item} name={`${itemField[0]}-${index}`} />
+                        </span> ) : <Form.Control onChange={this.handleArrayChange} type='text' name={`${itemField[0]}-${0}`} />}
+
                       </Form.Group>
                   : ""
                 }
@@ -102,7 +118,7 @@ class FormHandler extends React.Component {
                      <div>
                       <h5>Collection Related Information</h5>
                       { Object.entries(this.state.item.info).map(i => <Form.Group key={i[0]}>
-                          <Form.Label>{i[0]}</Form.Label>
+                          <Form.Label>{i[0].replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); })}</Form.Label>
                           <Form.Control
                               onChange={this.handleInfoChange}
                               name={i[0]} type="text" placeholder={i[0]}
@@ -132,4 +148,13 @@ const mapDispatchToProps = {
     deleteItem
 }
 
-export default connect(null, mapDispatchToProps)(FormHandler)
+const mapStateToProps = (state) => { return {
+  symbols: state.symbols,
+  connections: state.connections,
+  kinds: state.kinds,
+  pantheons: state.pantheons,
+  categories: state.categories
+}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FormHandler)
