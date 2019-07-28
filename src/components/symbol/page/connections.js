@@ -10,7 +10,7 @@ function Display(props) {
   const title = props.title
 
   const conn = p.connections.filter(item => item.relationship === number)
-  
+
   return conn.length > 0 ? <div>
   <h3>{title}</h3>
   {conn.map(item => <div key={item.connectedId}>
@@ -25,7 +25,6 @@ function Display(props) {
 }
 
 export default function Connections(props){
-  console.log("Props in main:", props)
   return <Row>
       <Col xs={12} lg={6} >
         <Display props={props} number={"5"} title={"Alternate Names & Titles"} />

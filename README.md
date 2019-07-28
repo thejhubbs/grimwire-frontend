@@ -2,7 +2,13 @@
 V.9 ToDo
 =====================================
 --Broken functionality--
-1. Revert to ID based nav and uniqueness
+1. Revert to ID based nav and uniqueness; update & handle forms
+--mostly through
+--double check "-Info" to "-Text" changes
+--introduce multifield +/- for handleArrayChange
+--introduce nice selection for forms ("-Id(s)")
+--introduce textarea for -Text fields
+
 
 --Extended functionality--
 xx 1. UPDATE- Possible Division for Kinds (Tarot- Major, Minor- Fire, Minor- Air, etc.; Hebrew- Mother, Single, Double)

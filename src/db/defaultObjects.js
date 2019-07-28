@@ -53,7 +53,7 @@ export const defaultPantheon = {
   }
 
 export const defaultCategory = {
-    id: "0",
+    id: "",
     name: "",
     description: "",
     kindIds: [],
