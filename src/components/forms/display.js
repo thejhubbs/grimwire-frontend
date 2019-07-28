@@ -19,7 +19,7 @@ class DisplayForm extends React.Component {
 
     return <div>
       <button onClick={this.toggleForm}>
-        { item.name ? `Edit ${item.name}` : `New` } ({this.state.showForm ? "-" : "+"})
+        { item.name || item.connected ? `Edit ${item.name ? item.name : ""}` : `New` } ({this.state.showForm ? "-" : "+"})
       </button>
       <div className="theForm">
           {this.state.showForm ? this.props.children : ""}

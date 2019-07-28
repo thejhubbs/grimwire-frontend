@@ -24,7 +24,7 @@ class BasicInfo extends React.Component {
 
     {this.props.relatedSymbols.map(i => <Row key={i.name}>
         {item.specificOrder ? <Col>{i.number}. </Col> : ""}
-        <Col><Link to={`/symbol/${i.name}`}>{i.name}</Link></Col>
+        <Col><Link to={`/symbol/${i.id}`}>{i.name}</Link></Col>
         {i.info ?
             Object.values(i.info).map((key) => <Col key={key} >{key}</Col>) : ""}
         <Col><img alt={i.name} src={i.thumbnail} height="64px" /></Col>

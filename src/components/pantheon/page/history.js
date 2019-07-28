@@ -20,20 +20,20 @@ class BasicInfo extends React.Component {
     const {item, history, offshoots} = this.props
 
     return <div>
-      <p>{this.yearRange(item)}</p>
+      <p> { this.yearRange(item) } </p>
 
             History:
-            { history.length > 0 ? this.state.history.map(item => <span key={item.name}>
-                <Link to={`/pantheon/${item.name}`}>{item.name}</Link>
+            { history.length > 0 ? this.props.history.map(item => <span key={item.name}>
+                <Link to={`/pantheon/${item.id}`}>{item.name}</Link>
             </span>) : "N/a" }<br />
 
             Offshoots:
-            { offshoots.length > 0 ? this.state.offshoots.map(item => <span key={item.name}>
-                <Link to={`/pantheon/${item.name}`}>{item.name}</Link>
+            { offshoots.length > 0 ? this.props.offshoots.map(item => <span key={item.name}>
+                <Link to={`/pantheon/${item.id}`}>{item.name}</Link>
             </span>) : "N/a"}<br />
 
     </div>
   }
 }
-
+ 
 export default BasicInfo

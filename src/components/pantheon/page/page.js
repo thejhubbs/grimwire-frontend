@@ -14,7 +14,7 @@ class PantheonPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            pantheon: this.props.pantheons[0],
+            pantheon: {},
             createdKinds: [],
             usedKinds: [],
             history: [],
@@ -26,27 +26,29 @@ class PantheonPage extends React.Component {
     componentWillReceiveProps = (newProps) => {this.updateInfo(newProps);}
 
       updateInfo = (props = this.props) => {
-        const name = props.match.params.name
-        const pantheon = this.setPantheon(name)
+        const id = props.match.params.id
+        const pantheon = this.setPantheon(id)
         this.setState({
             pantheon: pantheon,
-            createdKinds: this.getKinds(name, "Created"),
-            usedKinds: this.getKinds(name, "Used"),
-            history: this.props.pantheons.filter(item => pantheon.history.indexOf(item.name) >= 0),
-            offshoots: this.props.pantheons.filter(item => item.history.indexOf(name) >= 0)
+            createdKinds: this.getKinds(id, "Created"),
+            usedKinds: this.getKinds(id, "Used"),
+            history: this.getHistory(pantheon),
+            offshoots: this.props.pantheons.filter(item => item.historyIds.indexOf(id) >= 0)
         })
     }
 
-    setPantheon = (name) => {
-        return this.props.pantheons.filter(item => item.name === name)[0]
+    setPantheon = (id) => {
+        return this.props.pantheons.filter(item => item.id == id)[0]
     }
 
-    getKinds(name, type) {
+    getHistory(pantheon) { return pantheon ? this.props.pantheons.filter(item => pantheon.historyIds.indexOf(item.id) >= 0) : [] }
+
+    getKinds(id, type) {
         switch (type) {
             case "Created":
-                return this.props.kinds.filter(item => name === item.originalPantheon)
+                return this.props.kinds.filter(item => id === item.originalPantheonId)
             case "Used":
-                return this.props.kinds.filter(item => item.featuredPantheons.indexOf(name) >= 0)
+                return this.props.kinds.filter(item => item.featuredPantheonIds.indexOf(id) >= 0)
             default:
                 return "ERROR"
         }
@@ -55,21 +57,20 @@ class PantheonPage extends React.Component {
 
     render() {
         const item = this.state.pantheon
-        return <div>
-            <BasicInfo item={item}>
-              <History item={item} history={this.state.history} offshoots={this.state.offshoots} />
-            </BasicInfo>
+        return typeof item !== 'undefined' && Object.keys(item).length > 0 ? <div>
+                <BasicInfo item={item}>
+                  <History item={item} history={this.state.history} offshoots={this.state.offshoots} />
+                </BasicInfo>
 
-            <ImageGallery item={item} />
+                <ImageGallery item={item} />
 
-            <Collections usedKinds={this.state.usedKinds} createdKinds={this.state.createdKinds} />
+                <Collections usedKinds={this.state.usedKinds} createdKinds={this.state.createdKinds} />
 
-            <Row className="forms">
-                <Col className=""><FormInsert item={item} key={item.name} formClass={"pantheons"} /></Col>
-                <Col className=""><FormInsert item={defaultKind} formClass={"kinds"} /></Col>
-            </Row>
-
-        </div>
+                <Row className="forms">
+                    <Col className=""><FormInsert item={item} key={item.id} formClass={"pantheons"} /></Col>
+                    <Col className=""><FormInsert item={defaultKind} formClass={"kinds"} /></Col>
+                </Row>
+            </div> : "Loading... Or object not found."
 
     }
 }

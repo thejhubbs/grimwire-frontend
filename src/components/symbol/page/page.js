@@ -10,37 +10,41 @@ import Connections from './connections'
 
 import {defaultConnection} from '../../../db/defaultObjects'
 
-
-
 class SymbolPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             symbol: {},
             connections: [],
-            activeConnection: defaultConnection
+            activeConnection: defaultConnection,
+            pantheons: []
         }
     }
 
     componentDidMount = () => { this.updateSymbolAndConnections() }
     componentWillReceiveProps = (newProps) => { this.updateSymbolAndConnections(newProps) }
     updateSymbolAndConnections = (props = this.props) => {
-        const name = props.match.params.name
-        this.setState({
-            symbol: this.props.symbols.filter(item => item.name === name)[0],
-            connections: this.props.connections.filter(item => name === item.main)
-        })
+
+        const id = props.match.params.id
+        const symbols = this.props.symbols.filter(item => item.id === id)
+
+        const symbol = symbols.length > 0 ? symbols[0] : {}
+
+        const connections = symbol.name ? this.props.connections.filter(item => id === item.mainId) : []
+        const pantheons = symbol.name ? this.props.pantheons.filter(item => symbol.pantheonIds.indexOf(id) >= 0) : []
+        console.log("Connections:", connections)
+        this.setState({ symbol, connections, pantheons })
     }
 
     render() {
         const item = this.state.symbol
         const activeConnection = this.state.activeConnection
         return <div>
-          { item.name ?
+          { typeof item !== 'undefined' && Object.keys(item).length > 0 ?
             <div>
-              <BasicInfo item={item} />
+              <BasicInfo item={item} pantheons={this.state.pantheons}/>
               <ImageGallery item={item} />
-              <Connections item={item} connections={this.state.connections} symbols={this.props.symbols}/>
+              <Connections item={item} connections={this.state.connections} symbols={this.props.symbols} kinds={this.props.kinds}  />
 
                <Row className="forms">
                    <Col><FormInsert item={item} key={item.name} formClass={"symbols"} /></Col>
@@ -49,7 +53,7 @@ class SymbolPage extends React.Component {
 
 
             </div>
-            : "Loading" }
+            : "Loading or not found" }
          </div>
     }
 }
@@ -58,7 +62,8 @@ const mapStateToProps = state => {
     return {
         symbols: state.symbols,
         connections: state.connections,
-        kinds: state.kinds
+        kinds: state.kinds,
+        pantheons: state.pantheons
     }
 }
 

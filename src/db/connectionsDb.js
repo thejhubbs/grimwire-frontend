@@ -15,43 +15,30 @@
 
 export default [
     {
-        main: "The Fool",
-        connected: "Aleph",
-        relationship: 3, 
-        strength: 10,
-        description: "",
-        aboutInfo: ""
+        id: "1",
+        mainId: "1",
+        connectedId: "2",
+        relationship: "3",
+        strength: "10",
+        description: "How they are connected.",
+        aboutText: "A wall of text"
     },
     {
-        main: "The Fool",
-        connected: "Parabrahman",
-        relationship: 3,
-        strength: 10,
-        description: "",
-        aboutInfo: ""
+        id: "2",
+        mainId: "2",
+        connectedId: "3",
+        relationship: "3",
+        strength: "10",
+        description: "How they are connected.",
+        aboutText: "A wall of text"
     },
     {
-        main: "The Fool",
-        connected: "Travel, destination, journeys",
-        relationship: 4,
-        strength: 10,
-        description: "The most accurate mundane explanation of the card",
-        aboutInfo: ""
-    },
-    {
-        main: "The Fool",
-        connected: "Book of Thoth",
-        relationship: 0, 
-        strength: 10,
-        description: "",
-        aboutInfo: ""
-    },
-    {
-        main: "The Fool",
-        connected: "Liber 777",
-        relationship: 0, 
-        strength: 10,
-        description: "",
-        aboutInfo: ""
+        id: "3",
+        mainId: "1",
+        connectedId: "3",
+        relationship: "3",
+        strength: "10",
+        description: "How they are connected.",
+        aboutText: "A wall of text"
     },
 ]

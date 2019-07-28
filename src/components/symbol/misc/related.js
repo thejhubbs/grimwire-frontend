@@ -13,32 +13,34 @@ class RelatedSymbols extends React.Component {
     }
 
     componentDidMount = () => {
-        const symbolName = this.props.match.params.name
-        const symbol = this.props.symbols.filter(item => item.name === symbolName)[0]
-
-        const relatedSymbols = this.props.symbols.filter(item => item.kind === symbol.kind)
-
-        this.setState({symbol: symbol, relatedSymbols: relatedSymbols})
+      this.updateInformation()
     }
-    
+
     componentWillReceiveProps = (newProps) => {
-        const symbolName = newProps.match.params.name
-        const symbol = this.props.symbols.filter(item => item.name === symbolName)[0]
+        this.updateInformation(newProps)
+    }
 
-        const relatedSymbols = this.props.symbols.filter(item => item.kind === symbol.kind)
+    updateInformation = (props = this.props) => {
 
-        this.setState({symbol: symbol, relatedSymbols: relatedSymbols})
+                    const name = props.match.params.name
+                    const symbols = this.props.symbols.filter(item => item.name === name)
+                    const symbol = symbols.length > 0 ? symbols[0] : {}
+                    const relatedSymbols = symbol.name ? this.props.symbols.filter(item => item.kind === symbol.kind).slice(1, 30) : []
+
+              this.setState({symbol: symbol, relatedSymbols: relatedSymbols})
     }
 
     render() {
-        return <div>
+        const symbols = this.state.relatedSymbols
+        return typeof symbols !== 'undefined' && symbols.length > 0 ? <div>
             <h5>More {this.state.symbol.kind}</h5>
             {
-                this.state.relatedSymbols.map(item => <div  key={item.name} >
-                    <Link to={`/symbol/${item.name}`}>{item.name}</Link> <br />
-                </div>)
+                symbols.map(item => <span  key={item.name} >
+                    <Link to={`/symbol/${item.name}`}>{item.name}</Link>
+                      { symbols.length < 13 ? <br /> : "" }
+                </span>)
             }
-        </div>
+        </div> : ""
     }
 }
 

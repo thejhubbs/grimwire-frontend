@@ -1,41 +1,37 @@
-v 1.5- rehash code
-
-
-
 =====================================
-V2
+V.9 ToDo
 =====================================
-1. NEW- UI Themes
+--Broken functionality--
+1. Sidebar links
 
-2. NEW- Time Calculators {Moon, sun, day of the week, etc. zodiac}
 
-3. UPDATE- user edit- anytime a change through a form is made, (except for user) log the results before and after and the user who changed it. Clear after x days, or with admin approval.
+--Extended functionality--
+1. UPDATE- Possible Division for Kinds (Tarot- Major, Minor- Fire, Minor- Air, etc.; Hebrew- Mother, Single, Double)
+2. UPDATE- Images array to image gallery array, with a description/title. Better scroll things for image galleries
+3. UPDATE- --double check "-Info" to "-Text" changes
+--introduce nice selection for forms ("-Id(s)")
+--introduce textarea for -Text fields
 
-4. NEW- Pantheon map history display
+--Design--
+1. DESIGN- Mobile Version
+2. DESIGN- Site design
 
-5. UPDATE- Possible Division for Kinds (Tarot- Major, Minor- Fire, Minor- Air, etc.; Hebrew- Mother, Single, Double)
+--Complete functionality--
+1. SUBSTANCE- Real backend
+2. Substance- better fix redux flow so that page auto updates state and not hard reload
+-remove unnecessary state calls&stores
 
-6. UPDATE- Images array to image gallery array, with a description/title.
+--New functionality--
+1. NEW- Pantheon map history display
+2. NEW- UI Themes
+3. NEW- Time Calculators {Moon, sun, day of the week, etc. zodiac}
 
-7. DESIGN- Mobile Version
 
-9. DESIGN- better scroll things for pantheons list & image gallerys
 
-10. BUG- better fix redux flow so that page auto updates state and not hard reload
--remove unnecessary state calls
 
-11. UPDATE- user protected & hidden forms
 
-12. BUG- Random symbols page pulling doubles
 
-13. SUBSTANCE- Real backend
 
-14. DESIGN- Site design
-
-15. DESIGN- limit on sidebar lenghts
-
-16. Update- Edit Connections
-17. Update- Delete actions
 
 
 

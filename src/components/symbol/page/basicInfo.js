@@ -19,7 +19,7 @@ class BasicInfo extends React.Component {
               <h4>Basic Information</h4>
               <i>Also Spelled: {item.otherSpellings.join(", ")} </i>
               <p>Collection: <Link to={`/collection/${item.kind}`}>{item.kind}</Link></p>
-              <p>Used by: {item.pantheons.map(i => <Link key={i} to={`/pantheon/${i}`}> {i} </Link>)}</p>
+              <p>Used by: {this.props.pantheons.map(i => <Link key={i.id} to={`/pantheon/${i.id}`}> {i.name} </Link>)}</p>
               <p>Short Description: {item.description}</p>
           </Col>
           <Col lg={4}>
@@ -30,9 +30,9 @@ class BasicInfo extends React.Component {
 
       <div>
           <h4>Background:</h4>
-          {item.backgroundInfo}
+          {item.backgroundText}
           <h4>Meaning:</h4>
-          {item.meaningInfo}
+          {item.meaningText}
       </div>
 
     </div>

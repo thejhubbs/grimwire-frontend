@@ -3,13 +3,13 @@ import React from 'react'
 class Gallery extends React.Component {
   constructor(props) {
     super(props)
-    this.state={
-      item: props.item,
+    this.state = {
+      
     }
   }
 
   render() {
-    const item = this.state.item
+    const item = this.props.item
     return <div className="image-gallery">
         <hr />
         <h4>Images:</h4>

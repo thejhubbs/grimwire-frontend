@@ -1,63 +1,62 @@
 export const defaultSymbol = {
-    id: "",
+    id: 0,
     name: "",
     pantheonIds: [],
-    kindId: "",
-    otherSpellings: [],
+    kind: "",
+    otherSpellings: "",
     description: "",
     thumbnail: "",
     images: [],
-    backgroundText: "",
-    meaningText:"",
-    number: "",
+    backgroundInfo: "",
+    meaningInfo:"",
+    number: null,
     info: {}
 }
 
 export const defaultConnection = {
-      id: "",
-      mainId: "",
-      connectedId: "",
-      relationship: "",
-      strength: "",
+      id: 0,
+      mainId: 0,
+      connectedId: 0,
+      relationship: 0,
+      strength: 0,
       description: "",
-      aboutText: ""
+      aboutInfo: ""
 }
 
 export const defaultKind = {
-    id: "",
+    id: 0,
     name: "",
-    originalPantheonId: "",
+    originalPantheonId: 0,
     featuredPantheonIds: [],
-    theoryText: "",
-    historyText: "",
+    theoryInfo: "",
+    historyInfo: "",
     description: "",
-    totalNumber: "",
-    specificOrder: "false",
+    totalNumber: null,
+    specificOrder: false,
     thumbnail: "",
     images: [],
     extraInfoDefault: {}
 }
 
 export const defaultPantheon = {
-    id: "",
+    id: 0,
     name: "",
-    overviewText: "",
-    historyText: "",
-    cultureText: "",
+    overviewInfo: "",
+    historyInfo: "",
+    cultureInfo: "",
     description: "",
-    startYear: "0",
-    endYear: "0",
+    startYear: 0,
+    endYear: 0,
     historyIds: [],
     thumbnail: "",
     images: []
   }
 
 export const defaultCategory = {
-    id: "",
+    id: 0,
     name: "",
     description: "",
     kindIds: [],
-    prerequisiteIds: [],
     overviewText: "",
     sourcesText: "",
 }

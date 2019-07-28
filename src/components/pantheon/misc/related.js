@@ -23,9 +23,16 @@ class RelatedPantheons extends React.Component {
 
     updateInfo = (props = this.props) => {
         const pantheonName = props.match.params.name
-        const pantheon = this.props.pantheons.filter(item => item.name === pantheonName)[0]
-        const history = this.props.pantheons.filter(item => pantheon.history.indexOf(item.name) >= 0)
-        const offshoots = this.props.pantheons.filter(item => item.history.indexOf(pantheonName) >= 0)
+
+        const pantheons = this.props.pantheons.filter(item => item.name === pantheonName)
+        var pantheon = {}
+        var history = [], offshoots = []
+        if(pantheons.length === 1) {
+          pantheon = pantheons[0]
+          history = this.props.pantheons.filter(item => pantheon.history.indexOf(item.name) >= 0)
+          offshoots = this.props.pantheons.filter(item => item.history.indexOf(pantheonName) >= 0)
+        }
+
 
         this.setState({pantheon, history, offshoots})
     }
@@ -41,7 +48,7 @@ class RelatedPantheons extends React.Component {
             { this.state.offshoots.map(item => <div key={item.name} >
                 <Link to={`/pantheon/${item.name}`}>{item.name}</Link><br />
             </div>)}
-            
+
         </div>
     }
 }
