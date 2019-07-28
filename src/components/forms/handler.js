@@ -58,6 +58,7 @@ class FormHandler extends React.Component {
 
 
   submitForm = (e) => {
+    e.preventDefault();
       this.state.existing ?
           this.props.updateItem(this.state.item, this.state.formClass) :
           this.props.addItem(this.state.item, this.state.formClass)

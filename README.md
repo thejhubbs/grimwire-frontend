@@ -2,22 +2,17 @@
 V.9 ToDo
 =====================================
 --Broken functionality--
-1. Revert to ID based nav and uniqueness; update & handle forms
---mostly through
---double check "-Info" to "-Text" changes
---introduce multifield +/- for handleArrayChange
---introduce nice selection for forms ("-Id(s)")
---introduce textarea for -Text fields
+1. Sidebar links
 
 
 --Extended functionality--
-xx 1. UPDATE- Possible Division for Kinds (Tarot- Major, Minor- Fire, Minor- Air, etc.; Hebrew- Mother, Single, Double)
+1. UPDATE- Possible Division for Kinds (Tarot- Major, Minor- Fire, Minor- Air, etc.; Hebrew- Mother, Single, Double)
 2. UPDATE- Images array to image gallery array, with a description/title. Better scroll things for image galleries
-3. UPDATE- user protected & hidden forms incorporate redux store variable w/o 100% auth process
-4. UPDATE- user edit- anytime a change through a form is made, (except for user) log the results before and after and the user who changed it. Clear after x days, or with admin approval.
+3. UPDATE- --double check "-Info" to "-Text" changes
+--introduce nice selection for forms ("-Id(s)")
+--introduce textarea for -Text fields
 
 --Design--
-2. DESIGN- Form design are horrible
 1. DESIGN- Mobile Version
 2. DESIGN- Site design
 

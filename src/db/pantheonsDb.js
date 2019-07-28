@@ -18,7 +18,7 @@ export default [
         overviewText: "",
         historyText: "i want to add some history info",
         cultureText: "",
-        description: "The ancient greeks, a polytheistic religion",
+        description: "The ancient hebrews, a monotheistic religion",
         startYear: "-400",
         endYear: "200",
         historyIds: ["1"],
