@@ -40,14 +40,47 @@ a {
   text-decoration:none;
 }
 
-.main-page, .side-bar {
-  padding:20px;
-  min-height:100vh;
+.main-page {
+  background-color: $tGreyColor;
 }
 
-.main-page {
+.pageCTA {
+  background: rgba(0,0,0,.6);
+  min-height:100vh;
+  margin:0;
+  h1 { font-size: 72px; }
+  display:flex;
+  align-items: center;
+  justify-content:center;
+}
 
-  background-color: $tGreyColor;
+.tpBlackBg {
+  background: rgba(0,0,0,.6);
+  padding:20px;
+
+}
+
+.divider {
+  box-sizing: border-box;
+  height:6px;
+  background-color:$secondaryColor;
+  border-top:2px solid lighten($secondaryColor, 5%);
+  border-bottom:2px solid darken($secondaryColor, 5%);
+}
+
+.reverse-divider {
+  box-sizing: border-box;
+  height:6px;
+  background-color:$secondaryColor;
+  border-bottom:2px solid lighten($secondaryColor, 5%);
+  border-top:2px solid darken($secondaryColor, 5%);
+}
+
+.indexBar {
+  padding: 20px;
+  background:linear-gradient( darken($secondaryColor, 4%) 0%, lighten($secondaryColor, 2%) 20%, darken($secondaryColor, 0%) 30%, darken($secondaryColor, 2%) 60%, darken($secondaryColor, 6%) 90%);
+  h3 { margin: 0; padding: 20px 0 10px;}
+  margin:0;
 }
 
 .header {
@@ -77,7 +110,8 @@ a {
 }
 
 .footer {
-  background-color:$secondaryColor;
+  background-color:darken($secondaryColor, 7%);
+  padding:40px;
 }
 
 h1, .header h3 {
