@@ -16,8 +16,7 @@ class BasicInfo extends React.Component {
     <Row>
         {item.specificOrder ? <Col>#</Col> : ""}
         <Col>Name</Col>
-        {this.props.relatedSymbols[0] && this.props.relatedSymbols[0].info ?
-            Object.keys(this.props.relatedSymbols[0].info).map((key) => <Col key={key} >{key}</Col>) : ""}
+        { Object.entries( item.extraInfoDefault ).map( (entry) => <Col key={entry[0]}> {entry[0]} </Col> ) }
         <Col>Thumbnail</Col>
     </Row>
 
@@ -26,7 +25,7 @@ class BasicInfo extends React.Component {
         {item.specificOrder ? <Col>{i.number}. </Col> : ""}
         <Col><Link to={`/symbol/${i.id}`}>{i.name}</Link></Col>
         {i.info ?
-            Object.values(i.info).map((key) => <Col key={key} >{key}</Col>) : ""}
+            Object.entries( item.extraInfoDefault ).map( (entry) => <Col key={entry[0]}> {  i.info[entry[0]]  } </Col> ) : ""}
         <Col><img alt={i.name} src={i.thumbnail} height="64px" /></Col>
     </Row>)}
     </div>

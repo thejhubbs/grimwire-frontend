@@ -17,7 +17,8 @@ class SymbolPage extends React.Component {
             symbol: {},
             connections: [],
             activeConnection: defaultConnection,
-            pantheons: []
+            pantheons: [],
+            kind: {}
         }
     }
 
@@ -29,11 +30,12 @@ class SymbolPage extends React.Component {
         const symbols = this.props.symbols.filter(item => item.id === id)
 
         const symbol = symbols.length > 0 ? symbols[0] : {}
+        const kind = symbol.kindId ? this.props.kinds.filter(item => symbol.kindId === item.id)[0] : {}
 
         const connections = symbol.name ? this.props.connections.filter(item => id === item.mainId) : []
         const pantheons = symbol.name ? this.props.pantheons.filter(item => symbol.pantheonIds.indexOf(id) >= 0) : []
         console.log("Connections:", connections)
-        this.setState({ symbol, connections, pantheons })
+        this.setState({ symbol, connections, pantheons, kind })
     }
 
     render() {
@@ -42,7 +44,7 @@ class SymbolPage extends React.Component {
         return <div>
           { typeof item !== 'undefined' && Object.keys(item).length > 0 ?
             <div>
-              <BasicInfo item={item} pantheons={this.state.pantheons}/>
+              <BasicInfo item={item} pantheons={this.state.pantheons} kind={this.state.kind} />
               <ImageGallery item={item} />
               <Connections item={item} connections={this.state.connections} symbols={this.props.symbols} kinds={this.props.kinds}  />
 

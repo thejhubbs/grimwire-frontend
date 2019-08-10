@@ -10,6 +10,8 @@ class BasicInfo extends React.Component {
 
   render() {
     const item = this.props.item
+    const kind = this.props.kind
+
     return <div>
       <img src={item.thumbnail} alt={item.name}  width="100px" />
       <h1>{item.number ? item.number + ". " : ''} {item.name}</h1>
@@ -18,7 +20,10 @@ class BasicInfo extends React.Component {
           <Col lg={8}>
               <h4>Basic Information</h4>
               <i>Also Spelled: {item.otherSpellings.join(", ")} </i>
-              <p>Collection: <Link to={`/collection/${item.kind}`}>{item.kind}</Link></p>
+              { kind.id ?
+                <p>Collection: <Link to={ `/collection/${kind.id}` }> {kind.name} </Link></p>
+                :""
+              }
               <p>Used by: {this.props.pantheons.map(i => <Link key={i.id} to={`/pantheon/${i.id}`}> {i.name} </Link>)}</p>
               <p>Short Description: {item.description}</p>
           </Col>

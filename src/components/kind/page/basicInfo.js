@@ -19,11 +19,15 @@ class BasicInfo extends React.Component {
     <Row>
         <Col lg={4}>
             <p>{item.description}</p>
+            { createdBy ?
             <p>Created By: <Link to={`/pantheon/${createdBy.id}`}>{createdBy.name}</Link></p>
-            <p>Used By:
-    {usedBy.map(i =>
-                <Link key={i.id} to={`/pantheon/${i.id}`}>{i.name}</Link>
-            )}</p>
+            : "" }
+            { usedBy ?
+              <p>Used By:
+                {usedBy.map(i =>
+                  <Link key={i.id} to={`/pantheon/${i.id}`}>{i.name}</Link>
+                )}</p>
+              :""}
         </Col>
         <Col lg={8}>
             <h4>Theory & Application</h4>

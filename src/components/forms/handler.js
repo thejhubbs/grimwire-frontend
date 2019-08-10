@@ -1,7 +1,14 @@
-  import React from 'react'
+import React from 'react'
 import {Form} from 'react-bootstrap'
 import {connect} from 'react-redux'
 import {addItem, updateItem, deleteItem} from '../../redux/actions'
+import { withRouter } from "react-router-dom";
+
+
+import ArrayField from './fieldTypes/array'
+import IdListField from './fieldTypes/idList'
+import IdSelectField from './fieldTypes/idSelect'
+import ExtraInfoDefaultField from './fieldTypes/extraInfo'
 
 class FormHandler extends React.Component {
   constructor(props) {
@@ -22,21 +29,17 @@ class FormHandler extends React.Component {
       })
   }
 
-  handleArrayChange = (e) => {
-    const set = e.target.name.split('-')
-    const field = set[0]
-    const index = set[1]
-    const value = e.target.value
-    const array = this.state.item[field]
-    if(value === "") {
-      array.splice(index, 1)
-    } else if(value.indexOf(';') > -1) {
-      array[index] = value.split(';')[0]
-      array[array.length] = ""
-    } else{
-      array[index] = value
-    }
+  handleChangeCb = (field, value) => {
       this.setState({
+          item: {
+              ...this.state.item,
+              [field]: value
+          }
+      })
+  }
+
+  handleArrayChange = (field, array) => {
+    this.setState({
           item: {
               ...this.state.item,
               [field]: array
@@ -56,9 +59,17 @@ class FormHandler extends React.Component {
       })
   }
 
+  handleExtraInfoChange = (fieldsObject) => {
+    this.setState({
+        item: {
+            ...this.state.item,
+            extraInfoDefault: fieldsObject
+        }
+    })
+  }
 
   submitForm = (e) => {
-    e.preventDefault();
+    //e.preventDefault();
       this.state.existing ?
           this.props.updateItem(this.state.item, this.state.formClass) :
           this.props.addItem(this.state.item, this.state.formClass)
@@ -68,6 +79,7 @@ class FormHandler extends React.Component {
     e.preventDefault()
     if(window.confirm("Are you sure you wish to completely delete the item?")){
       this.props.deleteItem(this.state.item, this.state.formClass)
+      this.props.history.push(`/${this.state.formClass}`)
     }
   }
 
@@ -79,7 +91,7 @@ class FormHandler extends React.Component {
 
 
                 {
-                  typeof itemField[1] === 'string' && itemField[0] !== 'id' && itemField[0].indexOf('Text') === -1  ?
+                  typeof itemField[1] === 'string' &&  itemField[0].indexOf("Id") <= 0 && itemField[0] !== 'id' && itemField[0].indexOf('Text') === -1  ?
                           <Form.Group>
                     <Form.Label>{ itemField[0].replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); }) }</Form.Label>
                     <Form.Control onChange={this.handleChange} type="text"
@@ -93,7 +105,7 @@ class FormHandler extends React.Component {
                   itemField[0].indexOf('Text') >= 0 ?
                   <Form.Group>
                     <Form.Label>{ itemField[0].replace('Text', '').replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); }) }</Form.Label>
-                    <Form.Control onChange={this.handleChange} type="text"
+                    <Form.Control as="textarea" rows={5} onChange={this.handleChange} type="text"
                       name={ itemField[0] } placeholder={ itemField[0] }
                       value={this.state.item[ itemField[0] ]} />
                   </Form.Group>
@@ -101,15 +113,20 @@ class FormHandler extends React.Component {
                 }
 
                 {
-                  Array.isArray(itemField[1]) ?
-                  <Form.Group>
-                      <Form.Label>{ itemField[0].replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); }) }</Form.Label>
+                  !Array.isArray(itemField[1]) && itemField[0].indexOf("Id") > 0 ?
+                  <IdSelectField item={this.state.item} field={itemField[0]} value={itemField[1]} handleChange={this.handleChangeCb}/>
+                  : ""
+                }
 
-                      { this.state.item[itemField[0]].length > 0 ? this.state.item[ itemField[0] ].map( (item, index) => <span key={index}>
-                        <Form.Control onChange={this.handleArrayChange} type='text' value={item} name={`${itemField[0]}-${index}`} />
-                        </span> ) : <Form.Control onChange={this.handleArrayChange} type='text' name={`${itemField[0]}-${0}`} />}
+                {
+                  Array.isArray(itemField[1]) && itemField[0].indexOf("Id") > 0 ?
+                  <IdListField item={this.state.item} field={itemField[0]} array={itemField[1]} handleArrayChange={this.handleArrayChange}/>
+                  : ""
+                }
 
-                      </Form.Group>
+                {
+                  Array.isArray(itemField[1]) && itemField[0].indexOf("Id") <= 0 ?
+                  <ArrayField item={this.state.item} field={itemField[0]} array={itemField[1]} handleArrayChange={this.handleArrayChange}/>
                   : ""
                 }
 
@@ -126,7 +143,15 @@ class FormHandler extends React.Component {
                               value={i[1]} />
                       </Form.Group>) } </div>
                   : "" : ""
+                }
 
+                {
+                  itemField[0] === 'extraInfoDefault' ?
+                    <span>
+                      {JSON.stringify(itemField[1])}
+                      <ExtraInfoDefaultField item={this.state.item} fieldsObject={itemField[1]} handleExtraInfoChange={this.handleExtraInfoChange} />
+                    </span>
+                : ""
                 }
 
 
@@ -158,4 +183,4 @@ const mapStateToProps = (state) => { return {
 }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FormHandler)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(FormHandler))

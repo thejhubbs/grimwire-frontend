@@ -1,16 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import SimpleKindList from '../lists/simple';
+import FullKindList from '../lists/full';
 
 class Kinds extends React.Component {
     constructor(props) {
         super(props);
         this.state = {}
     }
-  
+
     render() {
         return <div>
-            <SimpleKindList kinds={this.props.kinds} />
+            <FullKindList kinds={this.props.kinds} />
         </div>
     }
 }

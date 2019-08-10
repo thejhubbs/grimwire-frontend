@@ -3,6 +3,7 @@ import {Switch, Route} from 'react-router-dom'
 
 import Home from '../views/misc/home';
 import UserComponent from '../views/misc/user';
+import LogsComponent from '../views/misc/logs';
 
 
 import SymbolsIndex from '../views/component/symbol/index';
@@ -31,7 +32,8 @@ function Body() {
             <Route path="/collection/:id" component={KindPage} />
             <Route path="/category/:id" component={CategoryPage} />
 
-            <Route path="/users/" component={UserComponent} />
+            <Route path="/users" component={UserComponent} />
+            <Route path="/logs" component={LogsComponent} />
         </Switch>
     </div>
 }

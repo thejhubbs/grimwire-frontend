@@ -21,7 +21,7 @@ class Pantheon extends React.Component {
   return (
     <div className="">
       <h1>Pantheons</h1>
-      <h4>List of All Pantheons & Items</h4>
+      <h4>List of All Relgions & Groups</h4>
       <Pantheons />
       <FormInsert item={defaultPantheon} formClass={"pantheons"} />
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import SimplePantheonList from '../lists/simple';
+import FullPantheonsList from '../lists/full';
 
 //This component is used to build a 'complete' list, used for calling searches and passing props to the actual list component.
 
@@ -12,7 +12,7 @@ class Pantheons extends React.Component {
 
     render() {
         return <div>
-            <SimplePantheonList pantheons={this.props.pantheons} />
+            <FullPantheonsList pantheons={this.props.pantheons} />
         </div>
     }
 }
