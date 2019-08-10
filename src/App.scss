@@ -9,9 +9,9 @@ $secondaryColor: rgb(8, 42, 53);
 $highlightColor: rgb(143, 63, 63);
 $lightColor: rgb(200,200,200);
 
-$textFont: 'Spectral', serif;
-$topFont: 'Metal Mania', cursive;
-$headerFont: 'Alegreya Sans SC', sans-serif;
+$textFont: 'Martel', serif;
+$topFont: 'Lexend Giga', cursive;
+$headerFont: 'Patua One', sans-serif;
 
 .App {
   text-align: center;
@@ -44,11 +44,14 @@ a {
   background-color: $tGreyColor;
 }
 
+
+
 .pageCTA {
   background: rgba(0,0,0,.6);
   min-height:100vh;
   margin:0;
-  h1 { font-size: 72px; }
+  h1 { font-size: 84px; margin-top: 8px; margin-bottom: 32px; letter-spacing: 42px; font-weight:bold;}
+  .CTAList h3, h5 { color: $lightColor; text-decoration: none;}
   display:flex;
   align-items: center;
   justify-content:center;
@@ -120,15 +123,16 @@ h1, .header h3 {
   color:$highlightColor;
 }
 
-h2, h3, h4, h5 {
-  font-family: $headerFont;
-  color:$primaryColor;
-}
-
 p, a, * {
   font-family: $textFont;
   color: $whiteColor;
 }
+
+h2, h3, h4, h5, h3 a {
+  font-family: $headerFont;
+  color:$primaryColor;
+}
+
 
 .side-bar-section {
   border: 2px solid $blackColor;

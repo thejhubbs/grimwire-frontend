@@ -4,7 +4,8 @@ import SmallPantheonCard from '../cards/small'
 function SimplePantheonList(props) {
     const style = {
         display: "flex",
-        justifyContent: 'center'
+        justifyContent: 'center',
+        overflow: "hidden"
     }
 
     //Ideally should be scrolling and have images of the Thing

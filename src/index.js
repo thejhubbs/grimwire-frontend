@@ -44,7 +44,7 @@ ReactDOM.render(
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossOrigin="anonymous" />
           <style>
-@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Metal+Mania|Spectral&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Patua+One|Lexend+Giga|Martel&display=swap');
 </style>
 
         <App />

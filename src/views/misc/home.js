@@ -16,16 +16,15 @@ function Home(props) {
 
       <div className="pageCTA">
         <div>
-        <h5>A humble attempt at creating software which allows sorting & organization of all spiritual & philosophical ideologies & concepts</h5>
         <img height="200px"  alt="logo" src="https://www.freelogodesign.org/file/app/client/thumb/d61a2eaf-ba59-4c5c-b40b-5d866a55672e_200x200.png?1563814596359" />
-        <h1>GrimWire</h1>
+        <h1>&nbsp;GRIMWIRE</h1>
         <h2>The Cultural, Spritual, and Historical Encyclopedia,</h2>
         <h2>From Tarot Cards to Greek Myths to Buddhist Philosophy to Astrology</h2>
         <hr />
-        <Row>
-          <Col><h3>Philosophies</h3><h3>Religions</h3><h3>Histories</h3><h3>Cultures & Beliefs</h3></Col>
-          <Col><h3>Practitioners</h3><h3>Students</h3><h3>Teachers</h3><h3>Hobbyists</h3></Col>
-          <Col><h3>Teachings & Concepts</h3><h3>Stories & Myths</h3><h3>Symbols & Dieties</h3><h3>Divination & Magic</h3></Col>
+        <Row className="CTAList">
+          <Col><h2>Including</h2><h3>Philosophies</h3><h3>Religions</h3><h3>Histories</h3><h3>Cultures & Beliefs</h3></Col>
+          <Col><h2>For</h2><h3>Practitioners</h3><h3>Students</h3><h3>Teachers</h3><h3>Hobbyists</h3></Col>
+          <Col><h2>Featuring</h2><h3>Teachings & Concepts</h3><h3>Stories & Myths</h3><h3>Symbols & Dieties</h3><h3>Divination & Magic</h3></Col>
         </Row>
         </div>
       </div>
