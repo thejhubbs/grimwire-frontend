@@ -7,8 +7,10 @@ function SimplePantheonList(props) {
 
     //Ideally should be scrolling and have images of the Thing
     return <div style={style}>
+
+        <hr />
         { props.pantheons.map(item =>
-            <ListItemPantheonCard key={item.name} pantheon={item} />
+            <div><ListItemPantheonCard key={item.name} pantheon={item} /><hr /></div>
         )}
     </div>
 }

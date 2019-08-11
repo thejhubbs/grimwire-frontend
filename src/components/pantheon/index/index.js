@@ -11,7 +11,8 @@ class Pantheons extends React.Component {
     }
 
     render() {
-        return <div>
+        return <div className="container">
+            Sort by: <button>Alpha</button> <button>Year</button> <input type='text' /> <button>Search</button>
             <FullPantheonsList pantheons={this.props.pantheons} />
         </div>
     }

@@ -9,7 +9,7 @@ class Symbol extends React.Component {
   }
 
   render() {
-    return <div className="">
+    return <div  className="tpBlackBg">
         <h1>Search</h1>
         <p>Look for Info</p>
         <Symbols />

@@ -10,6 +10,7 @@ class Kinds extends React.Component {
 
     render() {
         return <div>
+            Sort by: <button>Alpha</button> <input type='text' /> <button>Search</button>
             <FullKindList kinds={this.props.kinds} />
         </div>
     }

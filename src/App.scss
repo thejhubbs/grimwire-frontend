@@ -1,13 +1,15 @@
-$blackColor: rgb(36, 36, 36);
-$whiteColor: rgb(218, 218, 218);
-$greyColor: #ccc;
-
-$tGreyColor: rgba(58, 47, 47, 0.9);
 
 $primaryColor: rgb(131, 131, 224);
 $secondaryColor: rgb(8, 42, 53);
 $highlightColor: rgb(143, 63, 63);
 $lightColor: rgb(200,200,200);
+
+$blackColor: desaturate(darken($secondaryColor, 4%), 50%);
+$whiteColor: rgb(218, 218, 218);
+$greyColor: #ccc;
+
+$tGreyColor: rgba(58, 47, 47, 0.9);
+
 
 $textFont: 'Martel', serif;
 $topFont: 'Lexend Giga', cursive;
@@ -86,14 +88,22 @@ a {
   margin:0;
 }
 
+.pageDarkSection {
+  text-align:center;
+  background-color: $blackColor;
+  padding:20px;
+}
+
 .header {
+  box-sizing: border-box;
   display:flex;
   justify-content: space-between;
   align-items: center;
-  background-image:linear-gradient(rgb(28, 62, 73), $secondaryColor, rgb(8, 22, 33));
+  background:linear-gradient( darken($secondaryColor, 4%) 0%, lighten($secondaryColor, 2%) 20%, darken($secondaryColor, 0%) 30%, darken($secondaryColor, 2%) 60%, darken($secondaryColor, 6%) 90%);
   position:sticky;
   z-index:10;
   top:0;
+  border-bottom:2px solid rgba(darken($secondaryColor, 15%), .7);
 
 
   .menu-right {
