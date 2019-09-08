@@ -12,18 +12,6 @@ import { UPDATE_ITEM, ADD_ITEM, DELETE_ITEM } from "./actions";
     userId: 1
   }
 
-
-/*  const initialState = {
-     symbols: {},
-     kinds: {},
-     pantheons: {},
-     connections: {},
-     users: {},
-     categories: {}
-   }
-*/
-
-
 export default function reducer(state = initialState, action) {
     const user = state.userId
     var id, type, group, index, before, after, logItem

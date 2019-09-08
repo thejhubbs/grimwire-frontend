@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reducer from './redux/reducer'
+import axios from 'axios'
 
 import {BrowserRouter} from 'react-router-dom';
 import {createStore} from 'redux';

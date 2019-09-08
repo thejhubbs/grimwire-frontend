@@ -29,7 +29,9 @@ class BasicInfo extends React.Component {
           </Col>
           <Col lg={4}>
               <h4>Key Information</h4>
-              { item.info ? Object.entries(item.info).map(infoEntry => <div key={infoEntry[0]} >{infoEntry[0]}: {infoEntry[1]}</div>) : "" }
+              { item.info ? Object.entries(kind.extraInfoDefault).map(infoEntry => <div key={infoEntry[0]} >
+                {infoEntry[0]}: {item.info[infoEntry[0]]}
+              </div>) : "" }
           </Col>
       </Row>
 
