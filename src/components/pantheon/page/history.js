@@ -9,31 +9,33 @@ class BasicInfo extends React.Component {
 
 
       yearRange = (item) => {
+          if(item.startYear && item.endYear) {
           var startYearString = item.startYear > 0 ? item.startYear + "AD" : item.startYear * -1 + "BC"
           var endYearString = item.endYear > 0 ?
               item.endYear === 2100 ? "Present" : item.endYear + "AD" :
               item.endYear * -1 + "BC"
           return startYearString + " - " + endYearString;
+        } else {
+          return ""
+        }
       }
 
   render() {
-    const {item, history, offshoots} = this.props
+    const {item} = this.props
 
     return <div>
-      <p> { this.yearRange(item) } </p>
-
+            <p> { this.yearRange(item) } </p>
             History:
-            { history.length > 0 ? this.props.history.map(item => <span key={item.name}>
-                <Link to={`/pantheon/${item.id}`}>{item.name}</Link>
+            { item.history.length > 0 ? item.history.map(i => <span key={i.pantheon_name}>
+                <Link to={`/pantheon/${i.pantheon_id}`}>{i.pantheon_name}</Link>
             </span>) : "N/a" }<br />
 
             Offshoots:
-            { offshoots.length > 0 ? this.props.offshoots.map(item => <span key={item.name}>
-                <Link to={`/pantheon/${item.id}`}>{item.name}</Link>
+            { item.influenced.length > 0 ? item.influenced.map(i => <span key={i.pantheon_name}>
+                <Link to={`/pantheon/${i.pantheon_id}`}>{i.pantheon_name}</Link>
             </span>) : "N/a"}<br />
-
     </div>
   }
 }
- 
+
 export default BasicInfo

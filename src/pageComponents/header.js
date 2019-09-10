@@ -12,7 +12,7 @@ function Menu() {
 
                 <Col xs={12} lg={10} className="menu-right">
                     <NavLink to="/pantheons">Pantheons & Religions</NavLink>
-                    <NavLink to="/collections">Collections & Categories</NavLink>
+                    <NavLink to="/categories">Collections & Categories</NavLink>
                     <NavLink to="/symbols">Search</NavLink>
                 </Col>
             </Row>

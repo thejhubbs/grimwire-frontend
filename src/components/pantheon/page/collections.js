@@ -11,10 +11,11 @@ class Collections extends React.Component {
     const {createdKinds, usedKinds} = this.props
     return <div>
         <h4>Created</h4>
-        {createdKinds.map(item => <Link key={item.name} to={`/collection/${item.id}`}>{item.name}</Link>)}
-
+        {//createdKinds.map(item => <Link key={item.name} to={`/collection/${item.id}`}>{item.name}</Link>)
+        }
         <h4>Uses</h4>
-        {usedKinds.map(item => <Link  key={item.name} to={`/collection/${item.id}`}>{item.name}</Link> )}
+        {//usedKinds.map(item => <Link  key={item.name} to={`/collection/${item.id}`}>{item.name}</Link> )
+        }
     </div>
   }
 }
