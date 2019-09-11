@@ -37,9 +37,9 @@ class PantheonPage extends React.Component {
         return typeof item !== 'undefined' && Object.keys(item).length > 0 ? <div>
                 <BasicInfo item={item}>
                   <History item={item} />
+                  <ImageGallery item={item} />
                 </BasicInfo>
 
-                <ImageGallery item={item} />
 
                 <Collections item={item} />
 

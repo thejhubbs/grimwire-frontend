@@ -20,9 +20,10 @@ class SymbolPage extends React.Component {
 
     componentDidMount = () => { this.updateSymbolAndConnections() }
     componentWillReceiveProps = (newProps) => { this.updateSymbolAndConnections(newProps) }
+
     updateSymbolAndConnections = (props = this.props) => {
       axios
-          .get(`http://localhost:4001/api/symbols/#{props.id}`)
+          .get(`http://localhost:4001/api/symbols/${props.match.params.id}`)
           .then(res =>
             this.setState({symbol: res.data})
           )
@@ -31,7 +32,7 @@ class SymbolPage extends React.Component {
 
     render() {
         const item = this.state.symbol
-        const activeConnection = this.state.activeConnection
+
         return <div>
           { typeof item !== 'undefined' && Object.keys(item).length > 0 ?
             <div>
@@ -41,7 +42,7 @@ class SymbolPage extends React.Component {
 
                <Row className="forms">
                    <Col><FormInsert item={item} key={item.symbol_name} formClass={"symbols"} /></Col>
-                   <Col><FormInsert item={activeConnection} key={activeConnection} formClass={"connections"} /></Col>
+                   <Col><FormInsert item={item} key={item.symbol_name} formClass={"symbols"} /></Col>
               </Row>
 
 

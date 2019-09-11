@@ -7,10 +7,7 @@ V.5 ToDo These should make a good demo app and a great portfolio piece
 
 V1.0 These completed should make a complete consumer-end app, with a little bit of back-front-end for updating some things (v1.0)
 --Complete functionality--
-1. SUBSTANCE- Real backend
-1a. Substance- better fix redux flow so that page auto updates state and not hard reload
--remove unnecessary state calls & stores
-1b. UPDATE- Sort & search on all index pages
+1. UPDATE- Sort & search on all index pages
 2. Return to *correct* page on delete
 
 

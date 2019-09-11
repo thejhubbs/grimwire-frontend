@@ -22,16 +22,7 @@ import categories from './db/categoriesDb';
 
 const store = createStore(reducer);
 
-var merge = (a, b, p) => a.filter( aa => ! b.find ( bb => aa[p] === bb[p]) ).concat(b);
-
-[['symbols', symbols], ['kinds', kinds], ['connections', connections], ['pantheons', pantheons], ['users', users], ['categories', categories]].forEach(str => {
-  var localBrowserStorage = JSON.parse(localStorage.getItem(str[0]));
-  var localDbFile = str[1]
-  const merged = merge(localDbFile, localBrowserStorage, 'id')
-  console.log("Whole", str[0], "database", merged)
-  localStorage.setItem(str[0], JSON.stringify( merged ))
-})
-
+console.log(localStorage.getItem('kinds'))
 
 ReactDOM.render(
 

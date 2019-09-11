@@ -10,22 +10,19 @@ class BasicInfo extends React.Component {
 
   render() {
     const item = this.props.item
-    const createdBy = this.props.createdBy
-    const usedBy = this.props.usedBy
-    console.log(createdBy)
+
     return <div>
-    <img src={item.thumbnail} alt={item.name}  height="100px" />
-    <h1>{item.name}</h1>
+    <img src={item.thumbnail.image_url} alt={item.kind_name}  height="100px" />
+    <h1>{item.kind_name}</h1>
     <Row>
         <Col lg={4}>
-            <p>{item.description}</p>
-            { createdBy ?
-            <p>Created By: <Link to={`/pantheon/${createdBy.id}`}>{createdBy.name}</Link></p>
-            : "" }
-            { usedBy ?
+            <p>{item.kind_description}</p>
+            <p>Created By: <Link to={`/pantheon/${item.pantheon_id}`}>{item.pantheon_name}</Link></p>
+
+            { item.pantheons ?
               <p>Used By:
-                {usedBy.map(i =>
-                  <Link key={i.id} to={`/pantheon/${i.id}`}>{i.name}</Link>
+                {item.pantheons.map(i =>
+                  <Link key={i.pantheon_id} to={`/pantheon/${i.pantheon_id}`}>{i.pantheon_name}</Link>
                 )}</p>
               :""}
         </Col>

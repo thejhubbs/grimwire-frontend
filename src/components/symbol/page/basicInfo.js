@@ -19,19 +19,15 @@ class BasicInfo extends React.Component {
           <Col lg={8}>
               <h4>Basic Information</h4>
               <i>Also Spelled: { item.otherSpellings } </i>
-              {/*
-                 kind.id ?
-                <p>Collection: <Link to={ `/collection/${kind.id}` }> {kind.name} </Link></p>
-                :""
-              */}
-              <p>Used by: {/* this.props.pantheons.map(i => <Link key={i.id} to={`/pantheon/${i.id}`}> {i.name} </Link>) */}</p>
+              <p>Collection: <Link to={ `/collection/${item.kind.kind_id}` }> {item.kind.kind_name} </Link></p>
+              <p>Used by: { item.pantheons.map(i => <Link key={i.id} to={`/pantheon/${i.pantheon_id}`}> {i.pantheon_name} </Link>) }</p>
               <p>Short Description: {item.symbol_description}</p>
           </Col>
           <Col lg={4}>
               <h4>Key Information</h4>
-              { /* item.info ? Object.entries(kind.extraInfoDefault).map(infoEntry => <div key={infoEntry[0]} >
+              {  item.extra_info ? Object.entries(item.kind.extraInfoDefault).map(infoEntry => <div key={infoEntry[0]} >
                 {infoEntry[0]}: {item.info[infoEntry[0]] }
-              </div>) : "" */ }
+              </div>) : ""  }
           </Col>
       </Row>
 
