@@ -1,5 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import axios from 'axios';
+
 import { Row, Col } from 'react-bootstrap'
 
 import FormInsert from '../../forms/insert'
@@ -14,11 +15,7 @@ class PantheonPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            pantheon: {},
-            createdKinds: [],
-            usedKinds: [],
-            history: [],
-            offshoots: []
+            pantheon: {}
         }
     }
 
@@ -27,44 +24,24 @@ class PantheonPage extends React.Component {
 
       updateInfo = (props = this.props) => {
         const id = props.match.params.id
-        const pantheon = this.setPantheon(id)
-        this.setState({
-            pantheon: pantheon,
-            createdKinds: this.getKinds(id, "Created"),
-            usedKinds: this.getKinds(id, "Used"),
-            history: this.getHistory(pantheon),
-            offshoots: this.props.pantheons.filter(item => item.historyIds.indexOf(id) >= 0)
-        })
+        axios
+            .get(`http://localhost:4001/api/pantheons/${id}`)
+            .then(res =>
+              this.setState({pantheon: res.data})
+            )
+            .catch(err => console.log(err) );
     }
-
-    setPantheon = (id) => {
-        return this.props.pantheons.filter(item => item.id == id)[0]
-    }
-
-    getHistory(pantheon) { return pantheon ? this.props.pantheons.filter(item => pantheon.historyIds.indexOf(item.id) >= 0) : [] }
-
-    getKinds(id, type) {
-        switch (type) {
-            case "Created":
-                return this.props.kinds.filter(item => id === item.originalPantheonId)
-            case "Used":
-                return this.props.kinds.filter(item => item.featuredPantheonIds.indexOf(id) >= 0)
-            default:
-                return "ERROR"
-        }
-    }
-
 
     render() {
         const item = this.state.pantheon
         return typeof item !== 'undefined' && Object.keys(item).length > 0 ? <div>
                 <BasicInfo item={item}>
-                  <History item={item} history={this.state.history} offshoots={this.state.offshoots} />
+                  <History item={item} />
+                  <ImageGallery item={item} />
                 </BasicInfo>
 
-                <ImageGallery item={item} />
 
-                <Collections usedKinds={this.state.usedKinds} createdKinds={this.state.createdKinds} />
+                <Collections item={item} />
 
                 <Row className="forms">
                     <Col className=""><FormInsert item={item} key={item.id} formClass={"pantheons"} /></Col>
@@ -75,11 +52,4 @@ class PantheonPage extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        pantheons: state.pantheons,
-        kinds: state.kinds
-    }
-}
-
-export default connect(mapStateToProps)(PantheonPage);
+export default PantheonPage

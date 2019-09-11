@@ -16,18 +16,16 @@ class BasicInfo extends React.Component {
     <Row>
         {item.specificOrder ? <Col>#</Col> : ""}
         <Col>Name</Col>
-        {this.props.relatedSymbols[0] && this.props.relatedSymbols[0].info ?
-            Object.keys(this.props.relatedSymbols[0].info).map((key) => <Col key={key} >{key}</Col>) : ""}
+        { item.default_extra_info ? Object.entries( item.default_extra_info ).map( (entry) => <Col key={entry[0]}> {entry[0]} </Col> ) : "" }
         <Col>Thumbnail</Col>
     </Row>
 
 
-    {this.props.relatedSymbols.map(i => <Row key={i.name}>
+    {item.symbols.map(i => <Row key={i.symbol_name}>
         {item.specificOrder ? <Col>{i.number}. </Col> : ""}
-        <Col><Link to={`/symbol/${i.id}`}>{i.name}</Link></Col>
-        {i.info ?
-            Object.values(i.info).map((key) => <Col key={key} >{key}</Col>) : ""}
-        <Col><img alt={i.name} src={i.thumbnail} height="64px" /></Col>
+        <Col><Link to={`/symbol/${i.symbol_id}`}>{i.symbol_name}</Link></Col>
+        { i.extra_info ? Object.entries( item.default_extra_info ).map( (entry) => <Col key={entry[0]}> {  i.extra_info[entry[0]] } </Col> ) : ""}
+        <Col><img alt={i.name} src={i.thumbnail ? i.thumbnail.image_url : ""} height="64px" /></Col>
     </Row>)}
     </div>
   }

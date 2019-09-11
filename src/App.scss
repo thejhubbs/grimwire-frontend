@@ -1,17 +1,19 @@
-$blackColor: rgb(36, 36, 36);
-$whiteColor: rgb(218, 218, 218);
-$greyColor: #ccc;
-
-$tGreyColor: rgba(58, 47, 47, 0.9);
 
 $primaryColor: rgb(131, 131, 224);
 $secondaryColor: rgb(8, 42, 53);
 $highlightColor: rgb(143, 63, 63);
 $lightColor: rgb(200,200,200);
 
-$textFont: 'Spectral', serif;
-$topFont: 'Metal Mania', cursive;
-$headerFont: 'Alegreya Sans SC', sans-serif;
+$blackColor: desaturate(darken($secondaryColor, 4%), 50%);
+$whiteColor: rgb(218, 218, 218);
+$greyColor: #ccc;
+
+$tGreyColor: rgba(58, 47, 47, 0.9);
+
+
+$textFont: 'Martel', serif;
+$topFont: 'Lexend Giga', cursive;
+$headerFont: 'Patua One', sans-serif;
 
 .App {
   text-align: center;
@@ -40,61 +42,107 @@ a {
   text-decoration:none;
 }
 
-.main-page, .side-bar {
-  padding:20px;
-  min-height:100vh;
-}
-
 .main-page {
-  
   background-color: $tGreyColor;
 }
 
+
+
+.pageCTA {
+  background: rgba(0,0,0,.6);
+  min-height:100vh;
+  margin:0;
+  h1 { font-size: 84px; margin-top: 8px; margin-bottom: 32px; letter-spacing: 42px; font-weight:bold;}
+  .CTAList h3, h5 { color: $lightColor; text-decoration: none;}
+  display:flex;
+  align-items: center;
+  justify-content:center;
+}
+
+.tpBlackBg {
+  background: rgba(0,0,0,.6);
+  padding:20px;
+
+}
+
+.divider {
+  box-sizing: border-box;
+  height:6px;
+  background-color:$secondaryColor;
+  border-top:2px solid lighten($secondaryColor, 5%);
+  border-bottom:2px solid darken($secondaryColor, 5%);
+}
+
+.reverse-divider {
+  box-sizing: border-box;
+  height:6px;
+  background-color:$secondaryColor;
+  border-bottom:2px solid lighten($secondaryColor, 5%);
+  border-top:2px solid darken($secondaryColor, 5%);
+}
+
+.indexBar {
+  padding: 20px;
+  background:linear-gradient( darken($secondaryColor, 4%) 0%, lighten($secondaryColor, 2%) 20%, darken($secondaryColor, 0%) 30%, darken($secondaryColor, 2%) 60%, darken($secondaryColor, 6%) 90%);
+  h3 { margin: 0; padding: 20px 0 10px;}
+  margin:0;
+}
+
+.pageDarkSection {
+  text-align:center;
+  background-color: $blackColor;
+  padding:20px;
+}
+
 .header {
+  box-sizing: border-box;
   display:flex;
   justify-content: space-between;
   align-items: center;
-  background-image:linear-gradient(rgb(28, 62, 73), $secondaryColor, rgb(8, 22, 33));
+  background:linear-gradient( darken($secondaryColor, 4%) 0%, lighten($secondaryColor, 2%) 20%, darken($secondaryColor, 0%) 30%, darken($secondaryColor, 2%) 60%, darken($secondaryColor, 6%) 90%);
   position:sticky;
   z-index:10;
   top:0;
-  
+  border-bottom:2px solid rgba(darken($secondaryColor, 15%), .7);
+
 
   .menu-right {
     display:flex;
     justify-content: flex-end;
     align-items: center;
   }
-  
+
   h3 {
     margin:0px;
-    font-family: $topFont; 
+    font-family: $topFont;
 
   }
-  a{ color: $highlightColor !important; 
+  a{ color: $highlightColor !important;
     font-family: $headerFont;}
 
 }
 
 .footer {
-  background-color:$secondaryColor;
+  background-color:darken($secondaryColor, 7%);
+  padding:40px;
 }
 
-h1, .header h3 { 
-  margin:0; 
-  font-family: $topFont; 
+h1, .header h3 {
+  margin:0;
+  font-family: $topFont;
   color:$highlightColor;
-}
-
-h2, h3, h4, h5 {
-  font-family: $headerFont;
-  color:$primaryColor;
 }
 
 p, a, * {
   font-family: $textFont;
   color: $whiteColor;
 }
+
+h2, h3, h4, h5, h3 a {
+  font-family: $headerFont;
+  color:$primaryColor;
+}
+
 
 .side-bar-section {
   border: 2px solid $blackColor;
@@ -110,7 +158,7 @@ p, a, * {
 h5{
   text-decoration: underline;
   padding-top:5px;
-} 
+}
 
 .image-gallery img {
   padding: 10px;
@@ -119,4 +167,3 @@ h5{
 hr {
   background-color: grey;
 }
-

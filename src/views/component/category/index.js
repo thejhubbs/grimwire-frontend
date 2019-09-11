@@ -13,7 +13,7 @@ class Category extends React.Component {
 
   render() {
   return (
-    <div className="">
+    <div className="tpBlackBg">
       <h1>Categories</h1>
       <h4>List of All Categories & Items</h4>
       <Categorys />

@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import axios from 'axios'
 import {Link} from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap'
 
@@ -10,8 +10,7 @@ class CategoryPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            category: {},
-            relatedKinds: []
+            category: {}
         }
     }
 
@@ -20,11 +19,12 @@ class CategoryPage extends React.Component {
 
     updatePage = (props = this.props) => {
         const id = props.match.params.id
-        const categories = this.props.categories.filter(item => item.id === id)
-        const category = categories.length > 0 ? categories[0] : {}
-        const related = category.name ? this.props.kinds.filter(item => category.kindIds.indexOf(item.id) >= 0) : []
-        console.log(id, categories, category, related)
-        this.setState({category: category,relatedKinds: related})
+        axios
+            .get(`http://localhost:4001/api/categories/${id}`)
+            .then(res =>
+              this.setState({category: res.data})
+            )
+            .catch(err => console.log(err) );
     }
 
     render() {
@@ -32,8 +32,8 @@ class CategoryPage extends React.Component {
         return typeof item !== 'undefined' && Object.keys(item).length > 0 ? <div>
 
             <div className="category-info">
-                <h1>{item.name}</h1>
-                <p>{item.description}</p>
+                <h1>{item.category_name}</h1>
+                <p>{item.category_description}</p>
             </div>
 
             <div className="category-list">
@@ -46,8 +46,7 @@ class CategoryPage extends React.Component {
                     </Col>
                     <Col lg={4}>
                         <h4>Collections</h4>
-
-                        {this.state.relatedKinds.map(i => <Link key={i.id} to={`/collection/${i.id}`}>{i.name}</Link>)}
+                        { item.kinds ? item.kinds.map(i => <Link key={i.id} to={`/collection/${i.id}`}>{i.name}</Link>) : ""}
                     </Col>
                 </Row>
 
@@ -64,11 +63,5 @@ class CategoryPage extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-      categories: state.categories,
-      kinds: state.kinds
-    }
-  }
 
-export default connect(mapStateToProps)(CategoryPage);
+export default CategoryPage;

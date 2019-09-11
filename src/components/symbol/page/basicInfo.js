@@ -10,21 +10,24 @@ class BasicInfo extends React.Component {
 
   render() {
     const item = this.props.item
+
     return <div>
-      <img src={item.thumbnail} alt={item.name}  width="100px" />
-      <h1>{item.number ? item.number + ". " : ''} {item.name}</h1>
+      <img src={item.thumbnail} alt={item.symbol_name}  width="100px" />
+      <h1>{item.number ? item.number + ". " : ''} {item.symbol_name}</h1>
 
       <Row>
           <Col lg={8}>
               <h4>Basic Information</h4>
-              <i>Also Spelled: {item.otherSpellings.join(", ")} </i>
-              <p>Collection: <Link to={`/collection/${item.kind}`}>{item.kind}</Link></p>
-              <p>Used by: {this.props.pantheons.map(i => <Link key={i.id} to={`/pantheon/${i.id}`}> {i.name} </Link>)}</p>
-              <p>Short Description: {item.description}</p>
+              <i>Also Spelled: { item.otherSpellings } </i>
+              <p>Collection: <Link to={ `/collection/${item.kind.kind_id}` }> {item.kind.kind_name} </Link></p>
+              <p>Used by: { item.pantheons.map(i => <Link key={i.id} to={`/pantheon/${i.pantheon_id}`}> {i.pantheon_name} </Link>) }</p>
+              <p>Short Description: {item.symbol_description}</p>
           </Col>
           <Col lg={4}>
               <h4>Key Information</h4>
-              { item.info ? Object.entries(item.info).map(infoEntry => <div key={infoEntry[0]} >{infoEntry[0]}: {infoEntry[1]}</div>) : "" }
+              {  item.extra_info ? Object.entries(item.kind.extraInfoDefault).map(infoEntry => <div key={infoEntry[0]} >
+                {infoEntry[0]}: {item.info[infoEntry[0]] }
+              </div>) : ""  }
           </Col>
       </Row>
 

@@ -5,36 +5,37 @@ import FormInsert from '../../forms/insert'
 
 
 function Display(props) {
-  const p = props.props
+  const item = props.item
   const number = props.number
   const title = props.title
 
-  const conn = p.connections.filter(item => item.relationship === number)
+  const conn = item.connections.filter(item => item.relationship === number)
 
-  return conn.length > 0 ? <div>
-  <h3>{title}</h3>
-  {conn.map(item => <div key={item.connectedId}>
-      {
-          p.symbols.filter(i => i.id === item.connectedId).map(connectedSymbol => <div key={connectedSymbol.id}>
-              {p.kinds.filter(item => item.id === connectedSymbol.kindId)[0].name}: <Link to={`/symbol/${connectedSymbol.id}`}>{connectedSymbol.name} ({item.strength}) </Link> <FormInsert item={item} formClass={"connections"} />
+  if(conn.length > 0) {
+      return <div>
+        <h5>{title}</h5>
+        {
+          conn.map(i => <div>
+            {i.symbol_name}
           </div>)
-      }
-  </div>)}
-  </div> : ""
-
+        }
+      </div>
+  } else {
+    return ""
+  }
 }
 
 export default function Connections(props){
   return <Row>
       <Col xs={12} lg={6} >
-        <Display props={props} number={"5"} title={"Alternate Names & Titles"} />
-        <Display props={props} number={"4"} title={"Properties"} />
-        <Display props={props} number={"2"} title={"Related"} />
-        <Display props={props} number={"1"} title={"Mentions, Stories, Teachings"} />
-        <Display props={props} number={"0"} title={"Sources"} />
+        <Display item={props.item} number={"5"} title={"Alternate Names & Titles"} />
+        <Display item={props.item} number={"4"} title={"Properties"} />
+        <Display item={props.item} number={"2"} title={"Related"} />
+        <Display item={props.item} number={"1"} title={"Mentions, Stories, Teachings"} />
+        <Display item={props.item} number={"0"} title={"Sources"} />
       </Col>
       <Col xs={12} lg={6} >
-        <Display props={props} number={"3"} title={"Attributes & Associations"} />
+        <Display item={props.item} number={"3"} title={"Attributes & Associations"} />
       </Col>
   </Row>
 }

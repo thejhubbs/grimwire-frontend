@@ -11,7 +11,7 @@ export default [
         backgroundText: "",
         meaningText: "",
         number: "",
-        info: {}
+        info: { division: "" }
     },
     {
         id: "2",
@@ -25,7 +25,7 @@ export default [
         backgroundText: "",
         meaningText: "",
         number: "",
-        info: {}
+        info: { sound: "", value: "",  spelling: "", meaning: ""}
     },
     {
         id: "3",
@@ -39,6 +39,6 @@ export default [
         backgroundText: "",
         meaningText: "",
         number: "",
-        info: {}
+        info: {dominionOver: "", parents: ""}
     },
 ]

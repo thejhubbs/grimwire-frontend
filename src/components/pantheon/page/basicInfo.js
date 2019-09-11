@@ -10,25 +10,25 @@ class BasicInfo extends React.Component {
   render() {
     const item = this.props.item
     return <div>
-    <img src={item.thumbnail}  alt={item.name} width="100px"/>
-    <h1>{item.name}</h1>
-    <Row>
-        <Col>
-            <h4>Overview</h4>
-            <p>{item.overviewInfo}</p>
-        </Col>
-        <Col>
-            <p>{item.description}</p>
-            {this.props.children}
-        </Col>
-    </Row>
+      <Row>
+          <Col>
+              <img src={item.thumbnail ? `http://localhost:4001/uploads/${item.thumbnail.image_url}` : ""}  alt={item.pantheon_name} width="100px"/>
+              <h1>{item.pantheon_name}</h1>
+              <p>{item.pantheon_description}</p>
+              {this.props.children}
+          </Col>
+          <Col>
+              <h4>Overview</h4>
+              <p>{item.pantheon_overview}</p>
+          </Col>
+      </Row>
 
-    <div>
-        <h4>History & Background</h4>
-        <p>{item.historyInfo}</p>
-        <h4>Culture & Advancements</h4>
-        <p>{item.cultureInfo}</p>
-    </div>
+      <div>
+          <h4>History & Background</h4>
+          <p>{item.pantheon_history}</p>
+          <h4>Culture & Advancements</h4>
+          <p>{item.pantheon_culture}</p>
+      </div>
     </div>
   }
 }

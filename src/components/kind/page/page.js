@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap'
 
@@ -13,10 +13,7 @@ class KindPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            kind: {},
-            relatedSymbols: [],
-            createdBy: {},
-            usedBy: []
+            kind: {}
         }
     }
 
@@ -25,14 +22,12 @@ class KindPage extends React.Component {
 
     updatePage = (props = this.props) => {
         const id = props.match.params.id
-        const kinds = this.props.kinds.filter(item => item.id === id)
-        const kind = kinds.length > 0 ? kinds[0] : {}
-        const relatedSymbols = kind.name ? this.props.symbols.filter(item => item.kindId === id) : []
-        const createdBy = kind.name ? this.props.pantheons.filter(item => kind.originalPantheonId === item.id )[0] : {}
-        const usedBy = kind.name ? this.props.pantheons.filter(item => kind.featuredPantheonIds.indexOf(item.id) >= 0 ) : []
-
-        console.log(relatedSymbols)
-        this.setState({ kind, relatedSymbols, createdBy, usedBy })
+        axios
+            .get(`http://localhost:4001/api/kinds/${id}`)
+            .then(res =>
+              this.setState({kind: res.data})
+            )
+            .catch(err => console.log(err) );
     }
 
 
@@ -62,12 +57,4 @@ class KindPage extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        kinds: state.kinds,
-        symbols: state.symbols,
-        pantheons: state.pantheons
-    }
-}
-
-export default connect(mapStateToProps)(KindPage);
+export default KindPage;

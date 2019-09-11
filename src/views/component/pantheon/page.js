@@ -10,7 +10,8 @@ class PantheonPage extends React.Component {
   }
 
   render() {
-    return <div className="">
+    return <div  className="tpBlackBg">
+
         <Pantheon match={this.props.match}  />
       </div>
   }

@@ -10,7 +10,7 @@ class SymbolPage extends React.Component {
   }
 
   render() {
-    return <div className="">
+    return <div  className="tpBlackBg">
         <Symbol match={this.props.match}  />
       </div>
   }

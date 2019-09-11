@@ -12,18 +12,6 @@ import { UPDATE_ITEM, ADD_ITEM, DELETE_ITEM } from "./actions";
     userId: 1
   }
 
-
-/*  const initialState = {
-     symbols: {},
-     kinds: {},
-     pantheons: {},
-     connections: {},
-     users: {},
-     categories: {}
-   }
-*/
-
-
 export default function reducer(state = initialState, action) {
     const user = state.userId
     var id, type, group, index, before, after, logItem
@@ -41,7 +29,7 @@ export default function reducer(state = initialState, action) {
              localStorage.setItem(type, JSON.stringify(group))
 
              log.push( { user: user, action: action.type, before: before, after: action.payload.data } )
-             //localStorage.setItem('log', JSON.stringify( log ))
+             localStorage.setItem('log', JSON.stringify( log ))
 
 
              return { ...state, group }
@@ -56,7 +44,7 @@ export default function reducer(state = initialState, action) {
              localStorage.setItem(type, JSON.stringify(group))
 
              log.push( { user: user, action: action.type, before: "", after: action.payload.data } )
-             //localStorage.setItem('log', JSON.stringify( log ))
+             localStorage.setItem('log', JSON.stringify( log ))
              return { ...state, group }
 
         case DELETE_ITEM:
@@ -68,7 +56,7 @@ export default function reducer(state = initialState, action) {
              localStorage.setItem(type, JSON.stringify(group))
 
                           log.push( { user: user, action: action.type, before: action.payload.data, after: "" } )
-                          //localStorage.setItem('log', JSON.stringify( log ))
+                          localStorage.setItem('log', JSON.stringify( log ))
 
              return {...state, group}
         default:

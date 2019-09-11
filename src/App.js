@@ -13,16 +13,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Container>
-        <Row>
-          <Col xs={3} className="side-bar">
-            <SideBar />
-          </Col>
-          <Col xs={9} className="main-page">
-            <Body />
-          </Col>
-        </Row>
-      </Container>
+      <Body />
       <Footer />
     </div>
   );

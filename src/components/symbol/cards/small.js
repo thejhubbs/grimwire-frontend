@@ -10,9 +10,8 @@ function SmallPantheonCard(props) {
         padding: '5px'
     }
     return <div style={style}>
-            <Link to={`/symbol/${item.id}`}>{ item.name }</Link><br />
-            {item.kind}<br />
-            {item.description}
+            <Link to={`/symbol/${item.symbol_id}`}>{ item.symbol_name }</Link><br />
+            {item.symbol_description}
     </div>
 }
 
